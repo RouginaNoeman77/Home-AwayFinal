@@ -42,7 +42,42 @@ public class PropertyRepo : IPropertyRepo
 
     public IEnumerable<Property>? FilterProperty(string? title, string? address, string? Type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating)
     {
-      
+        var query = _userContext.Set<Property>().AsQueryable();
+
+        if (!string.IsNullOrEmpty(title))
+            query = query.Where(p => p.Title.Contains(title));
+
+        if (!string.IsNullOrEmpty(address))
+            query = query.Where(p => p.Address.Contains(address));
+
+        if (!string.IsNullOrEmpty(region))
+            query = query.Where(p => p.Region == region);
+
+        if (!string.IsNullOrEmpty(area))
+            query = query.Where(p => p.Area == area);
+
+        if (!string.IsNullOrEmpty(category))
+            query = query.Where(p => p.Category == category);
+
+        if (price_per_night.HasValue)
+            query = query.Where(p => p.PricePerNight == price_per_night.Value);
+
+        if (capacity.HasValue)
+            query = query.Where(p => p.Capacity == capacity.Value);
+
+        if (no_of_rooms.HasValue)
+            query = query.Where(p => p.NumberOfRooms == no_of_rooms.Value);
+
+        if (no_of_bathrooms.HasValue)
+            query = query.Where(p => p.NumberOfBathrooms == no_of_bathrooms.Value);
+
+        if (no_of_floors.HasValue)
+            query = query.Where(p => p.NumberOfFloors == no_of_floors.Value);
+
+        if (avg_rating.HasValue)
+            query = query.Where(p => p.AverageRating == avg_rating.Value);
+
+        return query.ToList();
     }
 
     public void AddProperty(Property property)
