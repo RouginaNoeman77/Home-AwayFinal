@@ -10,9 +10,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //---------------
-    builder.Services.AddDbContext<UserContext>(options =>
+builder.Services.AddDbContext<UserContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("HomeAway")));
 //----------------
+builder.Services.AddScoped<IImagesRepo,ImagesRepo>();
+builder.Services.AddScoped<IPropertyRepo,PropertyRepo>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
