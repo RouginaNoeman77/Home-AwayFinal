@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-
 namespace Home_Away.DAL;
 public class PropertyRepo : IPropertyRepo
 {
@@ -38,22 +37,22 @@ public class PropertyRepo : IPropertyRepo
 
     public IEnumerable<Property>? GetPropertyByState(string state)
     {
-        throw new NotImplementedException();
+        return _userContext.Set<Property>().Where(s => s.State == state);
     }
 
     public IEnumerable<Property>? FilterProperty(string? title, string? address, string? Type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating)
     {
-        throw new NotImplementedException();
+      
     }
 
     public void AddProperty(Property property)
     {
-        throw new NotImplementedException();
+        _userContext.Add(property);
     }
 
     public void DeleteProperty(Property property)
     {
-        throw new NotImplementedException();
+        _userContext.Remove(property);
     }
 
     public void UpdateProperty(Property property)
