@@ -1,12 +1,10 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+
 
 namespace Home_Away.DAL;
-   public class PropertyRepo : IPropertyRepo
-   {
-     
+public class PropertyRepo : IPropertyRepo
+{
     private readonly UserContext _userContext;
-
     public PropertyRepo(UserContext userContext)
     {
         _userContext = userContext;
@@ -17,7 +15,7 @@ namespace Home_Away.DAL;
         return _userContext.Set<Property>().AsNoTracking();
     }
 
-    public Property? GetPropertyById (int id)
+    public Property? GetPropertyById(int id)
     {
         return _userContext.Set<Property>().Find(id);
     }
@@ -33,9 +31,11 @@ namespace Home_Away.DAL;
 
     public int GetPropertyByImage(int image_id)
     {
-        var image = _userContext.Set<Images>().FirstOrDefault(p => p.Id == image_id);
-        return image.PropertyId;
+        var Image = _userContext.Set<Images>().Find(image_id);
+
+        return Image.PropertyId;
     }
+
     public IEnumerable<Property>? GetPropertyByState(string state)
     {
         throw new NotImplementedException();
@@ -66,4 +66,5 @@ namespace Home_Away.DAL;
         return _userContext.SaveChanges();
     }
 
+  
 }

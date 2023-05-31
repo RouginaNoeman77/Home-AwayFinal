@@ -1,5 +1,4 @@
-﻿
-namespace Home_Away.DAL;
+﻿namespace Home_Away.DAL;
 public interface IPropertyRepo
 {
     public IEnumerable<Property> GetAllProperties();
