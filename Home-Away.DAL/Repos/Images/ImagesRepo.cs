@@ -1,4 +1,5 @@
-﻿
+﻿using Microsoft.EntityFrameworkCore;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace Home_Away.DAL;
@@ -21,9 +22,9 @@ public class ImagesRepo : IImagesRepo
         return _userContext.Set<Images>().Find(id);
     }
 
-    public IEnumerable<Images> GetImagesByProperty(int Prop_id)
+    public Images? GetImagesByProperty(int Prop_id)
     {
-        return _userContext.Set<Images>().Where(p => p.PropertyId == Prop_id);
+        return _userContext.Set<Images>().FirstOrDefault(p=>p.PropertyId == Prop_id);
     }
 
     public void AddImage(Images image)
@@ -33,15 +34,18 @@ public class ImagesRepo : IImagesRepo
 
     public void UpdateImage(Images image)
     {
+        
     }
 
     public void DeleteImage(Images image)
     {
-        _userContext.Remove(image);
+        _userContext.Set<Images>().Remove(image);
     }
 
     public int SaveChanges()
     {
         return _userContext.SaveChanges();
     }
+
+
 }
