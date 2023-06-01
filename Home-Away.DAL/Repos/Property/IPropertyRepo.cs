@@ -11,7 +11,7 @@ public interface IPropertyRepo
 
     public IEnumerable<Property>? GetPropertyByState(string state);
 
-    public IEnumerable<Property>? FilterProperty(string? title, string? address, string? Type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating);
+    public IEnumerable<Property>? FilterProperty(string? title, string? Type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating);
 
     public int GetPropertyByImage(int image_id);
 

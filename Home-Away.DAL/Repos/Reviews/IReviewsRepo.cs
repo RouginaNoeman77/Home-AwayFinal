@@ -2,17 +2,23 @@
 namespace Home_Away.DAL;
     public interface IReviewsRepo
     {
-        IEnumerable<Reviews> GetReviews();    
-        Reviews? GetReviewbyId(int id);
 
-        IEnumerable<Reviews> GetReviewsByDate(DateTime datefrom);
+    IEnumerable<Reviews> GetReviews();
+    Reviews? GetReviewbyId(int id);
 
-        IEnumerable<Reviews> GetReviewsByStatus(string status);
+    IEnumerable<Reviews> GetReviewsByDate(DateTime datefrom);
 
-        int AddReview(Reviews review);
-        void UpdateReview(Reviews review);
+    IEnumerable<Reviews> GetReviewsByStatus(string status);
 
-        int DeleteReview(Reviews review);
+    IEnumerable<Reviews> GetReviewsByPropertyId(int propertyId);
+    IEnumerable<Reviews> GetReviewsByUserId(string UserId);
+    IEnumerable<Reviews> GetReviewsByAdminId(string AdminId);
 
-        int SaveChanges();
+
+    int AddReview(Reviews review);
+    void UpdateReview(Reviews review);
+
+    int DeleteReview(Reviews review);
+
+    int SaveChanges();
 }
