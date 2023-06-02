@@ -2,7 +2,7 @@
 namespace Home_Away.DAL;
 public class ReviewsRepo : IReviewsRepo
 {
-   private readonly UserContext _context;
+    private readonly UserContext _context;
 
     public ReviewsRepo(UserContext context)
     {
@@ -26,7 +26,7 @@ public class ReviewsRepo : IReviewsRepo
 
     public IEnumerable<Reviews> GetReviewsByStatus(string status)
     {
-        return _context.Set<Reviews>().Where(a=>a.State == status);
+        return _context.Set<Reviews>().Where(a => a.State == status);
     }
     public int AddReview(Reviews review)
     {
@@ -50,5 +50,20 @@ public class ReviewsRepo : IReviewsRepo
     public void UpdateReview(Reviews review)
     {
         //works by tracking so ne need to implement code
+    }
+
+    public IEnumerable<Reviews> GetReviewsByPropertyId(int propertyId)
+    {
+        return _context.Set<Reviews>().Where(review => review.PropertyId == propertyId);
+    }
+
+    public IEnumerable<Reviews> GetReviewsByUserId(string UserId)
+    {
+        return _context.Set<Reviews>().Where(review => review.UserId == UserId);
+    }
+
+    public IEnumerable<Reviews> GetReviewsByAdminId(string AdminId)
+    {
+        return _context.Set<Reviews>().Where(review => review.AdminId == AdminId);
     }
 }
