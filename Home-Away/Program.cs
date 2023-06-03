@@ -1,3 +1,4 @@
+using Home_Away.BL;
 using Home_Away.DAL;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +14,10 @@ builder.Services.AddSwaggerGen();
     builder.Services.AddDbContext<UserContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("HomeAway")));
 //----------------
+
+builder.Services.AddScoped<IImagesRepo, ImagesRepo>();
+builder.Services.AddScoped<IPropertyRepo, PropertyRepo>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
