@@ -94,6 +94,14 @@ public class UserContext : IdentityDbContext
         //    .HasForeignKey(ua => ua.QuestionsId)
         //    .OnDelete(DeleteBehavior.Restrict);
 
+        //Trial in the discriminator----------
+        //modelBuilder.Entity<User>()
+        //   .HasDiscriminator<string>("EntityType")
+        //   .HasValue<User>("User")
+        //   .HasValue<Admin>("Admin");
+
+        //-----------
+
 
 
 

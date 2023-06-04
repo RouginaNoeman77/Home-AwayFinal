@@ -14,6 +14,10 @@ builder.Services.AddSwaggerGen();
     builder.Services.AddDbContext<UserContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("HomeAway")));
 //----------------
+
+builder.Services.AddScoped<IImagesRepo, ImagesRepo>();
+builder.Services.AddScoped<IPropertyRepo, PropertyRepo>();
+
     builder.Services.AddScoped<IReservationsRepo, ReservationsRepo>();
     builder.Services.AddScoped<IReservationsManager, ReservationsManager>();
 //----------------
