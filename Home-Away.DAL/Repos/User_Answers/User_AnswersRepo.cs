@@ -1,4 +1,7 @@
-﻿namespace Home_Away.DAL;
+﻿using Microsoft.AspNetCore.Identity;
+using System.Numerics;
+
+namespace Home_Away.DAL;
     public class User_AnswersRepo
 {
     private readonly UserContext userContext;
