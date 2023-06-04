@@ -1,10 +1,10 @@
 ﻿
 namespace Home_Away.DAL;
-    public interface IUserRepo
+public interface IUserRepo
 {
 
     IEnumerable<User> GetAllUsers();
-    User? GetUserById(int id);
+    User? GetUserById(string id);
     IEnumerable<User> GetUsersByRole(string role);
     IEnumerable<User> GetAllOwners();
     IEnumerable<User> GetAllRenters();

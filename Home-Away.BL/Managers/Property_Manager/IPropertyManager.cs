@@ -1,6 +1,6 @@
 ﻿using Home_Away.BL.Dtos.Property_Dto;
 
-namespace Home_Away.BL;
+namespace Home_Away.BL.Managers.Property_Manager;
 public interface IPropertyManager
 {
     public List<PropertyReadDto> GetAllProperties();

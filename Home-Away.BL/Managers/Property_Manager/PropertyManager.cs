@@ -3,7 +3,7 @@ using Home_Away.DAL;
 using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 
-namespace Home_Away.BL;
+namespace Home_Away.BL.Managers.Property_Manager;
 public class PropertyManager : IPropertyManager
 {
     private readonly IPropertyRepo _propertyRepo;
@@ -18,25 +18,25 @@ public class PropertyManager : IPropertyManager
         var PropertiesFromDb = _propertyRepo.GetAllProperties();
 
         return PropertiesFromDb.Select(p => new PropertyReadDto
-        { 
+        {
             Id = p.Id,
-            Title= p.Title,
-            Description= p.Description,
-            Address= p.Address,
-            Type= p.Type,
-            Region= p.Region,
-            Area= p.Area,
+            Title = p.Title,
+            Description = p.Description,
+            Address = p.Address,
+            Type = p.Type,
+            Region = p.Region,
+            Area = p.Area,
             Category = p.Category,
-            PricePerNight= p.PricePerNight,
-            Capacity= p.Capacity,
-            NumberOfRooms= p.NumberOfRooms,
-            NumberOfBathrooms= p.NumberOfBathrooms,
-            NumberOfFloors= p.NumberOfFloors,
-            DateOfAddingProperty= p.DateOfAddingProperty,
-            State= p.State,
-            AverageRating=p.AverageRating,
-            OwnerId= p.OwnerId,
-            AdminId= p.AdminId
+            PricePerNight = p.PricePerNight,
+            Capacity = p.Capacity,
+            NumberOfRooms = p.NumberOfRooms,
+            NumberOfBathrooms = p.NumberOfBathrooms,
+            NumberOfFloors = p.NumberOfFloors,
+            DateOfAddingProperty = p.DateOfAddingProperty,
+            State = p.State,
+            AverageRating = p.AverageRating,
+            OwnerId = p.OwnerId,
+            AdminId = p.AdminId
         }).ToList();
     }
 
@@ -44,7 +44,7 @@ public class PropertyManager : IPropertyManager
     {
         var property = _propertyRepo.GetPropertyById(id);
 
-        if(property is null)
+        if (property is null)
         {
             return null;
         }
@@ -76,7 +76,7 @@ public class PropertyManager : IPropertyManager
     {
         var Property = _propertyRepo.GetPropertyByOwner(ownerId);
 
-        if(Property is null)
+        if (Property is null)
         {
             return null;
         }
@@ -109,7 +109,7 @@ public class PropertyManager : IPropertyManager
     {
         var property = _propertyRepo.GetPropertyByAdmin(adminId);
 
-        if(property is null)
+        if (property is null)
         {
             return null;
         }
@@ -150,7 +150,7 @@ public class PropertyManager : IPropertyManager
     {
         var property = _propertyRepo.GetPropertyByState(state);
 
-        if(property is null)
+        if (property is null)
         {
             return null;
         }
@@ -183,12 +183,12 @@ public class PropertyManager : IPropertyManager
 
     public List<PropertyFilterDto> FilterProperty(string? title, string? Type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating)
     {
-        var PropertyByFilter = _propertyRepo.FilterProperty(title, Type, region, area,category, price_per_night, capacity, no_of_rooms, no_of_bathrooms, no_of_floors, avg_rating);
-        if(PropertyByFilter is null)
+        var PropertyByFilter = _propertyRepo.FilterProperty(title, Type, region, area, category, price_per_night, capacity, no_of_rooms, no_of_bathrooms, no_of_floors, avg_rating);
+        if (PropertyByFilter is null)
         {
             return null;
         }
-        return PropertyByFilter.Select(p=> new PropertyFilterDto
+        return PropertyByFilter.Select(p => new PropertyFilterDto
         {
             Title = p.Title,
             Type = p.Type,
@@ -198,9 +198,9 @@ public class PropertyManager : IPropertyManager
             PricePerNight = p.PricePerNight,
             Capacity = p.Capacity,
             NumberOfRooms = p.NumberOfRooms,
-            NumberOfBathrooms= p.NumberOfBathrooms,
-            NumberOfFloors= p.NumberOfFloors,
-            AverageRating= p.AverageRating
+            NumberOfBathrooms = p.NumberOfBathrooms,
+            NumberOfFloors = p.NumberOfFloors,
+            AverageRating = p.AverageRating
 
         }).ToList();
     }
@@ -233,7 +233,7 @@ public class PropertyManager : IPropertyManager
     {
         var PropertyFromDb = _propertyRepo.GetPropertyById(propertyDto.Id);
 
-        if(PropertyFromDb is null)
+        if (PropertyFromDb is null)
         {
             return false;
         }
@@ -261,13 +261,13 @@ public class PropertyManager : IPropertyManager
     {
         var PropertyFromDb = _propertyRepo.GetPropertyById(id);
 
-        if(PropertyFromDb is null) 
-        { 
-            return; 
+        if (PropertyFromDb is null)
+        {
+            return;
         }
         _propertyRepo.DeleteProperty(PropertyFromDb);
         _propertyRepo.SaveChanges();
     }
 
-   
+
 }
