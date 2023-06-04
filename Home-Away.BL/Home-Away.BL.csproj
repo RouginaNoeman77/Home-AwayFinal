@@ -18,4 +18,9 @@
     <ProjectReference Include="..\Home-Away.DAL\Home-Away.DAL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\" />
+    <Folder Include="Property\" />
+  </ItemGroup>
+
 </Project>
