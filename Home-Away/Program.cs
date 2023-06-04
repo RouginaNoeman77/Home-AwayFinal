@@ -11,11 +11,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //---------------
-    builder.Services.AddDbContext<UserContext>(options =>
+builder.Services.AddDbContext<UserContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("HomeAway")));
 //----------------
-builder.Services.AddScoped<IReviewsRepo, ReviewsRepo>();
-builder.Services.AddScoped<IReviewsManager, ReviewsManager>();
+builder.Services.AddScoped<IImagesRepo, ImagesRepo>();
+builder.Services.AddScoped<IPropertyRepo, PropertyRepo>();
+
+builder.Services.AddScoped<IReservationsRepo, ReservationsRepo>();
+builder.Services.AddScoped<IReservationsManager, ReservationsManager>();
+//----------------
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

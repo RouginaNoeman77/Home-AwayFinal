@@ -1,5 +1,5 @@
-﻿
-namespace Home_Away.DAL;
+namespace Home_Away.DAL
+{
     public interface IReviewsRepo
     {
         IEnumerable<Reviews> GetReviews();    
@@ -9,15 +9,16 @@ namespace Home_Away.DAL;
 
         IEnumerable<Reviews> GetReviewsByStatus(string status);
 
-        IEnumerable<Reviews>GetReviewsByPropertyId(int propertyId);
+        IEnumerable<Reviews> GetReviewsByPropertyId(int propertyId);
         IEnumerable<Reviews> GetReviewsByUserId(string UserId);
         IEnumerable<Reviews> GetReviewsByAdminId(string AdminId);
 
 
-         int AddReview(Reviews review);
+        int AddReview(Reviews review);
         void UpdateReview(Reviews review);
 
         int DeleteReview(Reviews review);
 
         int SaveChanges();
     }
+}
