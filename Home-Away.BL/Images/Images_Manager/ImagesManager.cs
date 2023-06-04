@@ -1,4 +1,5 @@
-﻿using Home_Away.DAL;
+﻿using Home_Away.BL.Dtos.Images_Dto;
+using Home_Away.DAL;
 
 namespace Home_Away.BL;
 public class ImagesManager : IImagesManager

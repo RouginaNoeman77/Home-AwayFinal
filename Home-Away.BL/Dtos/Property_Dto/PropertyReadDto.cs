@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Home_Away.BL;
-public class PropertyAddDto
+namespace Home_Away.BL.Dtos.Property_Dto;
+public class PropertyReadDto
 {
+    public int Id { get; set; }
     public string Title { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public string Address { get; set; } = string.Empty;
@@ -22,5 +23,7 @@ public class PropertyAddDto
     public string State { get; set; } = "Pending";
     [Column(TypeName = "decimal(10,2)")]
     public decimal AverageRating { get; set; }
+    public string OwnerId { get; set; }
+    public string AdminId { get; set; }
 }
 

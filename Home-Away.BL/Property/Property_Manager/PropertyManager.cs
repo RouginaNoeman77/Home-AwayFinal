@@ -1,4 +1,5 @@
-﻿using Home_Away.DAL;
+﻿using Home_Away.BL.Dtos.Property_Dto;
+using Home_Away.DAL;
 using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 

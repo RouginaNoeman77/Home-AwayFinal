@@ -1,13 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Home_Away.BL;
-public class PropertyUpdateDto
+namespace Home_Away.BL.Dtos.Property_Dto;
+public class PropertyFilterDto
 {
-    public int Id { get; set; }
     public string Title { get; set; } = string.Empty;
-    public string Description { get; set; } = string.Empty;
-    public string Address { get; set; } = string.Empty;
     public string Type { get; set; } = string.Empty;
     public string Region { get; set; } = string.Empty;
     public string Area { get; set; } = string.Empty;
@@ -20,5 +17,7 @@ public class PropertyUpdateDto
     public int NumberOfBathrooms { get; set; }
     public int NumberOfFloors { get; set; }
 
+    [Column(TypeName = "decimal(10,2)")]
+    public decimal AverageRating { get; set; }
 }
 
