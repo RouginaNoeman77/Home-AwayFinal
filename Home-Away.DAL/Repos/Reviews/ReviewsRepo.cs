@@ -43,4 +43,4 @@ namespace Home_Away.DAL;
         return _context.Set<Reviews>().Where(review => review.AdminId == AdminId);
     }
 
-}
+    }

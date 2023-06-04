@@ -20,4 +20,4 @@ namespace Home_Away.DAL;
         int DeleteReview(Reviews review);
 
         int SaveChanges();
-}
+    }
