@@ -1,4 +1,5 @@
-﻿using Home_Away.DAL;
+﻿using Home_Away.BL.Dtos.Property_Dto;
+using Home_Away.DAL;
 using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 
@@ -64,7 +65,6 @@ public class PropertyManager : IPropertyManager
             NumberOfBathrooms = property.NumberOfBathrooms,
             NumberOfFloors = property.NumberOfFloors,
             DateOfAddingProperty = property.DateOfAddingProperty,
-            State = property.State,
             AverageRating = property.AverageRating,
             OwnerId = property.OwnerId,
             AdminId = property.AdminId
@@ -96,7 +96,6 @@ public class PropertyManager : IPropertyManager
             NumberOfBathrooms = p.NumberOfBathrooms,
             NumberOfFloors = p.NumberOfFloors,
             DateOfAddingProperty = p.DateOfAddingProperty,
-            State = p.State,
             AverageRating = p.AverageRating,
             OwnerId = p.OwnerId,
             AdminId = p.AdminId
@@ -189,7 +188,6 @@ public class PropertyManager : IPropertyManager
         }
         return PropertyByFilter.Select(p=> new PropertyFilterDto
         {
-            Title = p.Title,
             Type = p.Type,
             Region = p.Region,
             Area = p.Area,
@@ -221,7 +219,7 @@ public class PropertyManager : IPropertyManager
             NumberOfFloors = propertyDto.NumberOfFloors,
             DateOfAddingProperty = propertyDto.DateOfAddingProperty,
             State = propertyDto.State,
-            AverageRating = propertyDto.AverageRating,
+            OwnerId = propertyDto.OwnerId,
         };
         _propertyRepo.AddProperty(property);
         _propertyRepo.SaveChanges();

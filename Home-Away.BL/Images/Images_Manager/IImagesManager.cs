@@ -1,4 +1,4 @@
-﻿using Home_Away.BL;
+﻿using Home_Away.BL.Dtos.Images_Dto;
 using Home_Away.DAL;
 using System.Drawing;
 

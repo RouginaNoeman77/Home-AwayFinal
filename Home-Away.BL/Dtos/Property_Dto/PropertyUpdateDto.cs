@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Home_Away.BL;
+namespace Home_Away.BL.Dtos.Property_Dto;
 public class PropertyUpdateDto
 {
     public int Id { get; set; }
@@ -19,6 +19,7 @@ public class PropertyUpdateDto
     public int NumberOfRooms { get; set; }
     public int NumberOfBathrooms { get; set; }
     public int NumberOfFloors { get; set; }
+    public string State { get; set; } = "Pending";
 
 }
 
