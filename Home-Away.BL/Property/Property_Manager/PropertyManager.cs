@@ -33,7 +33,6 @@ public class PropertyManager : IPropertyManager
             NumberOfBathrooms= p.NumberOfBathrooms,
             NumberOfFloors= p.NumberOfFloors,
             DateOfAddingProperty= p.DateOfAddingProperty,
-            State= p.State,
             AverageRating=p.AverageRating,
             OwnerId= p.OwnerId,
             AdminId= p.AdminId
@@ -128,7 +127,6 @@ public class PropertyManager : IPropertyManager
             NumberOfBathrooms = p.NumberOfBathrooms,
             NumberOfFloors = p.NumberOfFloors,
             DateOfAddingProperty = p.DateOfAddingProperty,
-            State = p.State,
             AverageRating = p.AverageRating,
             OwnerId = p.OwnerId,
             AdminId = p.AdminId
@@ -169,7 +167,6 @@ public class PropertyManager : IPropertyManager
             NumberOfBathrooms = p.NumberOfBathrooms,
             NumberOfFloors = p.NumberOfFloors,
             DateOfAddingProperty = p.DateOfAddingProperty,
-            State = p.State,
             AverageRating = p.AverageRating,
             OwnerId = p.OwnerId,
             AdminId = p.AdminId
@@ -247,6 +244,7 @@ public class PropertyManager : IPropertyManager
         PropertyFromDb.NumberOfRooms = propertyDto.NumberOfRooms;
         PropertyFromDb.NumberOfFloors = propertyDto.NumberOfFloors;
         PropertyFromDb.NumberOfBathrooms = propertyDto.NumberOfBathrooms;
+        PropertyFromDb.State= propertyDto.State;
 
         _propertyRepo.UpdateProperty(PropertyFromDb);
         _propertyRepo.SaveChanges();
