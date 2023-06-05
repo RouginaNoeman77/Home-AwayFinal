@@ -19,6 +19,9 @@ builder.Services.AddScoped<IPropertyRepo, PropertyRepo>();
 
 builder.Services.AddScoped<IReservationsRepo, ReservationsRepo>();
 builder.Services.AddScoped<IReservationsManager, ReservationsManager>();
+
+builder.Services.AddScoped<IReviewsRepo, ReviewsRepo>();
+builder.Services.AddScoped<IReviewsManager, ReviewsManager>();
 //----------------
 
 var app = builder.Build();
