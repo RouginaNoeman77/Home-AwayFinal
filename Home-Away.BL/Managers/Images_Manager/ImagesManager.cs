@@ -1,7 +1,9 @@
 ﻿using Home_Away.BL.Dtos.Images_Dto;
 using Home_Away.DAL;
 
-namespace Home_Away.BL;
+
+namespace Home_Away.BL.Managers.Images_Manager;
+
 public class ImagesManager : IImagesManager
 {
     private readonly IImagesRepo _imagesRepo;
