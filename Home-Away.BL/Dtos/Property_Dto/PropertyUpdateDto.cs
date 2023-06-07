@@ -19,6 +19,7 @@ public class PropertyUpdateDto
     public int NumberOfRooms { get; set; }
     public int NumberOfBathrooms { get; set; }
     public int NumberOfFloors { get; set; }
+    public string State { get; set; } = "Pending";
 
 }
 

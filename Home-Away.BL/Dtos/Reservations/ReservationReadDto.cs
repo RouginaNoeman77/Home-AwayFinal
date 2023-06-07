@@ -10,6 +10,6 @@ public class ReservationReadDto
     public string StateFromOwner { get; set; } = "Pending";
     public string StateFromAdmin { get; set; } = "Pending";
     public int PropertyId { get; set; }
-    public string? AdminId { get; set; }
-    public string? UserId { get; set; }
+    public string AdminId { get; set; }
+    public string UserId { get; set; }
 }

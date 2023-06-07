@@ -2,7 +2,9 @@
 using Home_Away.DAL;
 using System.Drawing;
 
+
 namespace Home_Away.BL.Managers.Images_Manager;
+
 
 public interface IImagesManager
 {

@@ -20,7 +20,6 @@ public class PropertyReadDto
     public int NumberOfBathrooms { get; set; }
     public int NumberOfFloors { get; set; }
     public DateTime DateOfAddingProperty { get; set; }
-    public string State { get; set; } = "Pending";
     [Column(TypeName = "decimal(10,2)")]
     public decimal AverageRating { get; set; }
     public string OwnerId { get; set; }

@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Home_Away.BL.Dtos.Property_Dto;
 public class PropertyFilterDto
 {
-    public string Title { get; set; } = string.Empty;
     public string Type { get; set; } = string.Empty;
     public string Region { get; set; } = string.Empty;
     public string Area { get; set; } = string.Empty;
