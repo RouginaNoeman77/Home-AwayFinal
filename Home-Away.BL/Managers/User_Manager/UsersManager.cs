@@ -183,7 +183,7 @@ public class UsersManager : IUsersManagers
         };
     }
 
-    public void Add(UserAddDto entity)
+    public string Add(UserAddDto entity)
     {
         User r = new User
         {
@@ -200,6 +200,7 @@ public class UsersManager : IUsersManagers
         };
         _userRepo.Add(r);
         _userRepo.SaveChanges();
+        return r.Id;
        
     }
     public bool Update(UserUpdateDto entity)
