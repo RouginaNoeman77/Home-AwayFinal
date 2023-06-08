@@ -40,10 +40,10 @@ public class PropertyRepo : IPropertyRepo
         return _userContext.Set<Property>().Where(s => s.State == state);
     }
 
-    public IEnumerable<Property>? FilterProperty(string? title, string? Type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating)
+    public IEnumerable<Property>? FilterProperty( string? Type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating)
     {
 
-        return _userContext.Set<Property>().Where(p => p.Title == title || p.Type == Type || p.Region == region || p.Area == area || p.Category == category || p.PricePerNight == price_per_night || p.Capacity == capacity || p.NumberOfRooms == no_of_rooms || p.NumberOfBathrooms == no_of_bathrooms || p.NumberOfFloors == no_of_floors || p.AverageRating == avg_rating).ToList();
+        return _userContext.Set<Property>().Where(p => p.Type == Type || p.Region == region || p.Area == area || p.Category == category || p.PricePerNight == price_per_night || p.Capacity == capacity || p.NumberOfRooms == no_of_rooms || p.NumberOfBathrooms == no_of_bathrooms || p.NumberOfFloors == no_of_floors || p.AverageRating == avg_rating).ToList();
     }
 
     public void AddProperty(Property property)
@@ -66,5 +66,23 @@ public class PropertyRepo : IPropertyRepo
         return _userContext.SaveChanges();
     }
 
-  
+    public void AdminAcceptance(int prop_id )
+    {
+        var property = _userContext.Set<Property>().Find(prop_id);
+
+        if(property != null)
+        {
+            property.State = "Accepted";
+        }
+    }
+
+    public void AdminRefusal(int prop_id)
+    {
+        var property = _userContext.Set<Property>().Find(prop_id);
+
+        if (property != null)
+        {
+            property.State = "Refused";
+        }
+    }
 }

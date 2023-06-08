@@ -20,9 +20,9 @@ public class ImagesRepo : IImagesRepo
         return _userContext.Set<Images>().Find(id);
     }
 
-    public Images? GetImagesByProperty(int Prop_id)
+    public IEnumerable<Images> GetImagesByProperty(int Prop_id)
     {
-        return _userContext.Set<Images>().FirstOrDefault(p=>p.PropertyId == Prop_id);
+        return _userContext.Set<Images>().Where(p=>p.Id==Prop_id);  
     }
 
     public void AddImage(Images image)
