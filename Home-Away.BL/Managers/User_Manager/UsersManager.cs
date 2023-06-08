@@ -1,7 +1,14 @@
 ﻿
 using Home_Away.BL.Dtos;
+using Home_Away.BL.Dtos.Login;
 using Home_Away.DAL;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace Home_Away.BL.Managers;
 
@@ -9,9 +16,13 @@ public class UsersManager : IUsersManagers
 {
     //Constructor
     private readonly IUserRepo _userRepo;
-    public UsersManager(IUserRepo userRepo)
+    private readonly IConfiguration _configuration;
+    private readonly UserManager<User> _userManager;
+    public UsersManager(IUserRepo userRepo , IConfiguration configuration ,UserManager<User> userManager)
     {
         _userRepo = userRepo;
+        _configuration = configuration;
+        _userManager = userManager;
     }
     //Methods Implementation
     public IEnumerable<UserReadDto> GetAllUsers()
@@ -227,4 +238,71 @@ public class UsersManager : IUsersManagers
         _userRepo.SaveChanges();
         return true;
     }
+
+	//--------------------
+	private TokenDto GenerateToken(IList<Claim> claimsList)
+	{
+		string keyString = _configuration.GetValue<string>("SecretKey") ?? string.Empty;
+		var keyInBytes = Encoding.ASCII.GetBytes(keyString);
+		var key = new SymmetricSecurityKey(keyInBytes);
+
+		var signingCredentials = new SigningCredentials(key,
+			SecurityAlgorithms.HmacSha256Signature);
+
+		var expiry = DateTime.Now.AddMinutes(15);
+
+		var jwt = new JwtSecurityToken(
+				expires: expiry,
+				claims: claimsList,
+				signingCredentials: signingCredentials);
+		var tokenHandler = new JwtSecurityTokenHandler();
+		var tokenString = tokenHandler.WriteToken(jwt);
+
+		return new TokenDto(TokenResult.Success, tokenString, expiry);
+
+
+	}
+	public async Task<TokenDto> Login(LoginDto login)
+    {
+        User? user = await _userManager.FindByNameAsync(login.UserName);
+        if (user == null)
+        {
+            return new TokenDto(TokenResult.Failure);
+        }
+        bool isPasswordCorrect=await _userManager.CheckPasswordAsync(user, login.Password);
+        if (!isPasswordCorrect)
+        {
+            return new TokenDto(TokenResult.UserpasswordError);
+        }
+        var claimList = await _userManager.GetClaimsAsync(user);
+        return GenerateToken(claimList);
+    }
+	public async Task<RegisterResult> Register(RegisterDto registerDto)
+    {
+        var newUser = new User
+        {
+            UserName = registerDto.UserName,
+            Email = registerDto.Email,
+            FirstName = registerDto.FirstName,
+            LastName = registerDto.LastName,
+            Gender = registerDto.Gender,
+            DateOfBirth = registerDto.DateOfBirth,
+            ProfileImage = registerDto.ProfileImage
+        };
+        var creationResult = await _userManager.CreateAsync(newUser,
+            registerDto.Password);
+        if(!creationResult.Succeeded)
+        {
+            return new RegisterResult(false, creationResult.Errors);
+        }
+        var claims = new List<Claim>
+        {
+            new Claim(ClaimTypes.NameIdentifier, newUser.Id),
+            new Claim(ClaimTypes.Role, "User")
+        };
+        await _userManager.AddClaimsAsync(newUser,claims);
+        return new RegisterResult(true);
+
+    }
+	//---------------
 }

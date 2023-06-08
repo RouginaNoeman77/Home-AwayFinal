@@ -53,6 +53,7 @@ namespace Home_Away.Controllers
 
         [HttpDelete]
         [Route("{id}")]
+        //to be removed 
         public ActionResult Delete (int id)
         {
             var isFound = _reservationsManager.DeleteReservation(id);

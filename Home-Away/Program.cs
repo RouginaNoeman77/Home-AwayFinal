@@ -6,7 +6,11 @@ using Home_Away.BL.Managers.Property_Manager;
 using Home_Away.BL.Managers.QuestionManagers;
 using Home_Away.BL.Managers.User_Answer_Manager;
 using Home_Away.DAL;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +47,58 @@ builder.Services.AddScoped<IUser_Answer_Manager, User_Answer_Manager>();
 //----------------
 builder.Services.AddScoped<IReviewsRepo, ReviewsRepo>();
 builder.Services.AddScoped<IReviewsManager, ReviewsManager>();
+
+#region Identity
+    builder.Services.AddIdentity<User,IdentityRole>(option=>
+    {
+        option.Password.RequireUppercase = false;
+        option.Password.RequireDigit= true;
+        option.Password.RequireNonAlphanumeric = true;
+        option.Password.RequiredLength = 8;
+        option.User.RequireUniqueEmail= true;
+        option.Lockout.MaxFailedAccessAttempts = 3;
+
+    })
+    .AddEntityFrameworkStores<UserContext> ();
+#endregion
+#region Authentication
+builder.Services.AddAuthentication(option =>
+{
+    option.DefaultAuthenticateScheme = "default";
+    option.DefaultChallengeScheme = "default";
+
+}).AddJwtBearer("default", option =>
+{
+    string keyString = builder.Configuration.GetValue<string>("SecretKey") ?? string.Empty;
+    var keyInBytes = Encoding.ASCII.GetBytes(keyString);
+    var key = new SymmetricSecurityKey(keyInBytes);
+
+    option.TokenValidationParameters = new TokenValidationParameters
+    {
+        IssuerSigningKey = key,
+        ValidateIssuer = false,
+        ValidateAudience = false,
+
+    };
+
+});
+#endregion
+#region Authorization
+builder.Services.AddAuthorization(option =>
+{
+    option.AddPolicy("Admin", policy => policy
+    .RequireClaim(ClaimTypes.Role, "Admin")
+    .RequireClaim(ClaimTypes.NameIdentifier));
+
+    option.AddPolicy("Owner",policy => policy
+    .RequireClaim(ClaimTypes.Role,"Owner")
+    .RequireClaim(ClaimTypes.NameIdentifier));
+
+	option.AddPolicy("User", policy => policy
+	.RequireClaim(ClaimTypes.Role, "User")
+	.RequireClaim(ClaimTypes.NameIdentifier));
+});
+#endregion
 
 var app = builder.Build();
 
