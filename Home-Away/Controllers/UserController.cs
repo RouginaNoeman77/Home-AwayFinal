@@ -1,6 +1,12 @@
 ﻿using Home_Away.BL.Dtos;
+using Home_Away.BL.Dtos.Login;
 using Home_Away.BL.Managers;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
 
 namespace Home_Away.Controllers
 {
@@ -9,6 +15,7 @@ namespace Home_Away.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUsersManagers _usersManagers;
+
         public UserController(IUsersManagers usersManagers)
         {
             _usersManagers = usersManagers;
@@ -116,14 +123,19 @@ namespace Home_Away.Controllers
         public ActionResult<UserReadDto> GetUserWithAllQuestionsAnswers(string id)
         {
             UserReadDto? user = _usersManagers.GetUserWithAllQuestionsAnswers(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
+			if (user == null)
+			{
+				return NotFound();
+			}
             return user;
+
+		}
+	}
+
 
         }
 
         
     }
+
 }
