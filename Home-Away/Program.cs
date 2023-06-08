@@ -20,11 +20,12 @@ builder.Services.AddScoped<IImagesRepo, ImagesRepo>();
 builder.Services.AddScoped<IImagesManager , ImagesManager>();
 //----------------
 builder.Services.AddScoped<IPropertyRepo, PropertyRepo>();
-builder.Services.AddScoped<IPropertyManager , PropertyManager>();
-//----------------
+
+
 builder.Services.AddScoped<IReservationsRepo, ReservationsRepo>();
 builder.Services.AddScoped<IReservationsManager, ReservationsManager>();
-//----------------
+
+
 
 var app = builder.Build();
 
