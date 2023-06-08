@@ -86,5 +86,7 @@ namespace Home_Away.DAL
                 property.State = "Refused";
             }
         }
+
+      
     }
 }

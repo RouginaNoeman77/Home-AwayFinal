@@ -32,6 +32,9 @@ builder.Services.AddScoped<IPropertyManager, PropertyManager>();
 //----------------
 builder.Services.AddScoped<IReservationsRepo, ReservationsRepo>();
 builder.Services.AddScoped<IReservationsManager, ReservationsManager>();
+
+builder.Services.AddScoped<IReviewsRepo, ReviewsRepo>();
+builder.Services.AddScoped<IReviewsManager, ReviewsManager>();
 //----------------
 builder.Services.AddScoped<IUserRepo, UserRepo>();
 builder.Services.AddScoped<IUsersManagers, UsersManager>();

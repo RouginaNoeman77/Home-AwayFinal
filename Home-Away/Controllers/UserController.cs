@@ -128,6 +128,14 @@ namespace Home_Away.Controllers
 				return NotFound();
 			}
             return user;
+
 		}
 	}
+
+
+        }
+
+        
+    }
+
 }
