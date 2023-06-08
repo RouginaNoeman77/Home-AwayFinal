@@ -1,7 +1,6 @@
 ﻿namespace Home_Away.DAL;
-    public interface IReservationsRepo
+public interface IReservationsRepo
 {
-
     IEnumerable<Reservations> GetAll();
     Reservations? GetByID(int id);
     void AddReservation(Reservations reservation);

@@ -1,5 +1,6 @@
 ﻿
 namespace Home_Away.DAL;
+
         public interface IAdminRepo
     {
         string AddAdmin (Admin admin);
@@ -10,4 +11,4 @@ namespace Home_Away.DAL;
 
         int SaveChanges();
 
-}
+        }

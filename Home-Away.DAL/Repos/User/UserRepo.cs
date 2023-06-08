@@ -11,7 +11,9 @@ public class UserRepo:IUserRepo
     {
         _context = context;
     }
+
     public string AddUser(User entity)
+
     {
         _context.Set<User>().Add(entity);
 
