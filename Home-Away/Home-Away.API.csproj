@@ -20,8 +20,4 @@
     <ProjectReference Include="..\Home-Away.BL\Home-Away.BL.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>
