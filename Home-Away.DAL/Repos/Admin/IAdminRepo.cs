@@ -3,9 +3,8 @@ namespace Home_Away.DAL;
 public interface IAdminRepo
 {
     IEnumerable<Admin> GetAllHiringDate();
-    Admin GetHiringDataById(int hiringDateId);
-    void AddHiringData(Admin hiringDate);
-    void UpdateHiringData(Admin hiringDate);
-    void DeleteHiringData(Admin hiringDate);
+    void AddHiringDate(Admin hiringDate);
+    void UpdateHiringDate(Admin hiringDate);
+    void DeleteHiringDate(Admin hiringDate);
     int SaveChanges();
 }
