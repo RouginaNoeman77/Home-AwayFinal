@@ -173,9 +173,9 @@ namespace Home_Away.BL.Managers.Property_Manager
             }).ToList();
         }
 
-        public List<PropertyFilterDto> FilterProperty(string? title, string? type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating)
+        public List<PropertyFilterDto> FilterProperty( string? type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating)
         {
-            var properties = _propertyRepo.FilterProperty(title, type, region, area, category, price_per_night, capacity, no_of_rooms, no_of_bathrooms, no_of_floors, avg_rating);
+            var properties = _propertyRepo.FilterProperty(type, region, area, category, price_per_night, capacity, no_of_rooms, no_of_bathrooms, no_of_floors, avg_rating);
 
             if (properties is null)
             {
@@ -184,7 +184,7 @@ namespace Home_Away.BL.Managers.Property_Manager
 
             return properties.Select(p => new PropertyFilterDto
             {
-                Title = p.Title,
+               
                 Type = p.Type,
                 Region = p.Region,
                 Area = p.Area,
@@ -215,7 +215,6 @@ namespace Home_Away.BL.Managers.Property_Manager
                 NumberOfBathrooms = propertyDto.NumberOfBathrooms,
                 NumberOfFloors = propertyDto.NumberOfFloors,
                 DateOfAddingProperty = propertyDto.DateOfAddingProperty,
-                AverageRating = propertyDto.AverageRating,
                 OwnerId = propertyDto.OwnerId
             };
 
@@ -252,16 +251,29 @@ namespace Home_Away.BL.Managers.Property_Manager
             return true;
         }
 
-        public void DeleteProperty(int id)
+        public bool DeleteProperty(int id)
         {
             var propertyFromDb = _propertyRepo.GetPropertyById(id);
 
             if (propertyFromDb is null)
             {
-                return;
+                return false;
             }
 
             _propertyRepo.DeleteProperty(propertyFromDb);
+            _propertyRepo.SaveChanges();
+            return true;
+        }
+
+        public void AdminAcceptance(int id)
+        {
+            _propertyRepo.AdminAcceptance(id);
+            _propertyRepo.SaveChanges();
+        }
+
+        public void AdminRefusal(int id)
+        {
+            _propertyRepo.AdminRefusal(id);
             _propertyRepo.SaveChanges();
         }
     }

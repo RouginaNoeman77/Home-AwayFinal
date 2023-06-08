@@ -12,11 +12,11 @@ public interface IImagesManager
 
     ImagesReadDto GetImagesById(int id);
 
-    ImagesReadDto GetImagesByPropertyId(int propertyId);
+    public List<ImagesReadDto> GetImagesByPropertyId(int propertyId);
 
     int Add(AddImagesDto imagesDto);
 
     bool update(ImagesReadDto imagesDto);
 
-    void delete(int id);
+    bool delete(int id);
 }

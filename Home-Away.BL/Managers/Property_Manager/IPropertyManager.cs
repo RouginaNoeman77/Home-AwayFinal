@@ -15,7 +15,7 @@ public interface IPropertyManager
 
     public List<PropertyReadDto> GetPropertyByState(string state);
 
-    public List<PropertyFilterDto> FilterProperty(string? title, string? Type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating);
+    public List<PropertyFilterDto> FilterProperty(string? Type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating);
 
     public int GetPropertyByImage(int image_id);
 
@@ -23,5 +23,9 @@ public interface IPropertyManager
 
     public bool UpdateProperty(PropertyUpdateDto propertyDto);
 
-    void DeleteProperty(int id);
+    bool DeleteProperty(int id);
+
+    void AdminAcceptance(int id);
+
+    void AdminRefusal(int id);
 }
