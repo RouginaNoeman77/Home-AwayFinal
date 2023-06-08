@@ -116,9 +116,9 @@ namespace Home_Away.Controllers
         }
         [HttpPut]   //7asaha enaha put 3alashan ana ba-update el status 
         [Route("owner/accept/{id}")]
-        public ActionResult OwnerAcceptance (int id)
+        public ActionResult OwnerAcceptance (int reservationid , int transactionid) //zabat al transaction id 
         {
-            ReservationReadDto? reservation = _reservationsManager.GetByID(id);
+            ReservationReadDto? reservation = _reservationsManager.GetByID(reservationid);
             if (reservation == null)
             {
                 return NotFound();

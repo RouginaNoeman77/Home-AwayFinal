@@ -17,8 +17,8 @@ public class UsersManager : IUsersManagers
     //Constructor
     private readonly IUserRepo _userRepo;
     private readonly IConfiguration _configuration;
-    private readonly UserManager<User> _userManager;
-    public UsersManager(IUserRepo userRepo , IConfiguration configuration ,UserManager<User> userManager)
+    private readonly UserManager<IdentityUser> _userManager;
+    public UsersManager(IUserRepo userRepo , IConfiguration configuration ,UserManager<IdentityUser> userManager)
     {
         _userRepo = userRepo;
         _configuration = configuration;
@@ -264,7 +264,7 @@ public class UsersManager : IUsersManagers
 	}
 	public async Task<TokenDto> Login(LoginDto login)
     {
-        User? user = await _userManager.FindByNameAsync(login.UserName);
+        IdentityUser? user = await _userManager.FindByNameAsync(login.UserName);
         if (user == null)
         {
             return new TokenDto(TokenResult.Failure);

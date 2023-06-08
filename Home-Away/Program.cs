@@ -49,7 +49,7 @@ builder.Services.AddScoped<IReviewsRepo, ReviewsRepo>();
 builder.Services.AddScoped<IReviewsManager, ReviewsManager>();
 
 #region Identity
-    builder.Services.AddIdentity<User,IdentityRole>(option=>
+    builder.Services.AddIdentity<IdentityUser,IdentityRole>(option=>
     {
         option.Password.RequireUppercase = false;
         option.Password.RequireDigit= true;
@@ -88,10 +88,6 @@ builder.Services.AddAuthorization(option =>
 {
     option.AddPolicy("Admin", policy => policy
     .RequireClaim(ClaimTypes.Role, "Admin")
-    .RequireClaim(ClaimTypes.NameIdentifier));
-
-    option.AddPolicy("Owner",policy => policy
-    .RequireClaim(ClaimTypes.Role,"Owner")
     .RequireClaim(ClaimTypes.NameIdentifier));
 
 	option.AddPolicy("User", policy => policy
