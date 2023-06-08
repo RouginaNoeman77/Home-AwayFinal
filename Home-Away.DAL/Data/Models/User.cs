@@ -15,7 +15,7 @@ public class User : IdentityUser
     [Column(TypeName = "decimal(10,2)")]
     public decimal TotalMoneySpent { get; set; }
     public string ProfileImage { get; set; } = string.Empty;
-    public int AcountState { get; set; } = 1;
+    public int AcountState { get; set; } = 0;
 
     //Navigation Property
 
