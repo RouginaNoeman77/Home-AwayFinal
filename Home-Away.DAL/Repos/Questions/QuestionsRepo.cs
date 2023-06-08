@@ -1,13 +1,14 @@
-﻿
-namespace Home_Away.DAL;
-    public class QuestionsRepo
+namespace Home_Away.DAL
+{
+    public class QuestionsRepo : IQuestionsRepo
     {
-
         private readonly UserContext _userContext;
+
         public QuestionsRepo(UserContext userContext)
         {
             _userContext = userContext;
         }
+
         public void AddQuestion(Questions question)
         {
             _userContext.Set<Questions>().Add(question);
@@ -35,6 +36,7 @@ namespace Home_Away.DAL;
 
         public void UpdateQuestion(Questions question)
         {
-            //
+            // 
         }
+    }
 }

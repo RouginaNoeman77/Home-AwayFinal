@@ -1,12 +1,14 @@
-﻿namespace Home_Away.DAL;
-    public class ChoicesRepo:IChoicesRepo
+namespace Home_Away.DAL
+{
+    public class ChoicesRepo : IChoicesRepo
     {
-
         private readonly UserContext _userContext;
+
         public ChoicesRepo(UserContext userContext)
         {
             _userContext = userContext;
         }
+
         public void AddChoices(Choices choice)
         {
             _userContext.Set<Choices>().Add(choice);
@@ -24,9 +26,7 @@
 
         public IEnumerable<Choices> GetChoicesByQuestionId(int questionId)
         {
-
             return _userContext.Set<Choices>().Where(c => c.QuestionsId == questionId).ToList();
-
         }
 
         public int SaveChanges()
@@ -36,6 +36,7 @@
 
         public void UpdateChoices(Choices choice)
         {
-            //
+          //
         }
     }
+}

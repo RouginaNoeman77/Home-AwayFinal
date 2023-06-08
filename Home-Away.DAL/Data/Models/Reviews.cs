@@ -12,7 +12,7 @@ public class Reviews
     public decimal Rating { get; set; }
     public DateTime ReviewDate { get; set; }
 
-    public string State { get; set; } = string.Empty;
+    public string State { get; set; } = "Pending";
 
     //Navigation Property 
 

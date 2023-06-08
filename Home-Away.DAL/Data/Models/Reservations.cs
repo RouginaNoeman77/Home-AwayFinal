@@ -8,9 +8,9 @@ public class Reservations
     public DateTime RequestDate { get; set; }
     public DateTime DateFrom { get; set; }
     public DateTime DateTo { get; set; }
-
-    public string StateFromOwner { get; set; } = string.Empty;
-    public string StateFromAdmin { get; set; } = string.Empty;
+    public string StateFromOwner { get; set; } = "Pending";
+    public string StateFromAdmin { get; set; } = "Pending";
+    public string ReservationState { get; set; } = "Pending";
 
     //Navigation Property 
 

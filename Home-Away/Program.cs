@@ -1,3 +1,6 @@
+using Home_Away.BL;
+using Home_Away.BL.Managers.Images_Manager;
+using Home_Away.BL.Managers.Property_Manager;
 using Home_Away.DAL;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,9 +13,20 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //---------------
-    builder.Services.AddDbContext<UserContext>(options =>
+builder.Services.AddDbContext<UserContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("HomeAway")));
 //----------------
+builder.Services.AddScoped<IImagesRepo, ImagesRepo>();
+builder.Services.AddScoped<IImagesManager , ImagesManager>();
+//----------------
+builder.Services.AddScoped<IPropertyRepo, PropertyRepo>();
+
+
+builder.Services.AddScoped<IReservationsRepo, ReservationsRepo>();
+builder.Services.AddScoped<IReservationsManager, ReservationsManager>();
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
