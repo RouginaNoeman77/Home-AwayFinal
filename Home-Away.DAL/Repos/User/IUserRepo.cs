@@ -1,10 +1,10 @@
 ﻿
 namespace Home_Away.DAL;
-    public interface IUserRepo
+public interface IUserRepo
 {
 
     IEnumerable<User> GetAllUsers();
-    User? GetUserById(int id);
+    User? GetUserById(string id);
     IEnumerable<User> GetUsersByRole(string role);
     IEnumerable<User> GetAllOwners();
     IEnumerable<User> GetAllRenters();
@@ -13,7 +13,7 @@ namespace Home_Away.DAL;
     User? GetUserWithAllReviews(string id);
     User? GetUserWithAllQuestionsAnswers(string id);
 
-    void Add(User entity);
+    string Add(User entity);
     void Update(User entity);
     void Delete(User entity);
 

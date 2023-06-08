@@ -21,4 +21,5 @@ public interface IReservationsManager
     void OwnerRefusal(int id);
     void AdminAcceptance(int id);
     void AdminRefusal(int id);
+    void ReservationState(int id);
 }

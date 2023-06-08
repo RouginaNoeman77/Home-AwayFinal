@@ -5,7 +5,7 @@ public interface IImagesRepo
 
     Images? GetImagesById(int id);
 
-    Images? GetImagesByProperty(int Prop_id);
+    IEnumerable<Images> GetImagesByProperty(int Prop_id);
 
     void AddImage(Images image);
 

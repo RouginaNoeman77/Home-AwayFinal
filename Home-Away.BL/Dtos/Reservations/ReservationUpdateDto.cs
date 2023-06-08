@@ -6,5 +6,6 @@ public class ReservationUpdateDto
     public DateTime DateTo { get; set; }
     public string StateFromOwner { get; set; } = "Pending";
     public string StateFromAdmin { get; set; } = "Pending";
+    public string ReservationState { get; set; } = "Pending";
     public int PropertyId { get; set; }
 }

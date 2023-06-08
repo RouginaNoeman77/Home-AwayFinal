@@ -18,4 +18,9 @@
     <ProjectReference Include="..\Home-Away.DAL\Home-Away.DAL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DTOS\Admin_DTO\" />
+    <Folder Include="Managers\AdminManager\" />
+  </ItemGroup>
+
 </Project>

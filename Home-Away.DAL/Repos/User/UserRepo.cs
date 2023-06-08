@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Home_Away.DAL;
 
-public class UserRepo
+public class UserRepo:IUserRepo
 {
 
     private readonly UserContext _context;
@@ -11,14 +11,16 @@ public class UserRepo
     {
         _context = context;
     }
-    public void Add(User entity)
+    public string Add(User entity)
     {
         _context.Set<User>().Add(entity);
+        return entity.Id;
     }
 
     public void Delete(User entity)
     {
         _context.Set<User>().Remove(entity);
+       
     }
 
     public IEnumerable<User> GetAllOwners()
@@ -36,7 +38,7 @@ public class UserRepo
         return _context.Set<User>().AsNoTracking();
     }
 
-    public User? GetUserById(int id)
+    public User? GetUserById(string id)
     {
         return _context.Set<User>().Find(id);
     }
