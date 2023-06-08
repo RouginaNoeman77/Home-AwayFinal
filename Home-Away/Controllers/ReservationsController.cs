@@ -36,10 +36,9 @@ namespace Home_Away.Controllers
         public ActionResult Add (ReservationsAddDto reservationDto)
         {
             var newId = _reservationsManager.AddReservation(reservationDto);
-            /*return CreatedAtAction(nameof(GetById),
+            return CreatedAtAction(nameof(GetById),
                                     new {id = newId}, 
-                                    new GeneralResponse("Reservation has been added successfully"));*/
-            return NoContent();
+                                    new GeneralResponse("Reservation has been added successfully"));
         }
         [HttpPut]
         public ActionResult Update (ReservationUpdateDto reservationDto)
@@ -163,6 +162,18 @@ namespace Home_Away.Controllers
                 return NotFound();
             }
             _reservationsManager.AdminRefusal(reservation.Id);
+            return NoContent();
+        }
+        [HttpPut]   //7asaha enaha put 3alashan ana ba-update el status 
+        [Route("admin/refuse/{id}")]
+        public ActionResult ReservationState(int id)
+        {
+            ReservationReadDto? reservation = _reservationsManager.GetByID(id);
+            if (reservation == null)
+            {
+                return NotFound();
+            }
+            _reservationsManager.ReservationState(reservation.Id);
             return NoContent();
         }
     }
