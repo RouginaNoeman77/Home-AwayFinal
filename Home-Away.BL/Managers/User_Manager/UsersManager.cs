@@ -2,6 +2,7 @@
 using Home_Away.BL.Dtos;
 using Home_Away.DAL;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 
 namespace Home_Away.BL.Managers;
 
@@ -9,9 +10,11 @@ public class UsersManager : IUsersManagers
 {
     //Constructor
     private readonly IUserRepo _userRepo;
+
     public UsersManager(IUserRepo userRepo)
     {
         _userRepo = userRepo;
+
     }
     //Methods Implementation
     public IEnumerable<UserReadDto> GetAllUsers()
@@ -53,19 +56,23 @@ public class UsersManager : IUsersManagers
     public IEnumerable<UserReadDto> GetUsersByRole(string role)
     {
         var usersFromDB = _userRepo.GetUsersByRole(role);
-        return usersFromDB.Select(r => new UserReadDto
-        {
-            UserId = r.Id,
-            FirstName = r.FirstName,
-            LastName = r.LastName,
-            Gender = r.Gender,
-            DateOfBirth = r.DateOfBirth,
-            Owner = r.Owner,
-            EntryDate = r.EntryDate,
-            TotalMoneySpent = r.TotalMoneySpent,
-            ProfileImage = r.ProfileImage,
-            AcountState = r.AcountState
-        });
+       
+            return usersFromDB.Select(r => new UserReadDto
+            {
+                UserId = r.Id,
+                FirstName = r.FirstName,
+                LastName = r.LastName,
+                Gender = r.Gender,
+                DateOfBirth = r.DateOfBirth,
+                Owner = r.Owner,
+                EntryDate = r.EntryDate,
+                TotalMoneySpent = r.TotalMoneySpent,
+                ProfileImage = r.ProfileImage,
+                AcountState = r.AcountState,              
+
+            });
+        
+       
     }
     public IEnumerable<UserReadDto> GetAllOwners()
     {
@@ -198,7 +205,7 @@ public class UsersManager : IUsersManagers
             AcountState = entity.AcountState
             
         };
-        _userRepo.Add(r);
+        _userRepo.AddUser(r);
         _userRepo.SaveChanges();
         return r.Id;
     }
@@ -215,7 +222,7 @@ public class UsersManager : IUsersManagers
         user.TotalMoneySpent = entity.TotalMoneySpent;
         user.ProfileImage = entity.ProfileImage;
         user.AcountState = entity.AcountState;
-        _userRepo.Update(user);
+        _userRepo.UpdateUser(user);
         _userRepo.SaveChanges();
         return true;
     }
@@ -223,8 +230,10 @@ public class UsersManager : IUsersManagers
     {
         User? user = _userRepo.GetUserById(id);
         if (user == null) { return false; }
-        _userRepo.Delete(user);
+        _userRepo.DeleteUser(user);
         _userRepo.SaveChanges();
         return true;
     }
+
+
 }
