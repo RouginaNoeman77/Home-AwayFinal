@@ -183,7 +183,7 @@ public class UsersManager : IUsersManagers
         };
     }
 
-    public int Add(UserAddDto entity)
+    public string Add(UserAddDto entity)
     {
         User r = new User
         {
