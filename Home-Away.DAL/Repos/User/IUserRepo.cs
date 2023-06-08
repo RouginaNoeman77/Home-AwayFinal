@@ -12,10 +12,9 @@ public interface IUserRepo
     User? GetUserWithAllReservations(string id);
     User? GetUserWithAllReviews(string id);
     User? GetUserWithAllQuestionsAnswers(string id);
-
-    int Add(User entity);
-    void Update(User entity);
-    void Delete(User entity);
+    string AddUser(User entity);
+    void UpdateUser(User entity);
+    void DeleteUser(User entity);
 
     int SaveChanges();
 }
