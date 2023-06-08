@@ -18,8 +18,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IImagesRepo, ImagesRepo>();
 builder.Services.AddScoped<IPropertyRepo, PropertyRepo>();
 
-    builder.Services.AddScoped<IReservationsRepo, ReservationsRepo>();
-    builder.Services.AddScoped<IReservationsManager, ReservationsManager>();
+builder.Services.AddScoped<IReservationsRepo, ReservationsRepo>();
+builder.Services.AddScoped<IReservationsManager, ReservationsManager>();
 //----------------
 var app = builder.Build();
 

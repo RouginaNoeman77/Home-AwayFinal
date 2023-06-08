@@ -67,7 +67,7 @@ namespace Home_Away.BL.Managers.ChoiceManagers
 
         public bool UpdateChoice(ChoiceUpdateDTO choice)
         {
-            Choices? choiceFromDb = _choicesRepo.GetChoicesById(id);
+            Choices? choiceFromDb = _choicesRepo.GetChoicesById(choice.Id);
             if (choiceFromDb == null)
             {
                 return false;

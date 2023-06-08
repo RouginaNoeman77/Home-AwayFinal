@@ -71,6 +71,21 @@ namespace Home_Away.DAL;
             reservation.StateFromOwner = "Refused";
         }
     }
+    public void ReservationState(int id)
+    {
+        var reservation = _context.Set<Reservations>().Find(id);
+        if (reservation != null)
+        {
+            if(reservation.StateFromAdmin == "Accepted" && reservation.StateFromOwner == "Accepted")
+            {
+                reservation.ReservationState = "Accepted";
+            }
+            else if (reservation.StateFromAdmin == "Refused" || reservation.StateFromOwner == "Refused")
+            {
+                reservation.ReservationState = "Refused";
+            }
+        }
+    }
     //Getting All Reservations Of A Specific User
     public IEnumerable<Reservations> GetAllReservationsByUserId(string id)
     {

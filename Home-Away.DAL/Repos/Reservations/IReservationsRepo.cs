@@ -12,6 +12,7 @@
     void OwnerRefusal(int id);
     void AdminAcceptance(int id);
     void AdminRefusal(int id);
+    void ReservationState(int id);
     IEnumerable<Reservations> GetAllReservationsByUserId(string id);
     IEnumerable<Reservations> GetAllReservationsByAdminId(string id);
     IEnumerable<Reservations> GetAllReservationsByPropertyId(int id);
