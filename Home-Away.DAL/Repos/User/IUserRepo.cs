@@ -13,7 +13,7 @@ public interface IUserRepo
     User? GetUserWithAllReviews(string id);
     User? GetUserWithAllQuestionsAnswers(string id);
 
-    void Add(User entity);
+    int Add(User entity);
     void Update(User entity);
     void Delete(User entity);
 

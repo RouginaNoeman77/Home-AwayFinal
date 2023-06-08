@@ -17,7 +17,7 @@ public interface IUsersManagers
     UserReadDto? GetUserWithAllReviews(string id);
     UserReadDto? GetUserWithAllQuestionsAnswers(string id);
 
-    void Add(UserAddDto entity);
+    int Add(UserAddDto entity);
     bool Update(UserUpdateDto entity);
     bool Delete(string id);
 }
