@@ -44,7 +44,59 @@ namespace Home_Away.DAL
 
         public IEnumerable<Property>? FilterProperty(string? Type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating)
         {
-            return _userContext.Set<Property>().Where(p => p.Type == Type || p.Region == region || p.Area == area || p.Category == category || p.PricePerNight == price_per_night || p.Capacity == capacity || p.NumberOfRooms == no_of_rooms || p.NumberOfBathrooms == no_of_bathrooms || p.NumberOfFloors == no_of_floors || p.AverageRating == avg_rating).ToList();
+            var query = _userContext.Set<Property>().ToList();
+
+            if(Type != null)
+            {
+                query = query.Where(x => x.Type == Type).ToList();
+            }
+
+            if(region != null)
+            {
+                query = query.Where(x => x.Region == region).ToList();
+            }
+
+            if (area != null)
+            {
+                query = query.Where(x => x.Area == area).ToList();
+            }
+
+            if (category != null)
+            {
+                query = query.Where(x => x.Category == category).ToList();
+            }
+
+            if(price_per_night != null) 
+            { 
+                query = query.Where(x => x.PricePerNight == price_per_night).ToList();
+            }
+
+            if(capacity != null)
+            {
+                query = query.Where(x => x.Capacity == capacity).ToList();
+            }
+
+            if(no_of_rooms != null)
+            {
+                query = query.Where(x => x.NumberOfRooms == no_of_rooms).ToList();
+            }
+
+            if(no_of_floors != null)
+            {
+                query = query.Where(x => x.NumberOfFloors == no_of_floors).ToList();
+            }
+
+            if(no_of_bathrooms != null)
+            {
+                query = query.Where(x => x.NumberOfBathrooms == no_of_bathrooms).ToList();
+            }
+
+            if (avg_rating != null)
+            {
+                query = query.Where(x => x.AverageRating == avg_rating).ToList();
+            }
+
+            return query;
         }
 
         public void AddProperty(Property property)
