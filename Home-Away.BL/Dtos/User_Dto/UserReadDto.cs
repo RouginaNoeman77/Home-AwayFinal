@@ -15,7 +15,7 @@ public class UserReadDto
     public DateTime DateOfBirth { get; set; }
     public int Owner { get; set; } = 0;
     public DateTime EntryDate { get; set; }
-
+    public DateTime HiringDate { get; set; }
     [Column(TypeName = "decimal(10,2)")]
     public decimal TotalMoneySpent { get; set; }
     public string ProfileImage { get; set; } = string.Empty;

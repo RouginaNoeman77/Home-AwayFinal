@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Home_Away.DAL;
 
-public class UserRepo
+public class UserRepo:IUserRepo
 {
 
     private readonly UserContext _context;
@@ -11,13 +11,14 @@ public class UserRepo
     {
         _context = context;
     }
-    public int Add(User entity)
+    public string AddUser(User entity)
     {
         _context.Set<User>().Add(entity);
+
         return entity.Id;
     }
 
-    public void Delete(User entity)
+    public void DeleteUser(User entity)
     {
         _context.Set<User>().Remove(entity);
        
@@ -79,7 +80,10 @@ public class UserRepo
         return _context.SaveChanges();
     }
 
-    public void Update(User entity)
+
+
+
+    public void UpdateUser(User entity)
     {
 
     }
