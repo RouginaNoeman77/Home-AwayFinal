@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Home_Away.DAL;
 
-public class UserRepo
+public class UserRepo:IUserRepo
 {
 
     private readonly UserContext _context;
