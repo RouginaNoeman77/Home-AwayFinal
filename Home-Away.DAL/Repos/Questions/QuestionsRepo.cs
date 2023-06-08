@@ -1,41 +1,42 @@
-﻿
-namespace Home_Away.DAL;
-public class QuestionsRepo : IQuestionsRepo
+namespace Home_Away.DAL
 {
-    private readonly UserContext _userContext;
-    public QuestionsRepo(UserContext userContext)
+    public class QuestionsRepo : IQuestionsRepo
     {
-        _userContext = userContext;
-    }
-    public void AddQuestion(Questions question)
-    {
-        _userContext.Set<Questions>().Add(question);
-    }
+        private readonly UserContext _userContext;
 
-    public void DeleteQuestion(Questions question)
-    {
-        _userContext.Set<Questions>().Remove(question);
-    }
+        public QuestionsRepo(UserContext userContext)
+        {
+            _userContext = userContext;
+        }
 
-    public IEnumerable<Questions> GetAllQuestions()
-    {
-       return _userContext.Set<Questions>().ToList();
-    }
+        public void AddQuestion(Questions question)
+        {
+            _userContext.Set<Questions>().Add(question);
+        }
 
-    public Questions? GetQuestionById(int id)
-    {
-        return _userContext.Set<Questions>().Find(id);
-    }
+        public void DeleteQuestion(Questions question)
+        {
+            _userContext.Set<Questions>().Remove(question);
+        }
 
-    public int SaveChanges()
-    {
-       return _userContext.SaveChanges();
-    }
+        public IEnumerable<Questions> GetAllQuestions()
+        {
+            return _userContext.Set<Questions>().ToList();
+        }
 
-    public void UpdateQuestion(Questions question)
-    {
-        //
-    }
+        public Questions? GetQuestionById(int id)
+        {
+            return _userContext.Set<Questions>().Find(id);
+        }
 
- 
+        public int SaveChanges()
+        {
+            return _userContext.SaveChanges();
+        }
+
+        public void UpdateQuestion(Questions question)
+        {
+            // 
+        }
+    }
 }

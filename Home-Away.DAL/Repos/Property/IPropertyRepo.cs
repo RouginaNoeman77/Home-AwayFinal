@@ -1,4 +1,7 @@
-﻿namespace Home_Away.DAL;
+
+
+namespace Home_Away.DAL;
+
 public interface IPropertyRepo
 {
     public IEnumerable<Property> GetAllProperties();
@@ -11,19 +14,21 @@ public interface IPropertyRepo
 
     public IEnumerable<Property>? GetPropertyByState(string state);
 
-    public IEnumerable<Property>? FilterProperty(string? Type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating);
 
-    public int GetPropertyByImage(int image_id);
+    IEnumerable<Property>? FilterProperty(string? title, string? Type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating);
+
+    int GetPropertyByImage(int image_id);
 
     void AdminAcceptance(int prop_id);
 
     void AdminRefusal(int prop_id);
 
-    public void AddProperty(Property property);
+    void AddProperty(Property property);
 
-    public void DeleteProperty(Property property);
+    void DeleteProperty(Property property);
 
-    public void UpdateProperty(Property property);
+    void UpdateProperty(Property property);
 
-    public int SaveChanges();
+    int SaveChanges();
 }
+
