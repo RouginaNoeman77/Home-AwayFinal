@@ -71,6 +71,16 @@ namespace Home_Away.DAL;
             reservation.StateFromOwner = "Refused";
         }
     }
+    public string GetPropertyOwner(int id)
+    {
+        var reservation = _context.Set<Reservations>().Find(id);
+        if (reservation != null)
+        {
+            var OwnerID = reservation.Property.OwnerId;
+            return OwnerID;
+        }
+        return null;
+    }
     public void ReservationState(int id)
     {
         var reservation = _context.Set<Reservations>().Find(id);
