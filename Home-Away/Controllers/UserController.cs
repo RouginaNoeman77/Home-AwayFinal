@@ -131,11 +131,4 @@ namespace Home_Away.Controllers
 
 		}
 	}
-
-
-        }
-
-        
-    }
-
 }

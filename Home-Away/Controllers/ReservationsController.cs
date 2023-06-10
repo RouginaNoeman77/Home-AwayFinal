@@ -2,6 +2,7 @@
 using Home_Away.BL.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Home_Away.Controllers
 {
@@ -10,7 +11,7 @@ namespace Home_Away.Controllers
     public class ReservationsController : Controller
     {
         private readonly IReservationsManager _reservationsManager;
-        public ReservationsController (IReservationsManager reservationsManager)
+        public ReservationsController (IReservationsManager reservationsManager, TokenDto tokenDto)
         {
             _reservationsManager = reservationsManager;
         }
@@ -116,15 +117,22 @@ namespace Home_Away.Controllers
         }
         [HttpPut]   //7asaha enaha put 3alashan ana ba-update el status 
         [Route("owner/accept/{id}")]
-        public ActionResult OwnerAcceptance (int reservationid , int transactionid) //zabat al transaction id 
+        public ActionResult OwnerAcceptance (int reservationid , int transactionid)
         {
             ReservationReadDto? reservation = _reservationsManager.GetByID(reservationid);
             if (reservation == null)
             {
                 return NotFound();
             }
-            _reservationsManager.OwnerAcceptance(reservation.Id);
-            return NoContent();     
+            var OwnerId = _reservationsManager.GetPropertyOwner(reservationid);
+            var UserId =User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)!.Value;   //User ID
+            //User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if(OwnerId == UserId && transactionid != 0)
+            {
+                _reservationsManager.OwnerAcceptance(reservation.Id);
+                return NoContent();
+            }
+            return BadRequest();   
         }
 
         [HttpPut]   //7asaha enaha put 3alashan ana ba-update el status 

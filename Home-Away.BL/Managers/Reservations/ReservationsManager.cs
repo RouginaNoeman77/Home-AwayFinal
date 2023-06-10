@@ -49,15 +49,9 @@ public class ReservationsManager : IReservationsManager
     {
         Reservations r = new Reservations
         {
-            RequestDate = reservation.RequestDate,
             DateFrom = reservation.DateFrom,
             DateTo = reservation.DateTo,
-            StateFromOwner = reservation.StateFromOwner,
-            StateFromAdmin = reservation.StateFromAdmin,
             PropertyId = reservation.PropertyId,
-            AdminId = reservation.AdminId,
-            UserId = reservation.UserId,
-            ReservationState = reservation.ReservationState 
         };
         _reservationsRepo.AddReservation(r);
         _reservationsRepo.SaveChanges();
@@ -245,5 +239,10 @@ public class ReservationsManager : IReservationsManager
     {
         _reservationsRepo.ReservationState(id);
         _reservationsRepo.SaveChanges();
+    }
+    public string GetPropertyOwner(int id)
+    {
+        var OwnerID =_reservationsRepo.GetPropertyOwner(id);
+        return OwnerID;
     }
 }

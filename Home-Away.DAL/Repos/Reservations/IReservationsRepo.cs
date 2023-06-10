@@ -12,6 +12,7 @@ public interface IReservationsRepo
     void AdminAcceptance(int id);
     void AdminRefusal(int id);
     void ReservationState(int id);
+    string GetPropertyOwner(int id);
     IEnumerable<Reservations> GetAllReservationsByUserId(string id);
     IEnumerable<Reservations> GetAllReservationsByAdminId(string id);
     IEnumerable<Reservations> GetAllReservationsByPropertyId(int id);

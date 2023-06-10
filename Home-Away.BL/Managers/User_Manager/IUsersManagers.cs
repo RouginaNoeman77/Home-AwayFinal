@@ -9,7 +9,7 @@ public interface IUsersManagers
 {
 	//----------------------
 	Task<TokenDto> Login(LoginDto login);
-	Task<RegisterResult> Register(RegisterDto registerDto, string role);
+	Task<RegisterResult> Register(RegisterDto registerDto);
 	//------------------------
 	IEnumerable<UserReadDto> GetAllUsers();
     UserReadDto? GetUserById(string id);
