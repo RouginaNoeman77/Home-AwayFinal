@@ -66,9 +66,11 @@ namespace Home_Away.DAL
                 query = query.Where(x => x.Category == category);
             }
 
-            if (price_per_night != null)
-            {
-                query = query.Where(x => x.PricePerNight == price_per_night);
+
+            if(price_per_night != null) 
+            { 
+                query = query.Where(x => x.PricePerNight <= price_per_night);
+
             }
 
             if (capacity != null)
@@ -111,7 +113,7 @@ namespace Home_Away.DAL
 
         public void UpdateProperty(Property property)
         {
-            // TODO: Implement update logic
+            
         }
 
         public int SaveChanges()

@@ -17,7 +17,11 @@ public class UserContext : IdentityDbContext
     {
         SeedUsers(modelBuilder);
 
+        base.OnModelCreating(modelBuilder);
+
+
         SeedAdmins(modelBuilder);
+
 
         SeedProperty(modelBuilder);
 
@@ -26,6 +30,7 @@ public class UserContext : IdentityDbContext
     
         modelBuilder.Entity<Images>()
             .HasAlternateKey(c => new { c.PropertyId, c.Id });
+
 
         modelBuilder.Entity<Questions>()
             .HasMany(ua => ua.UsersAnswer)
@@ -40,7 +45,6 @@ public class UserContext : IdentityDbContext
         modelBuilder.Entity<User_Answer>()
             .HasKey(ua => new { ua.UserId, ua.QuestionsId });
 
-       
     }
 
 
