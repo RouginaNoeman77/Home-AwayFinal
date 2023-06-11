@@ -15,6 +15,7 @@ public class UserContext : IdentityDbContext
     //so as to make 2 primarykeys
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        SeedUsers(modelBuilder);
         base.OnModelCreating(modelBuilder);
         //modelBuilder.Entity<User_Answer>()
         //    .HasAlternateKey(c => new { c.QuestionsId, c.UserId });
@@ -109,5 +110,48 @@ public class UserContext : IdentityDbContext
     }
 
 
+    private void SeedUsers(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<User>().HasData(
+            new User
+            {
+                Id = Guid.NewGuid().ToString(),
+                FirstName = "John",
+                LastName = "Doe",
+                Gender = "Male",
+             
+                Owner = 1,
+                EntryDate = DateTime.Now,
+                TotalMoneySpent = 1000.00m,
+                ProfileImage = "path/to/profile-image.jpg",
+                AcountState = 1
+            },
+            new User
+            {
+                Id = Guid.NewGuid().ToString(),
+                FirstName = "Jane",
+                LastName = "Smith",
+                Gender = "Female",
+                
+                Owner = 0,
+                EntryDate = DateTime.Now,
+                TotalMoneySpent = 1500.50m,
+                ProfileImage = "path/to/profile-image.jpg",
+                AcountState = 1
+            },
+            new User
+            {   Id = Guid.NewGuid().ToString(),
+                FirstName = "Mike",
+                LastName = "Johnson",
+                Gender = "Male",
+               
+                Owner = 1,
+                EntryDate = DateTime.Now,
+                TotalMoneySpent = 750.25m,
+                ProfileImage = "path/to/profile-image.jpg",
+                AcountState = 0
+            }
+        );
+    }
 
 }
