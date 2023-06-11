@@ -22,7 +22,7 @@ public class ImagesRepo : IImagesRepo
 
     public IEnumerable<Images> GetImagesByProperty(int Prop_id)
     {
-        return _userContext.Set<Images>().Where(p=>p.Id==Prop_id);  
+        return _userContext.Set<Images>().Where(p=>p.PropertyId==Prop_id);  
     }
 
     public void AddImage(Images image)
