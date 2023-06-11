@@ -11,9 +11,12 @@ namespace Home_Away.Controllers
     public class ReservationsController : Controller
     {
         private readonly IReservationsManager _reservationsManager;
-        public ReservationsController (IReservationsManager reservationsManager, TokenDto tokenDto)
+        
+
+        public ReservationsController (IReservationsManager reservationsManager)
         {
             _reservationsManager = reservationsManager;
+            
         }
 
         [HttpGet]
