@@ -1,6 +1,7 @@
 ﻿using Home_Away.BL.Dtos;
 using Home_Away.BL.Dtos.Login;
 using Home_Away.BL.Managers;
+using Home_Away.DAL;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -130,5 +131,44 @@ namespace Home_Away.Controllers
             return user;
 
 		}
-	}
+
+        [HttpPost]
+        [Route("Register")]
+        public async Task<ActionResult> Register(RegisterDto registerDto)
+        {
+            var result = await _usersManagers.Register(registerDto);
+
+            if (result.IsSuccess)
+            {
+                return Ok(new { message = "User registered successfully" });
+            }
+            else
+            {
+                return BadRequest(result.Errors);
+            }
+        }
+
+        [HttpPost]
+        [Route("Login")]
+        public async Task<ActionResult<TokenDto>> Login(LoginDto loginDto)
+        {
+            TokenDto tokenResult = await _usersManagers.Login(loginDto);
+
+            if (tokenResult.Result == TokenResult.Failure)
+            {
+                return Unauthorized();
+            }
+            else if (tokenResult.Result == TokenResult.UserpasswordError)
+            {
+                return BadRequest("Invalid login credentials");
+            }
+
+            return tokenResult;
+        }
+      
+
+
+
+
+    }
 }

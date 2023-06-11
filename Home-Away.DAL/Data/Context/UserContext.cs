@@ -6,7 +6,7 @@ namespace Home_Away.DAL;
 
 public class UserContext : IdentityDbContext
 {
-    public DbSet<User> AppUsers { get; set; }
+    public DbSet<User> _users { get; set; }
     public DbSet<Admin> Admins { get; set; }
     public UserContext(DbContextOptions<UserContext> options) : base(options)
     {
