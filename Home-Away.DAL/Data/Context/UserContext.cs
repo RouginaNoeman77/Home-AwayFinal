@@ -27,8 +27,6 @@ public class UserContext : IdentityDbContext
         modelBuilder.Entity<Images>()
             .HasAlternateKey(c => new { c.PropertyId, c.Id });
 
-       
-
         modelBuilder.Entity<Questions>()
             .HasMany(ua => ua.UsersAnswer)
             .WithOne(q => q.Questions)
