@@ -1,5 +1,7 @@
 using Home_Away.BL;
+using Home_Away.BL.Dtos;
 using Home_Away.BL.Managers;
+using Home_Away.BL.Managers.Admin_Manager;
 using Home_Away.BL.Managers.ChoiceManagers;
 using Home_Away.BL.Managers.Images_Manager;
 using Home_Away.BL.Managers.Property_Manager;
@@ -17,12 +19,23 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
+
+});
+    
+    
 //---------------
 builder.Services.AddDbContext<UserContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("HomeAway")));
+
+
 //----------------
 builder.Services.AddScoped<IImagesRepo, ImagesRepo>();
 builder.Services.AddScoped<IImagesManager , ImagesManager>();
@@ -30,8 +43,13 @@ builder.Services.AddScoped<IImagesManager , ImagesManager>();
 builder.Services.AddScoped<IPropertyRepo, PropertyRepo>();
 builder.Services.AddScoped<IPropertyManager, PropertyManager>();
 //----------------
+
+
 builder.Services.AddScoped<IReservationsRepo, ReservationsRepo>();
 builder.Services.AddScoped<IReservationsManager, ReservationsManager>();
+
+
+
 
 builder.Services.AddScoped<IReviewsRepo, ReviewsRepo>();
 builder.Services.AddScoped<IReviewsManager, ReviewsManager>();
@@ -51,8 +69,12 @@ builder.Services.AddScoped<IUser_Answer_Manager, User_Answer_Manager>();
 builder.Services.AddScoped<IReviewsRepo, ReviewsRepo>();
 builder.Services.AddScoped<IReviewsManager, ReviewsManager>();
 
+builder.Services.AddScoped<IAdminRepo, AdminRepo>();
+builder.Services.AddScoped<IAdminManager, AdminManager>();
+
+
 #region Identity
-    builder.Services.AddIdentity<IdentityUser,IdentityRole>(option=>
+builder.Services.AddIdentity<IdentityUser,IdentityRole>(option=>
     {
         option.Password.RequireUppercase = false;
         option.Password.RequireDigit= true;

@@ -44,59 +44,59 @@ namespace Home_Away.DAL
 
         public IEnumerable<Property>? FilterProperty(string? Type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating)
         {
-            var query = _userContext.Set<Property>().ToList();
+            IQueryable<Property> query = _userContext.Set<Property>();
 
-            if(Type != null)
+            if (Type != null)
             {
-                query = query.Where(x => x.Type == Type).ToList();
+                query = query.Where(x => x.Type == Type);
             }
 
-            if(region != null)
+            if (region != null)
             {
-                query = query.Where(x => x.Region == region).ToList();
+                query = query.Where(x => x.Region == region);
             }
 
             if (area != null)
             {
-                query = query.Where(x => x.Area == area).ToList();
+                query = query.Where(x => x.Area == area);
             }
 
             if (category != null)
             {
-                query = query.Where(x => x.Category == category).ToList();
+                query = query.Where(x => x.Category == category);
             }
 
-            if(price_per_night != null) 
-            { 
-                query = query.Where(x => x.PricePerNight == price_per_night).ToList();
-            }
-
-            if(capacity != null)
+            if (price_per_night != null)
             {
-                query = query.Where(x => x.Capacity == capacity).ToList();
+                query = query.Where(x => x.PricePerNight == price_per_night);
             }
 
-            if(no_of_rooms != null)
+            if (capacity != null)
             {
-                query = query.Where(x => x.NumberOfRooms == no_of_rooms).ToList();
+                query = query.Where(x => x.Capacity == capacity);
             }
 
-            if(no_of_floors != null)
+            if (no_of_rooms != null)
             {
-                query = query.Where(x => x.NumberOfFloors == no_of_floors).ToList();
+                query = query.Where(x => x.NumberOfRooms == no_of_rooms);
             }
 
-            if(no_of_bathrooms != null)
+            if (no_of_floors != null)
             {
-                query = query.Where(x => x.NumberOfBathrooms == no_of_bathrooms).ToList();
+                query = query.Where(x => x.NumberOfFloors == no_of_floors);
+            }
+
+            if (no_of_bathrooms != null)
+            {
+                query = query.Where(x => x.NumberOfBathrooms == no_of_bathrooms);
             }
 
             if (avg_rating != null)
             {
-                query = query.Where(x => x.AverageRating == avg_rating).ToList();
+                query = query.Where(x => x.AverageRating == avg_rating);
             }
 
-            return query;
+            return query.ToList();
         }
 
         public void AddProperty(Property property)
@@ -139,6 +139,6 @@ namespace Home_Away.DAL
             }
         }
 
-      
+
     }
 }
