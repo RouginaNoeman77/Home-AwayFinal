@@ -11,13 +11,16 @@ public class UserRepo:IUserRepo
     {
         _context = context;
     }
-    public string Add(User entity)
+
+    public string AddUser(User entity)
+
     {
         _context.Set<User>().Add(entity);
+
         return entity.Id;
     }
 
-    public void Delete(User entity)
+    public void DeleteUser(User entity)
     {
         _context.Set<User>().Remove(entity);
        
@@ -79,7 +82,10 @@ public class UserRepo:IUserRepo
         return _context.SaveChanges();
     }
 
-    public void Update(User entity)
+
+
+
+    public void UpdateUser(User entity)
     {
 
     }
