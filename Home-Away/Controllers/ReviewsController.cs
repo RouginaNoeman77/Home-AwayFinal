@@ -21,7 +21,7 @@ namespace Home_Away.Controllers
             return _ReviewsManager.GetAllReviews().ToList();
         }
         [HttpGet]
-        [Route("id")]
+        [Route("{id}")]
         public ActionResult<ReviewsReadDto> GetById(int id)
         {
             ReviewsReadDto? review = _ReviewsManager.GetReviewById(id);
@@ -53,7 +53,7 @@ namespace Home_Away.Controllers
 
         }
         [HttpGet]
-        [Route("/date/date")]
+        [Route("/date/{date}")]
         public ActionResult<List<ReviewsReadDto>> GetByDate(DateTime date)
         {
             return _ReviewsManager.GetByDate(date).ToList();
@@ -61,7 +61,7 @@ namespace Home_Away.Controllers
         }
 
         [HttpGet]
-        [Route("/status/")]
+        [Route("/status/{status}")]
         public ActionResult<List<ReviewsReadDto>> GetByStatus(string status)
         {
             return _ReviewsManager.GetByStatus(status).ToList();
