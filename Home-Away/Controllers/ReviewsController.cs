@@ -30,7 +30,7 @@ namespace Home_Away.Controllers
         }
 
         [HttpGet]
-        [Route("/property/propertyid")]
+        [Route("/property/{id}")]
         public ActionResult<List<ReviewsReadDto>> GetByPropertyId(int id)
         {
             return _ReviewsManager.GetByPropertyId(id).ToList();
@@ -38,7 +38,7 @@ namespace Home_Away.Controllers
         }
 
         [HttpGet]
-        [Route("/user/userid")]
+        [Route("/user/{id}")]
         public ActionResult<List<ReviewsReadDto>> GetByUserId(string id)
         {
             return _ReviewsManager.GetByUserId(id).ToList();
@@ -46,7 +46,7 @@ namespace Home_Away.Controllers
         }
 
         [HttpGet]
-        [Route("/user/userid")]
+        [Route("/Admin/{id}")]
         public ActionResult<List<ReviewsReadDto>> GetByAdminId(string id)
         {
             return _ReviewsManager.GetByAdminId(id).ToList();
@@ -84,7 +84,7 @@ namespace Home_Away.Controllers
             return NotFound();
         }
         [HttpDelete]
-        [Route("Id")]
+        [Route("/delete/{id}")]
         public ActionResult Delete(int id)
         {
             var isfound = _ReviewsManager.DeleteReview(id);

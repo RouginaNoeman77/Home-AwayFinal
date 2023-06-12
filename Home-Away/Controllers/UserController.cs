@@ -1,6 +1,13 @@
 ﻿using Home_Away.BL.Dtos;
+using Home_Away.BL.Dtos.Login;
 using Home_Away.BL.Managers;
+using Home_Away.DAL;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
 
 namespace Home_Away.Controllers
 {
@@ -9,6 +16,7 @@ namespace Home_Away.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUsersManagers _usersManagers;
+
         public UserController(IUsersManagers usersManagers)
         {
             _usersManagers = usersManagers;
@@ -116,12 +124,51 @@ namespace Home_Away.Controllers
         public ActionResult<UserReadDto> GetUserWithAllQuestionsAnswers(string id)
         {
             UserReadDto? user = _usersManagers.GetUserWithAllQuestionsAnswers(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
+			if (user == null)
+			{
+				return NotFound();
+			}
             return user;
 
+		}
+
+        [HttpPost]
+        [Route("Register")]
+        public async Task<ActionResult> Register(RegisterDto registerDto)
+        {
+            var result = await _usersManagers.Register(registerDto);
+
+            if (result.IsSuccess)
+            {
+                return Ok(new { message = "User registered successfully" });
+            }
+            else
+            {
+                return BadRequest(result.Errors);
+            }
         }
+
+        [HttpPost]
+        [Route("Login")]
+        public async Task<ActionResult<TokenDto>> Login(LoginDto loginDto)
+        {
+            TokenDto tokenResult = await _usersManagers.Login(loginDto);
+
+            if (tokenResult.Result == TokenResult.Failure)
+            {
+                return Unauthorized();
+            }
+            else if (tokenResult.Result == TokenResult.UserpasswordError)
+            {
+                return BadRequest("Invalid login credentials");
+            }
+
+            return tokenResult;
+        }
+      
+
+
+
+
     }
 }

@@ -4,27 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Home_Away.BL.Dtos.Login
+namespace Home_Away.BL.Dtos;
+
+public enum TokenResult
 {
-    public enum TokenResult
+    Success = 0,
+    UserNameError = 1,
+    UserpasswordError = 2,
+    Failure = 3,
+}
+public class TokenDto
+{
+    
+    public TokenDto(TokenResult result, string token = "", DateTime expire = default)
     {
-        Success = 0,
-        UserNameError = 1,
-        UserpasswordError = 2,
-        Failure = 3,
+        Result = result;
+        Token = token;
+        Expiry = expire;
     }
-    public class TokenDto
-    {
-        public TokenDto(TokenResult result, string token = "", DateTime expire = default)
-        {
-            Result = result;
-            Token = token;
-            Expiry = expire;
-        }
 
 
-        public TokenResult Result;
-        public string Token { get; set; } = string.Empty;
-        public DateTime Expiry { get; set; }
-    }
+    public TokenResult Result;
+    public string Token { get; set; } = string.Empty;
+    public DateTime Expiry { get; set; }
 }

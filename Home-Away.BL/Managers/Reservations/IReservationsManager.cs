@@ -17,9 +17,10 @@ public interface IReservationsManager
     IEnumerable<ReservationReadDto> GetAllReservationsByAdminsState(string state);
     IEnumerable<ReservationReadDto> GetAllReservationsByUserIdAndDateRange(string id, DateTime fromDate, DateTime toDate);
     IEnumerable<ReservationReadDto> GetAllReservationsByPropertyIdAndDateRange(int id, DateTime fromDate, DateTime toDate);
-    void OwnerAcceptance(int id);
+    public void OwnerAcceptance(int id);
     void OwnerRefusal(int id);
     void AdminAcceptance(int id);
     void AdminRefusal(int id);
     void ReservationState(int id);
+    string GetPropertyOwner(int id);
 }

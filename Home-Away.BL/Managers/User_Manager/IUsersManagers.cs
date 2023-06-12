@@ -1,13 +1,17 @@
 ﻿
 using Home_Away.BL.Dtos;
+using Home_Away.BL.Dtos.Login;
 using Home_Away.DAL;
 
 namespace Home_Away.BL.Managers;
 
 public interface IUsersManagers
 {
-    
-    IEnumerable<UserReadDto> GetAllUsers();
+	//----------------------
+	Task<TokenDto> Login(LoginDto login);
+	Task<RegisterResult> Register(RegisterDto registerDto);
+	//------------------------
+	IEnumerable<UserReadDto> GetAllUsers();
     UserReadDto? GetUserById(string id);
     IEnumerable<UserReadDto> GetUsersByRole(string role);
     IEnumerable<UserReadDto> GetAllOwners();
@@ -20,4 +24,6 @@ public interface IUsersManagers
     string Add(UserAddDto entity);
     bool Update(UserUpdateDto entity);
     bool Delete(string id);
+
+    
 }
