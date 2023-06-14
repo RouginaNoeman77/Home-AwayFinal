@@ -196,15 +196,14 @@ namespace Home_Away.BL.Managers
         {
             User r = new User
             {
+                UserName= entity.UserName,
+                Email= entity.Email,
                 FirstName = entity.FirstName,
                 LastName = entity.LastName,
                 Gender = entity.Gender,
                 DateOfBirth = entity.DateOfBirth,
-                Owner = entity.Owner,
-                EntryDate = entity.EntryDate,
-                TotalMoneySpent = entity.TotalMoneySpent,
-                ProfileImage = entity.ProfileImage,
-                AcountState = entity.AcountState
+                ProfileImage = entity.ProfileImage
+                
             };
 
             _userRepo.AddUser(r);
@@ -222,11 +221,9 @@ namespace Home_Away.BL.Managers
             user.LastName = entity.LastName;
             user.Gender = entity.Gender;
             user.DateOfBirth = entity.DateOfBirth;
-            user.Owner = entity.Owner;
-            user.EntryDate = entity.EntryDate;
             user.TotalMoneySpent = entity.TotalMoneySpent;
             user.ProfileImage = entity.ProfileImage;
-            user.AcountState = entity.AcountState;
+            
 
             _userRepo.UpdateUser(user);
             _userRepo.SaveChanges();

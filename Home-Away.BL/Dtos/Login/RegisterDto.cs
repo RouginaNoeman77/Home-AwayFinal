@@ -16,7 +16,7 @@ namespace Home_Away.BL.Dtos.Login
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public string Gender { get; set; } = string.Empty;
-        public DateTime DateOfBirth { get; set; }
+        public DateOnly DateOfBirth { get; set; }
         public string ProfileImage { get; set; } = string.Empty;
     }  
 }
