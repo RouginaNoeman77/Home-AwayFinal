@@ -201,6 +201,12 @@ namespace Home_Away.BL.Managers
                 FirstName = entity.FirstName,
                 LastName = entity.LastName,
                 Gender = entity.Gender,
+               // DateOfBirth = entity.DateOfBirth,
+              //  Owner = entity.Owner,
+               // EntryDate = entity.EntryDate,
+                //TotalMoneySpent = entity.TotalMoneySpent,
+                //ProfileImage = entity.ProfileImage,
+               // AcountState = entity.AcountState
                 DateOfBirth = entity.DateOfBirth,
                 ProfileImage = entity.ProfileImage
                 
