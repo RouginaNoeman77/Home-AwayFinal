@@ -4,6 +4,7 @@ using Home_Away.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Home_Away.DAL.Migrations
 {
     [DbContext(typeof(UserContext))]
-    partial class UserContextModelSnapshot : ModelSnapshot
+    [Migration("20230611140208_UserAdmin")]
+    partial class UserAdmin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -142,29 +145,6 @@ namespace Home_Away.DAL.Migrations
                     b.HasIndex("OwnerId");
 
                     b.ToTable("Property");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Address = "123 Main Street",
-                            AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953",
-                            Area = "Beachside",
-                            AverageRating = 4.5m,
-                            Capacity = 8,
-                            Category = "Vacation Rental",
-                            DateOfAddingProperty = new DateTime(2023, 6, 13, 13, 34, 14, 237, DateTimeKind.Local).AddTicks(3653),
-                            Description = "A stunning villa with breathtaking views",
-                            NumberOfBathrooms = 3,
-                            NumberOfFloors = 2,
-                            NumberOfRooms = 4,
-                            OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954",
-                            PricePerNight = 500.00m,
-                            Region = "Coastal",
-                            State = "Pending",
-                            Title = "Luxurious Villa",
-                            Type = "Villa"
-                        });
                 });
 
             modelBuilder.Entity("Home_Away.DAL.Questions", b =>
@@ -544,56 +524,56 @@ namespace Home_Away.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "fbef741d-ad99-46cd-9e35-4f606638b953",
+                            Id = "4b9f4c2e-ee88-42fe-9a0c-67e2432065bc",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a6267720-ce29-402f-aad7-b78b381df7eb",
+                            ConcurrencyStamp = "e4de126f-2ce0-4ade-bd73-c6fb16cb1d8d",
                             Email = "admin1@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7bd55909-3840-4c46-9eef-a27e73cd1dbc",
+                            SecurityStamp = "237fa98a-79e4-4db3-ab63-0988f355a911",
                             TwoFactorEnabled = false,
                             UserName = "admin1@example.com",
                             DateOfBirth = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Admin",
                             Gender = "Male",
-                            HiringDate = new DateTime(2023, 6, 13, 10, 34, 14, 237, DateTimeKind.Utc).AddTicks(3578),
+                            HiringDate = new DateTime(2023, 6, 11, 14, 2, 8, 385, DateTimeKind.Utc).AddTicks(9292),
                             LastName = "1"
                         },
                         new
                         {
-                            Id = "fbef741d-ad99-46cd-9e35-4f606638b955",
+                            Id = "fbef741d-ad99-46cd-9e35-4f606638b953",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b98bb1c2-f37d-41f4-8126-504aeae806af",
+                            ConcurrencyStamp = "490ccd3d-b16c-4bd9-857c-01f3274b921c",
                             Email = "admin2@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c375a3df-892a-491f-9cb6-bcb901d4ace7",
+                            SecurityStamp = "0e7197c9-41ae-4a96-96dd-bc3e6edc658b",
                             TwoFactorEnabled = false,
                             UserName = "admin2@example.com",
                             DateOfBirth = new DateTime(1995, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Admin",
                             Gender = "Female",
-                            HiringDate = new DateTime(2023, 6, 13, 10, 34, 14, 237, DateTimeKind.Utc).AddTicks(3590),
+                            HiringDate = new DateTime(2023, 6, 11, 14, 2, 8, 385, DateTimeKind.Utc).AddTicks(9315),
                             LastName = "2"
                         },
                         new
                         {
-                            Id = "8e424841-b6f8-4a08-b8f1-f21239545362",
+                            Id = "428200e0-97b2-4195-a52f-e41f2c485236",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b7e2afcc-0d43-4685-9b3a-91ac247e0554",
+                            ConcurrencyStamp = "67bad422-0f9e-4955-b02a-7f5249c806c2",
                             Email = "admin3@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "847aac65-d1c4-44dd-80f9-d6932bbcbb93",
+                            SecurityStamp = "4cd6abf2-11fa-4fc4-bcae-76f81885c160",
                             TwoFactorEnabled = false,
                             UserName = "admin3@example.com",
                             DateOfBirth = new DateTime(1985, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Admin",
                             Gender = "Male",
-                            HiringDate = new DateTime(2023, 6, 13, 10, 34, 14, 237, DateTimeKind.Utc).AddTicks(3607),
+                            HiringDate = new DateTime(2023, 6, 11, 14, 2, 8, 385, DateTimeKind.Utc).AddTicks(9491),
                             LastName = "3"
                         });
                 });
@@ -638,17 +618,17 @@ namespace Home_Away.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "fbef741d-ad99-46cd-9e35-4f606638b951",
+                            Id = "29e67cec-cb1b-405f-a363-25e53bcbcd87",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "72628f89-adb2-41e4-9792-42ce47e1faf1",
+                            ConcurrencyStamp = "095cf790-9eda-4c32-a0af-42c20051b638",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a5dadfd6-350e-48c3-92ee-ddc03878e2f3",
+                            SecurityStamp = "97340e33-8aeb-4330-b62d-ea5f7634e9bd",
                             TwoFactorEnabled = false,
                             AcountState = 1,
                             DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EntryDate = new DateTime(2023, 6, 13, 13, 34, 14, 234, DateTimeKind.Local).AddTicks(8513),
+                            EntryDate = new DateTime(2023, 6, 11, 17, 2, 8, 385, DateTimeKind.Local).AddTicks(8188),
                             FirstName = "John",
                             Gender = "Male",
                             LastName = "Doe",
@@ -658,17 +638,17 @@ namespace Home_Away.DAL.Migrations
                         },
                         new
                         {
-                            Id = "fbef741d-ad99-46cd-9e35-4f606638b952",
+                            Id = "3ccbb16f-a908-4ab9-be31-0c7aa7842135",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dea42656-aba4-49c4-b859-a6b1310a2306",
+                            ConcurrencyStamp = "04bf7714-428a-4ad3-9f7f-9e533b7a07f5",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4ae7b955-1b83-4ff2-ac74-e2a970737f87",
+                            SecurityStamp = "e6101005-ddc3-4e81-a3ec-e30acdc9821c",
                             TwoFactorEnabled = false,
                             AcountState = 1,
                             DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EntryDate = new DateTime(2023, 6, 13, 13, 34, 14, 234, DateTimeKind.Local).AddTicks(8585),
+                            EntryDate = new DateTime(2023, 6, 11, 17, 2, 8, 385, DateTimeKind.Local).AddTicks(8304),
                             FirstName = "Jane",
                             Gender = "Female",
                             LastName = "Smith",
@@ -678,17 +658,17 @@ namespace Home_Away.DAL.Migrations
                         },
                         new
                         {
-                            Id = "fbef741d-ad99-46cd-9e35-4f606638b954",
+                            Id = "206b05f6-5397-4912-ab75-580ad39eef21",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d8ed290f-97c8-4b64-812e-e5192501f358",
+                            ConcurrencyStamp = "d83a3070-04a1-46de-81cb-62be4382f3e9",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "eef21c6b-82c3-48f8-adc2-bff48e47fe79",
+                            SecurityStamp = "8755e1be-1f4f-4a69-b118-eb18ea364a9a",
                             TwoFactorEnabled = false,
                             AcountState = 0,
                             DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            EntryDate = new DateTime(2023, 6, 13, 13, 34, 14, 234, DateTimeKind.Local).AddTicks(8595),
+                            EntryDate = new DateTime(2023, 6, 11, 17, 2, 8, 385, DateTimeKind.Local).AddTicks(8326),
                             FirstName = "Mike",
                             Gender = "Male",
                             LastName = "Johnson",

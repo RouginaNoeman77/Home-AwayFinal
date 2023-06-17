@@ -1,4 +1,7 @@
+
 ﻿
+using Microsoft.EntityFrameworkCore;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace Home_Away.DAL;
@@ -43,6 +46,12 @@ public class AdminRepo : IAdminRepo
 
     public int SaveChanges()
     {
+       return _userContext.SaveChanges();
+    }
+
+  
+}
+
        return _userContext.SaveChanges();
     }
 
