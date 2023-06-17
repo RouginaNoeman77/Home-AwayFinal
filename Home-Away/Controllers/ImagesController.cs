@@ -42,7 +42,7 @@ namespace Home_Away.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetImagesByPropertyId/{id}")]
+        [Route("GetImagesByPropertyId/{id}")]
         public ActionResult<List<ImagesReadDto?>>GetImagesByPropertyId(int property_id)
         {
             if (property_id == null)

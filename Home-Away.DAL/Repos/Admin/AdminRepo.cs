@@ -1,4 +1,7 @@
+
 ﻿
+using Microsoft.EntityFrameworkCore;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace Home_Away.DAL;
@@ -48,3 +51,5 @@ public class AdminRepo : IAdminRepo
 
   
 }
+
+      

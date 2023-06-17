@@ -1,13 +1,17 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Home_Away.DAL;
 
 public class Admin : IdentityUser
 {
+    [Column(TypeName = "date")]
     public DateTime HiringDate { get; set; }
     public string FirstName { get; set; } = string.Empty;
     public string LastName { get; set; } = string.Empty;
     public string Gender { get; set; } = string.Empty;
+    [Column(TypeName = "date")]
     public DateTime DateOfBirth { get; set; }
 
     //NavigationProperties

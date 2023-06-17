@@ -2,6 +2,7 @@
 
 using Home_Away.BL.Dtos;
 using Home_Away.DAL;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Home_Away.BL;
 
@@ -87,5 +88,74 @@ public class ReviewsManager : IReviewsManager
         _ReviewsRepo.UpdateReview(review);
         _ReviewsRepo.SaveChanges();
         return true;
+    }
+
+ 
+
+    public IEnumerable<ReviewsReadDto> GetByDate(DateTime date)
+    {
+        var ReviewFromDatabase = _ReviewsRepo.GetReviewsByDate(date);
+        return ReviewFromDatabase.Select(review => new ReviewsReadDto
+        {
+            Id = review.Id,
+            Rating = review.Rating,
+            ReviewText = review.ReviewText,
+            ReviewDate = review.ReviewDate,
+            State = review.State,
+        });
+    }
+
+    public IEnumerable<ReviewsReadDto> GetByStatus(string status)
+    {
+
+        var ReviewFromDatabase = _ReviewsRepo.GetReviewsByStatus(status);
+        return ReviewFromDatabase.Select(review => new ReviewsReadDto
+        {
+            Id = review.Id,
+            Rating = review.Rating,
+            ReviewText = review.ReviewText,
+            ReviewDate = review.ReviewDate,
+            State = review.State,
+        });
+    }
+
+    public IEnumerable<ReviewsReadDto> GetByPropertyId(int propertyid)
+    {
+        var ReviewFromDatabase = _ReviewsRepo.GetReviewsByPropertyId(propertyid);
+        return ReviewFromDatabase.Select(review => new ReviewsReadDto
+        {
+            Id = review.Id,
+            Rating = review.Rating,
+            ReviewText = review.ReviewText,
+            ReviewDate = review.ReviewDate,
+            State = review.State,
+        });
+    }
+
+    public IEnumerable<ReviewsReadDto> GetByUserId(string UserId)
+    {
+        var ReviewFromDatabase = _ReviewsRepo.GetReviewsByUserId(UserId);
+        return ReviewFromDatabase.Select(review => new ReviewsReadDto
+        {
+            Id = review.Id,
+            Rating = review.Rating,
+            ReviewText = review.ReviewText,
+            ReviewDate = review.ReviewDate,
+            State = review.State,
+        });
+
+    }
+
+    public IEnumerable<ReviewsReadDto> GetByAdminId(string AdminId)
+    {
+        var ReviewFromDatabase = _ReviewsRepo.GetReviewsByAdminId(AdminId);
+        return ReviewFromDatabase.Select(review => new ReviewsReadDto
+        {
+            Id = review.Id,
+            Rating = review.Rating,
+            ReviewText = review.ReviewText,
+            ReviewDate = review.ReviewDate,
+            State = review.State,
+        });
     }
 }

@@ -41,7 +41,7 @@ namespace Home_Away.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetPropertyByOwnerId/{id}")]
+        [Route("GetPropertyByOwnerId/{id}")]
         public ActionResult<List<PropertyReadDto>> GetPropertyByOwnerId(string id)
         {
             if (id == null)
@@ -59,7 +59,7 @@ namespace Home_Away.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetPropertyByAdminId/{id}")]
+        [Route("GetPropertyByAdminId/{id}")]
         public ActionResult<List<PropertyReadDto>> GetPropertyByAdminId(string id)
         {
             if (id == null)
@@ -77,7 +77,7 @@ namespace Home_Away.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetPropertyByState/{state}")]
+        [Route("GetPropertyByState/{state}")]
         public ActionResult<List<PropertyReadDto>> GetPropertyByState(string state)
         {
             if (state == null)
@@ -111,7 +111,7 @@ namespace Home_Away.Controllers
         }
 
         [HttpGet]
-        [Route("api/FilterProperty")] 
+        [Route("FilterProperty")] 
         public ActionResult<List<PropertyFilterDto>> GetPropertyFilter(string? Type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating)
         {
             var Properties = _PropertyManager.FilterProperty(Type, region, area, category, price_per_night, capacity, no_of_rooms, no_of_bathrooms, no_of_floors, avg_rating).ToList();
@@ -125,7 +125,7 @@ namespace Home_Away.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetPropertyByImageId/{id}")]
+        [Route("GetPropertyByImageId/{id}")]
         public ActionResult<int> GetPropertyByImageId(int imageId)
         {
            int property = _PropertyManager.GetPropertyByImage(imageId);

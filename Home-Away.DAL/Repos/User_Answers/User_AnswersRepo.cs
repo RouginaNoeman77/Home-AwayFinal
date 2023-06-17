@@ -2,7 +2,7 @@
 using System.Numerics;
 
 namespace Home_Away.DAL;
-    public class User_AnswersRepo
+public class User_AnswersRepo:IUser_AnswersRepo
 {
     private readonly UserContext userContext;
     public User_AnswersRepo(UserContext userContext)
