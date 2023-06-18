@@ -1,7 +1,11 @@
-﻿namespace Home_Away.BL.Dtos;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Home_Away.BL.Dtos;
 public class ReservationsAddDto
 {
-    public DateTime DateFrom { get; set; }
+    [Column(TypeName = "date")]
+    public DateTime DateFrom { get; set; }= DateTime.Now;
+    [Column(TypeName = "date")]
     public DateTime DateTo { get; set; }
 	public int PropertyId { get; set; }
 }

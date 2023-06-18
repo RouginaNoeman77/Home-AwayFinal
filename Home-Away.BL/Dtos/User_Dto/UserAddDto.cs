@@ -12,14 +12,8 @@ public class UserAddDto
     public string FirstName { get; set; } = string.Empty;
     public string LastName { get; set; } = string.Empty;
     public string Gender { get; set; } = string.Empty;
-    public DateTime DateOfBirth { get; set; }
-	public string Email { get; set; } = string.Empty;
-	public string Password  { get; set; } = string.Empty;
-	// public int Owner { get; set; } = 0;
-	// public DateTime EntryDate { get; set; }
-
-	//[Column(TypeName = "decimal(10,2)")]
-	// public decimal TotalMoneySpent { get; set; }
+    [Column(TypeName = "date")]
+    public DateTime DateOfBirth { get; set; } = DateTime.Now;
 	public string ProfileImage { get; set; } = string.Empty;
-    //public int AcountState { get; set; } = 1;
+    
 }

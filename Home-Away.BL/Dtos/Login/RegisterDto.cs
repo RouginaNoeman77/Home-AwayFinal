@@ -16,7 +16,8 @@ namespace Home_Away.BL.Dtos.Login
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public string Gender { get; set; } = string.Empty;
-        public DateOnly DateOfBirth { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime DateOfBirth { get; set; }
         public string ProfileImage { get; set; } = string.Empty;
     }  
 }
