@@ -153,7 +153,7 @@ namespace Home_Away.DAL.Migrations
                             AverageRating = 4.5m,
                             Capacity = 8,
                             Category = "Vacation Rental",
-                            DateOfAddingProperty = new DateTime(2023, 6, 19, 19, 37, 7, 723, DateTimeKind.Local).AddTicks(2870),
+                            DateOfAddingProperty = new DateTime(2023, 6, 19, 19, 34, 59, 724, DateTimeKind.Local).AddTicks(8596),
                             Description = "A stunning villa with breathtaking views",
                             NumberOfBathrooms = 3,
                             NumberOfFloors = 2,
@@ -164,6 +164,69 @@ namespace Home_Away.DAL.Migrations
                             State = "Pending",
                             Title = "Luxurious Villa",
                             Type = "Villa"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "123 Main Street",
+                            AdminId = "e6f12e7d-f393-4990-a6f6-ae8ffc1f4f12",
+                            Area = "Beachside",
+                            AverageRating = 4.5m,
+                            Capacity = 8,
+                            Category = "Vacation Rental",
+                            DateOfAddingProperty = new DateTime(2023, 6, 19, 19, 34, 59, 724, DateTimeKind.Local).AddTicks(8764),
+                            Description = "A stunning Apartment with breathtaking views",
+                            NumberOfBathrooms = 3,
+                            NumberOfFloors = 2,
+                            NumberOfRooms = 4,
+                            OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954",
+                            PricePerNight = 500.00m,
+                            Region = "Coastal",
+                            State = "Pending",
+                            Title = "Luxurious Apartment",
+                            Type = "Apartment"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "123 Main Street",
+                            AdminId = "7c35a0d9-5f65-4274-ad98-9741489bd6e8",
+                            Area = "DessertSide",
+                            AverageRating = 4.5m,
+                            Capacity = 8,
+                            Category = "Vacation Rental",
+                            DateOfAddingProperty = new DateTime(2023, 6, 19, 19, 34, 59, 724, DateTimeKind.Local).AddTicks(8776),
+                            Description = "A stunning Camp with breathtaking views",
+                            NumberOfBathrooms = 3,
+                            NumberOfFloors = 2,
+                            NumberOfRooms = 4,
+                            OwnerId = "489ce88b-026c-4b20-9c8b-8dd897b3707a",
+                            PricePerNight = 500.00m,
+                            Region = "Coastal",
+                            State = "Pending",
+                            Title = "Amazing Camp",
+                            Type = "Camp"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Address = "123 Main Street",
+                            AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953",
+                            Area = "Beachside",
+                            AverageRating = 4.5m,
+                            Capacity = 8,
+                            Category = "Vacation Rental",
+                            DateOfAddingProperty = new DateTime(2023, 6, 19, 19, 34, 59, 724, DateTimeKind.Local).AddTicks(8786),
+                            Description = "A stunning House with breathtaking views",
+                            NumberOfBathrooms = 3,
+                            NumberOfFloors = 2,
+                            NumberOfRooms = 4,
+                            OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b951",
+                            PricePerNight = 500.00m,
+                            Region = "Coastal",
+                            State = "Pending",
+                            Title = "Luxurious House",
+                            Type = "House"
                         });
                 });
 
