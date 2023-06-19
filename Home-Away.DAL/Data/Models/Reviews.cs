@@ -10,7 +10,8 @@ public class Reviews
 
     [Column(TypeName = "decimal(10,2)")]
     public decimal Rating { get; set; }
-    public DateTime ReviewDate { get; set; }
+    [Column(TypeName = "date")] 
+    public DateTime ReviewDate { get; set; } = DateTime.Now;
 
     public string State { get; set; } = "Pending";
 

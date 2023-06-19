@@ -1,24 +1,21 @@
 ﻿
 
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Home_Away.BL.Dtos;
 
 public class ReviewsAddDto
 {
-   // public int Id { get; set; }
+    // public int Id { get; set; }
     public string ReviewText { get; set; } = string.Empty;
 
     public decimal Rating { get; set; }
-    public DateTime ReviewDate { get; set; }
+    [Column(TypeName = "date")]
+    public DateTime ReviewDate { get; set; } = DateTime.Now;
 
     public string State { get; set; } = "Pending";
     public int PropertyId { get; set; }
-    //public Property Property { get; set; }
 
-    //[ForeignKey("Admin")]
-    //public string? AdminId { get; set; } //for Approve
-    //public Admin Admin { get; set; }
-
-    //[ForeignKey("User")]
-    public string? UserId { get; set; } //for Rent
-    //public User User { get; set; }
+    public string? UserId { get; set; }
 }

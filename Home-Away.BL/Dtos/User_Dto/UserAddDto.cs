@@ -12,8 +12,8 @@ public class UserAddDto
     public string FirstName { get; set; } = string.Empty;
     public string LastName { get; set; } = string.Empty;
     public string Gender { get; set; } = string.Empty;
-    [Column(TypeName ="date")]
-    public DateTime DateOfBirth { get; set; }
+    [Column(TypeName = "date")]
+    public DateTime DateOfBirth { get; set; } = DateTime.Now;
 	public string ProfileImage { get; set; } = string.Empty;
     
 }

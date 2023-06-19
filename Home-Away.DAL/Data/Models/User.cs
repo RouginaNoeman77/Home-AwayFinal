@@ -9,10 +9,10 @@ public class User : IdentityUser
     public string LastName { get; set; } = string.Empty;
     public string Gender { get; set; } = string.Empty;
     [Column(TypeName = "date")]
-    public DateTime DateOfBirth { get; set; }
+    public DateTime DateOfBirth { get; set; }=DateTime.Now;
     public int Owner { get; set; } = 0;
     [Column(TypeName = "date")]
-    public DateTime EntryDate { get; set; }
+    public DateTime EntryDate { get; set; }= DateTime.Now;
 
     [Column(TypeName = "decimal(10,2)")]
     public decimal TotalMoneySpent { get; set; }

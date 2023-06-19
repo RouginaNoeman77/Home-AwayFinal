@@ -61,7 +61,11 @@ public class UserContext : IdentityDbContext
                 UserName = "johndoe",
                 PasswordHash = "password123",
                 Owner = 1,
+
                 EntryDate = new DateTime(),
+
+                //EntryDate = DateTime.Now,
+
                 TotalMoneySpent = 1000.00m,
                 ProfileImage = "path/to/profile-image.jpg",
 
@@ -75,7 +79,11 @@ public class UserContext : IdentityDbContext
                 UserName = "janesmith",
                 PasswordHash = "pass456",
                 Owner = 0,
+
                 EntryDate = new DateTime(),
+
+          
+
                 TotalMoneySpent = 1500.50m,
                 ProfileImage = "path/to/profile-image.jpg",
 
@@ -89,7 +97,11 @@ public class UserContext : IdentityDbContext
                 UserName = "mikejohn",
                 PasswordHash = "mysecretpass",
                 Owner = 1,
+
                 EntryDate = new DateTime(),
+
+                
+
                 TotalMoneySpent = 750.25m,
                 ProfileImage = "path/to/profile-image.jpg",
 
