@@ -4,6 +4,7 @@ using Home_Away.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Home_Away.DAL.Migrations
 {
     [DbContext(typeof(UserContext))]
-    partial class UserContextModelSnapshot : ModelSnapshot
+    [Migration("20230619145155_seedingnextuser")]
+    partial class seedingnextuser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -153,7 +156,7 @@ namespace Home_Away.DAL.Migrations
                             AverageRating = 4.5m,
                             Capacity = 8,
                             Category = "Vacation Rental",
-                            DateOfAddingProperty = new DateTime(2023, 6, 19, 19, 5, 33, 631, DateTimeKind.Local).AddTicks(3505),
+                            DateOfAddingProperty = new DateTime(2023, 6, 19, 17, 51, 55, 321, DateTimeKind.Local).AddTicks(9380),
                             Description = "A stunning villa with breathtaking views",
                             NumberOfBathrooms = 3,
                             NumberOfFloors = 2,
@@ -164,69 +167,6 @@ namespace Home_Away.DAL.Migrations
                             State = "Pending",
                             Title = "Luxurious Villa",
                             Type = "Villa"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Address = "123 Main Street",
-                            AdminId = "e6f12e7d-f393-4990-a6f6-ae8ffc1f4f12",
-                            Area = "Beachside",
-                            AverageRating = 4.5m,
-                            Capacity = 8,
-                            Category = "Vacation Rental",
-                            DateOfAddingProperty = new DateTime(2023, 6, 19, 19, 5, 33, 631, DateTimeKind.Local).AddTicks(3624),
-                            Description = "A stunning Apartment with breathtaking views",
-                            NumberOfBathrooms = 3,
-                            NumberOfFloors = 2,
-                            NumberOfRooms = 4,
-                            OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954",
-                            PricePerNight = 500.00m,
-                            Region = "Coastal",
-                            State = "Pending",
-                            Title = "Luxurious Apartment",
-                            Type = "Apartment"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Address = "123 Main Street",
-                            AdminId = "7c35a0d9-5f65-4274-ad98-9741489bd6e8",
-                            Area = "DessertSide",
-                            AverageRating = 4.5m,
-                            Capacity = 8,
-                            Category = "Vacation Rental",
-                            DateOfAddingProperty = new DateTime(2023, 6, 19, 19, 5, 33, 631, DateTimeKind.Local).AddTicks(3632),
-                            Description = "A stunning Camp with breathtaking views",
-                            NumberOfBathrooms = 3,
-                            NumberOfFloors = 2,
-                            NumberOfRooms = 4,
-                            OwnerId = "489ce88b-026c-4b20-9c8b-8dd897b3707a",
-                            PricePerNight = 500.00m,
-                            Region = "Coastal",
-                            State = "Pending",
-                            Title = "Amazing Camp",
-                            Type = "Camp"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Address = "123 Main Street",
-                            AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953",
-                            Area = "Beachside",
-                            AverageRating = 4.5m,
-                            Capacity = 8,
-                            Category = "Vacation Rental",
-                            DateOfAddingProperty = new DateTime(2023, 6, 19, 19, 5, 33, 631, DateTimeKind.Local).AddTicks(3637),
-                            Description = "A stunning House with breathtaking views",
-                            NumberOfBathrooms = 3,
-                            NumberOfFloors = 2,
-                            NumberOfRooms = 4,
-                            OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b951",
-                            PricePerNight = 500.00m,
-                            Region = "Coastal",
-                            State = "Pending",
-                            Title = "Luxurious House",
-                            Type = "House"
                         });
                 });
 
@@ -603,6 +543,116 @@ namespace Home_Away.DAL.Migrations
                         });
 
                     b.HasDiscriminator().HasValue("Admin");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "fbef741d-ad99-46cd-9e35-4f606638b953",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "0f3dd34e-86c9-472a-be28-b1a381b10da1",
+                            Email = "admin1@example.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "5c22229d-d4d0-4800-ad65-cf3e7fb55032",
+                            TwoFactorEnabled = false,
+                            UserName = "admin1@example.com",
+                            DateOfBirth = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Admin",
+                            Gender = "Male",
+                            HiringDate = new DateTime(2023, 6, 19, 14, 51, 55, 321, DateTimeKind.Utc).AddTicks(9059),
+                            LastName = "1"
+                        },
+                        new
+                        {
+                            Id = "fbef741d-ad99-46cd-9e35-4f606638b955",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "9b71af61-3c40-4a72-bd90-f8dab2b187a9",
+                            Email = "admin2@example.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "52ce872d-4f26-4a96-bc17-a819c25c3c9f",
+                            TwoFactorEnabled = false,
+                            UserName = "admin2@example.com",
+                            DateOfBirth = new DateTime(1995, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Admin",
+                            Gender = "Female",
+                            HiringDate = new DateTime(2023, 6, 19, 14, 51, 55, 321, DateTimeKind.Utc).AddTicks(9089),
+                            LastName = "2"
+                        },
+                        new
+                        {
+                            Id = "5845073f-60bd-4996-afc0-17dc02d52750",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "af827322-4d17-4225-98e9-d473fb527091",
+                            Email = "admin3@example.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "8ce8421d-a242-47a5-9944-ceb216f73b4a",
+                            TwoFactorEnabled = false,
+                            UserName = "admin3@example.com",
+                            DateOfBirth = new DateTime(1985, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Admin",
+                            Gender = "Male",
+                            HiringDate = new DateTime(2023, 6, 19, 14, 51, 55, 321, DateTimeKind.Utc).AddTicks(9114),
+                            LastName = "3"
+                        },
+                        new
+                        {
+                            Id = "7c35a0d9-5f65-4274-ad98-9741489bd6e8",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "f7b38df3-997d-4a39-b4e4-d7a9dff50a82",
+                            Email = "admin4@example.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "a52ea515-c531-48d5-b22b-157f84c6a993",
+                            TwoFactorEnabled = false,
+                            UserName = "admin4@example.com",
+                            DateOfBirth = new DateTime(1992, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Admin",
+                            Gender = "Male",
+                            HiringDate = new DateTime(2023, 6, 19, 14, 51, 55, 321, DateTimeKind.Utc).AddTicks(9126),
+                            LastName = "4"
+                        },
+                        new
+                        {
+                            Id = "413c5cf4-ba4f-45fe-8fc3-fba3983be210",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "85e3436b-a3ec-487d-9f2a-b52a4c6a336c",
+                            Email = "admin5@example.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "ede36eb5-1b50-4839-b50a-08cbf1a68c76",
+                            TwoFactorEnabled = false,
+                            UserName = "admin5@example.com",
+                            DateOfBirth = new DateTime(1988, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Admin",
+                            Gender = "Female",
+                            HiringDate = new DateTime(2023, 6, 19, 14, 51, 55, 321, DateTimeKind.Utc).AddTicks(9249),
+                            LastName = "5"
+                        },
+                        new
+                        {
+                            Id = "e6f12e7d-f393-4990-a6f6-ae8ffc1f4f12",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "b004ee6e-b014-48ca-8fb9-3631f7e1e647",
+                            Email = "admin6@example.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "9edd476d-c67f-486b-ae20-9fcca22d641f",
+                            TwoFactorEnabled = false,
+                            UserName = "admin6@example.com",
+                            DateOfBirth = new DateTime(1993, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Admin",
+                            Gender = "Male",
+                            HiringDate = new DateTime(2023, 6, 19, 14, 51, 55, 321, DateTimeKind.Utc).AddTicks(9262),
+                            LastName = "6"
+                        });
                 });
 
             modelBuilder.Entity("Home_Away.DAL.User", b =>
@@ -641,6 +691,162 @@ namespace Home_Away.DAL.Migrations
                         .HasColumnType("decimal(10,2)");
 
                     b.HasDiscriminator().HasValue("User");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "fbef741d-ad99-46cd-9e35-4f606638b951",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "79a1e0b4-a339-4b19-b112-7c4cbc2e1ba7",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PasswordHash = "password123",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "fa17719e-0b0c-426a-a9ec-3898edaf9002",
+                            TwoFactorEnabled = false,
+                            UserName = "johndoe",
+                            AcountState = 0,
+                            DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EntryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "John",
+                            Gender = "Male",
+                            LastName = "Doe",
+                            Owner = 1,
+                            ProfileImage = "path/to/profile-image.jpg",
+                            TotalMoneySpent = 1000.00m
+                        },
+                        new
+                        {
+                            Id = "fbef741d-ad99-46cd-9e35-4f606638b952",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "a55f5d58-5cc5-43b3-94a1-a45bf64ad99f",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PasswordHash = "pass456",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "a5ddb21d-c931-416c-abb2-258f940dc71a",
+                            TwoFactorEnabled = false,
+                            UserName = "janesmith",
+                            AcountState = 0,
+                            DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EntryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Jane",
+                            Gender = "Female",
+                            LastName = "Smith",
+                            Owner = 0,
+                            ProfileImage = "path/to/profile-image.jpg",
+                            TotalMoneySpent = 1500.50m
+                        },
+                        new
+                        {
+                            Id = "fbef741d-ad99-46cd-9e35-4f606638b954",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "8b458532-a4ee-473b-a565-074febeea263",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PasswordHash = "mysecretpass",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "8d94575a-5361-491c-8ebb-aeaeca31cd12",
+                            TwoFactorEnabled = false,
+                            UserName = "mikejohn",
+                            AcountState = 0,
+                            DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EntryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Mike",
+                            Gender = "Male",
+                            LastName = "Johnson",
+                            Owner = 1,
+                            ProfileImage = "path/to/profile-image.jpg",
+                            TotalMoneySpent = 750.25m
+                        },
+                        new
+                        {
+                            Id = "e46e55da-d8b1-4e40-826f-5dca3424eb05",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "5ff5ef1b-642a-4a2d-a638-634ef659264f",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PasswordHash = "pass789",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "9207f79e-ece8-4f09-ac08-1c18ee7231e8",
+                            TwoFactorEnabled = false,
+                            UserName = "emilyand",
+                            AcountState = 0,
+                            DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EntryDate = new DateTime(2023, 6, 19, 14, 51, 55, 313, DateTimeKind.Utc).AddTicks(7543),
+                            FirstName = "Emily",
+                            Gender = "Female",
+                            LastName = "Anderson",
+                            Owner = 0,
+                            ProfileImage = "path/to/profile-image.jpg",
+                            TotalMoneySpent = 800.50m
+                        },
+                        new
+                        {
+                            Id = "489ce88b-026c-4b20-9c8b-8dd897b3707a",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "32820f2b-0eca-4280-9069-96ace307a591",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PasswordHash = "p@ssword",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "5eb8642e-d12c-46dc-9c01-3031ef87dcc2",
+                            TwoFactorEnabled = false,
+                            UserName = "davidbrown",
+                            AcountState = 0,
+                            DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EntryDate = new DateTime(2023, 6, 19, 14, 51, 55, 313, DateTimeKind.Utc).AddTicks(7562),
+                            FirstName = "David",
+                            Gender = "Male",
+                            LastName = "Brown",
+                            Owner = 1,
+                            ProfileImage = "path/to/profile-image.jpg",
+                            TotalMoneySpent = 950.25m
+                        },
+                        new
+                        {
+                            Id = "48665ad6-de32-46c9-843e-97e42a1f49ae",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "68718d1d-8dba-45d1-9966-f2ecd1c12a71",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PasswordHash = "password321",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "25817af4-f65a-4d38-a574-6fd93dd25381",
+                            TwoFactorEnabled = false,
+                            UserName = "sophiaclark",
+                            AcountState = 0,
+                            DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EntryDate = new DateTime(2023, 6, 19, 14, 51, 55, 313, DateTimeKind.Utc).AddTicks(7642),
+                            FirstName = "Sophia",
+                            Gender = "Female",
+                            LastName = "Clark",
+                            Owner = 1,
+                            ProfileImage = "path/to/profile-image.jpg",
+                            TotalMoneySpent = 1200.00m
+                        },
+                        new
+                        {
+                            Id = "2ade7947-5279-4e67-b3ec-6d1713c3a49b",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "4350a058-2dc0-4999-a4eb-b05f8b131423",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PasswordHash = "pass123",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "2c065b7f-a9d2-46c3-9aea-4a377b78b01e",
+                            TwoFactorEnabled = false,
+                            UserName = "michaelsmith",
+                            AcountState = 0,
+                            DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EntryDate = new DateTime(2023, 6, 19, 14, 51, 55, 313, DateTimeKind.Utc).AddTicks(7658),
+                            FirstName = "Michael",
+                            Gender = "Male",
+                            LastName = "Smith",
+                            Owner = 0,
+                            ProfileImage = "path/to/profile-image.jpg",
+                            TotalMoneySpent = 600.75m
+                        });
                 });
 
             modelBuilder.Entity("Home_Away.DAL.Choices", b =>
