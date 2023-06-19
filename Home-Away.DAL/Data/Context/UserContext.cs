@@ -59,7 +59,7 @@ public class UserContext : IdentityDbContext
                 Gender = "Male",
 
                 Owner = 1,
-                EntryDate = DateTime.Now,
+                //EntryDate = DateTime.Now,
                 TotalMoneySpent = 1000.00m,
                 ProfileImage = "path/to/profile-image.jpg",
                 AcountState = 1
@@ -72,7 +72,7 @@ public class UserContext : IdentityDbContext
                 Gender = "Female",
 
                 Owner = 0,
-                EntryDate = DateTime.Now,
+                //EntryDate = DateTime.Now,
                 TotalMoneySpent = 1500.50m,
                 ProfileImage = "path/to/profile-image.jpg",
                 AcountState = 1
@@ -85,7 +85,7 @@ public class UserContext : IdentityDbContext
                 Gender = "Male",
 
                 Owner = 1,
-                EntryDate = DateTime.Now,
+                //EntryDate = DateTime.Now,
                 TotalMoneySpent = 750.25m,
                 ProfileImage = "path/to/profile-image.jpg",
                 AcountState = 0
