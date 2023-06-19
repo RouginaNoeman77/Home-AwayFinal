@@ -32,11 +32,21 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 
+
 //---------------
 builder.Services.AddDbContext<UserContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("HomeAway")));
 
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.AllowAnyOrigin()
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                      });
+});
 //----------------
 builder.Services.AddScoped<IImagesRepo, ImagesRepo>();
 builder.Services.AddScoped<IImagesManager , ImagesManager>();
@@ -73,16 +83,6 @@ builder.Services.AddScoped<IReviewsManager, ReviewsManager>();
 builder.Services.AddScoped<IAdminRepo, AdminRepo>();
 builder.Services.AddScoped<IAdminManager, AdminManager>();
 
-builder.Services.AddCors(options =>
-{
-	options.AddPolicy(name: MyAllowSpecificOrigins,
-					  policy =>
-					  {
-						  policy.AllowAnyOrigin()
-						  .AllowAnyHeader()
-						  .AllowAnyMethod();
-					  });
-});
 
 #region Identity
 builder.Services.AddIdentity<IdentityUser,IdentityRole>(option=>
@@ -142,7 +142,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors();
+app.UseCors(MyAllowSpecificOrigins);
 app.UseAuthentication();
 app.UseAuthorization();
 
