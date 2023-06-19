@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Home_Away.DAL.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20230531134324_AddingAvgRating")]
-    partial class AddingAvgRating
+    [Migration("20230619190220_intitial")]
+    partial class intitial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -100,7 +100,7 @@ namespace Home_Away.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateOfAddingProperty")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -145,6 +145,113 @@ namespace Home_Away.DAL.Migrations
                     b.HasIndex("OwnerId");
 
                     b.ToTable("Property");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "123 Main Street",
+                            AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953",
+                            Area = "Beachside",
+                            AverageRating = 4.5m,
+                            Capacity = 8,
+                            Category = "Vacation Rental",
+                            DateOfAddingProperty = new DateTime(2023, 6, 19, 22, 2, 20, 25, DateTimeKind.Local).AddTicks(7359),
+                            Description = "A stunning villa with breathtaking views",
+                            NumberOfBathrooms = 3,
+                            NumberOfFloors = 2,
+                            NumberOfRooms = 4,
+                            OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954",
+                            PricePerNight = 500.00m,
+                            Region = "Coastal",
+                            State = "Pending",
+                            Title = "Luxurious Villa",
+                            Type = "Villa"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "123 Main Street",
+                            AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953",
+                            Area = "Beachside",
+                            AverageRating = 4.5m,
+                            Capacity = 8,
+                            Category = "Vacation Rental",
+                            DateOfAddingProperty = new DateTime(2023, 6, 19, 22, 2, 20, 25, DateTimeKind.Local).AddTicks(7402),
+                            Description = "A stunning villa with breathtaking views",
+                            NumberOfBathrooms = 3,
+                            NumberOfFloors = 2,
+                            NumberOfRooms = 4,
+                            OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954",
+                            PricePerNight = 500.00m,
+                            Region = "Coastal",
+                            State = "Pending",
+                            Title = "Luxurious Villa",
+                            Type = "Villa"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "123 Main Street",
+                            AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953",
+                            Area = "Beachside",
+                            AverageRating = 4.5m,
+                            Capacity = 8,
+                            Category = "Vacation Rental",
+                            DateOfAddingProperty = new DateTime(2023, 6, 19, 22, 2, 20, 25, DateTimeKind.Local).AddTicks(7417),
+                            Description = "A stunning villa with breathtaking views",
+                            NumberOfBathrooms = 3,
+                            NumberOfFloors = 2,
+                            NumberOfRooms = 4,
+                            OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954",
+                            PricePerNight = 500.00m,
+                            Region = "Coastal",
+                            State = "Pending",
+                            Title = "Luxurious Villa",
+                            Type = "Villa"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Address = "123 Main Street",
+                            AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953",
+                            Area = "Beachside",
+                            AverageRating = 4.5m,
+                            Capacity = 8,
+                            Category = "Vacation Rental",
+                            DateOfAddingProperty = new DateTime(2023, 6, 19, 22, 2, 20, 25, DateTimeKind.Local).AddTicks(7427),
+                            Description = "A stunning villa with breathtaking views",
+                            NumberOfBathrooms = 3,
+                            NumberOfFloors = 2,
+                            NumberOfRooms = 4,
+                            OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954",
+                            PricePerNight = 500.00m,
+                            Region = "Coastal",
+                            State = "Pending",
+                            Title = "Luxurious Villa",
+                            Type = "Villa"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Address = "123 Main Street",
+                            AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953",
+                            Area = "Beachside",
+                            AverageRating = 4.5m,
+                            Capacity = 8,
+                            Category = "Vacation Rental",
+                            DateOfAddingProperty = new DateTime(2023, 6, 19, 22, 2, 20, 25, DateTimeKind.Local).AddTicks(7438),
+                            Description = "A stunning villa with breathtaking views",
+                            NumberOfBathrooms = 3,
+                            NumberOfFloors = 2,
+                            NumberOfRooms = 4,
+                            OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954",
+                            PricePerNight = 500.00m,
+                            Region = "Coastal",
+                            State = "Pending",
+                            Title = "Luxurious Villa",
+                            Type = "Villa"
+                        });
                 });
 
             modelBuilder.Entity("Home_Away.DAL.Questions", b =>
@@ -177,23 +284,30 @@ namespace Home_Away.DAL.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("DateFrom")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<DateTime>("DateTo")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<int>("PropertyId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("RequestDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
-                    b.Property<string>("State")
+                    b.Property<string>("ReservationState")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StateFromAdmin")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StateFromOwner")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -226,7 +340,7 @@ namespace Home_Away.DAL.Migrations
                         .HasColumnType("decimal(10,2)");
 
                     b.Property<DateTime>("ReviewDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<string>("ReviewText")
                         .IsRequired()
@@ -237,7 +351,6 @@ namespace Home_Away.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -259,7 +372,7 @@ namespace Home_Away.DAL.Migrations
                     b.Property<int>("QuestionsId")
                         .HasColumnType("int");
 
-                    b.Property<string>("CustomerAnswer")
+                    b.Property<string>("UserAnswers")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -480,10 +593,96 @@ namespace Home_Away.DAL.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("date");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("HiringDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("AspNetUsers", t =>
+                        {
+                            t.Property("DateOfBirth")
+                                .HasColumnName("Admin_DateOfBirth");
+
+                            t.Property("FirstName")
+                                .HasColumnName("Admin_FirstName");
+
+                            t.Property("Gender")
+                                .HasColumnName("Admin_Gender");
+
+                            t.Property("LastName")
+                                .HasColumnName("Admin_LastName");
+                        });
 
                     b.HasDiscriminator().HasValue("Admin");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "fbef741d-ad99-46cd-9e35-4f606638b953",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "4d6623aa-a391-4bde-965b-b14d4630db33",
+                            Email = "admin1@example.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "51a9f0c2-d339-46d8-a93d-d7a9d2f801a2",
+                            TwoFactorEnabled = false,
+                            UserName = "admin1@example.com",
+                            DateOfBirth = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Admin",
+                            Gender = "Male",
+                            HiringDate = new DateTime(2023, 6, 19, 19, 2, 20, 25, DateTimeKind.Utc).AddTicks(6946),
+                            LastName = "1"
+                        },
+                        new
+                        {
+                            Id = "fbef741d-ad99-46cd-9e35-4f606638b955",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "811a6141-e9ef-4dbe-8ebe-5dca7b2cfbb7",
+                            Email = "admin2@example.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "2d5c9834-d19a-4ef7-90ca-39a7dbbcf8f8",
+                            TwoFactorEnabled = false,
+                            UserName = "admin2@example.com",
+                            DateOfBirth = new DateTime(1995, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Admin",
+                            Gender = "Female",
+                            HiringDate = new DateTime(2023, 6, 19, 19, 2, 20, 25, DateTimeKind.Utc).AddTicks(6988),
+                            LastName = "2"
+                        },
+                        new
+                        {
+                            Id = "0d4ebedb-266e-4788-8d8d-0deb045f27a6",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "afe41546-140b-45e2-8b70-7bb3f650d266",
+                            Email = "admin3@example.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "66075ca9-7935-4cae-8e74-4b0fd9341894",
+                            TwoFactorEnabled = false,
+                            UserName = "admin3@example.com",
+                            DateOfBirth = new DateTime(1985, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Admin",
+                            Gender = "Male",
+                            HiringDate = new DateTime(2023, 6, 19, 19, 2, 20, 25, DateTimeKind.Utc).AddTicks(7194),
+                            LastName = "3"
+                        });
                 });
 
             modelBuilder.Entity("Home_Away.DAL.User", b =>
@@ -494,10 +693,10 @@ namespace Home_Away.DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<DateTime>("EntryDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -522,6 +721,74 @@ namespace Home_Away.DAL.Migrations
                         .HasColumnType("decimal(10,2)");
 
                     b.HasDiscriminator().HasValue("User");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "fbef741d-ad99-46cd-9e35-4f606638b951",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "519a5f4b-ea81-4035-a8ee-dac820f64f68",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PasswordHash = "password123",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "db6f190d-be99-4f7a-b1ab-49163706f325",
+                            TwoFactorEnabled = false,
+                            UserName = "johndoe",
+                            AcountState = 0,
+                            DateOfBirth = new DateTime(2023, 6, 19, 22, 2, 20, 18, DateTimeKind.Local).AddTicks(2170),
+                            EntryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "John",
+                            Gender = "Male",
+                            LastName = "Doe",
+                            Owner = 1,
+                            ProfileImage = "path/to/profile-image.jpg",
+                            TotalMoneySpent = 1000.00m
+                        },
+                        new
+                        {
+                            Id = "fbef741d-ad99-46cd-9e35-4f606638b952",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "1dd587b5-e41b-42fd-9e45-17346eeb2c5c",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PasswordHash = "pass456",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "b6995bc4-c96c-447f-9133-b21317b85754",
+                            TwoFactorEnabled = false,
+                            UserName = "janesmith",
+                            AcountState = 0,
+                            DateOfBirth = new DateTime(2023, 6, 19, 22, 2, 20, 18, DateTimeKind.Local).AddTicks(2333),
+                            EntryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Jane",
+                            Gender = "Female",
+                            LastName = "Smith",
+                            Owner = 0,
+                            ProfileImage = "path/to/profile-image.jpg",
+                            TotalMoneySpent = 1500.50m
+                        },
+                        new
+                        {
+                            Id = "fbef741d-ad99-46cd-9e35-4f606638b954",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "ce926132-4f4f-4f9b-a0d5-6baa38c4fe21",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            PasswordHash = "mysecretpass",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "a9f8903b-5a87-4076-896b-1db6f4789bd8",
+                            TwoFactorEnabled = false,
+                            UserName = "mikejohn",
+                            AcountState = 0,
+                            DateOfBirth = new DateTime(2023, 6, 19, 22, 2, 20, 18, DateTimeKind.Local).AddTicks(2380),
+                            EntryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Mike",
+                            Gender = "Male",
+                            LastName = "Johnson",
+                            Owner = 1,
+                            ProfileImage = "path/to/profile-image.jpg",
+                            TotalMoneySpent = 750.25m
+                        });
                 });
 
             modelBuilder.Entity("Home_Away.DAL.Choices", b =>
@@ -581,9 +848,7 @@ namespace Home_Away.DAL.Migrations
 
                     b.HasOne("Home_Away.DAL.User", "User")
                         .WithMany("Reservations")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Admin");
 
@@ -608,9 +873,7 @@ namespace Home_Away.DAL.Migrations
 
                     b.HasOne("Home_Away.DAL.User", "User")
                         .WithMany("Reviews")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Admin");
 

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Home_Away.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class doaa : Migration
+    public partial class intitial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -98,7 +98,7 @@ namespace Home_Away.DAL.Migrations
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -119,7 +119,7 @@ namespace Home_Away.DAL.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -139,7 +139,7 @@ namespace Home_Away.DAL.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -157,13 +157,13 @@ namespace Home_Away.DAL.Migrations
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -183,7 +183,7 @@ namespace Home_Away.DAL.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -218,13 +218,13 @@ namespace Home_Away.DAL.Migrations
                         column: x => x.AdminId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Property_AspNetUsers_OwnerId",
                         column: x => x.OwnerId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -244,7 +244,7 @@ namespace Home_Away.DAL.Migrations
                         column: x => x.QuestionsId,
                         principalTable: "Questions",
                         principalColumn: "QuestionsId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -290,7 +290,7 @@ namespace Home_Away.DAL.Migrations
                         column: x => x.PropertyId,
                         principalTable: "Property",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -317,7 +317,7 @@ namespace Home_Away.DAL.Migrations
                         column: x => x.AdminId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Reservations_AspNetUsers_UserId",
                         column: x => x.UserId,
@@ -328,7 +328,7 @@ namespace Home_Away.DAL.Migrations
                         column: x => x.PropertyId,
                         principalTable: "Property",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -353,7 +353,7 @@ namespace Home_Away.DAL.Migrations
                         column: x => x.AdminId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Reviews_AspNetUsers_UserId",
                         column: x => x.UserId,
@@ -364,18 +364,48 @@ namespace Home_Away.DAL.Migrations
                         column: x => x.PropertyId,
                         principalTable: "Property",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Admin_DateOfBirth", "Discriminator", "Email", "EmailConfirmed", "Admin_FirstName", "Admin_Gender", "HiringDate", "Admin_LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "0d4ebedb-266e-4788-8d8d-0deb045f27a6", 0, "afe41546-140b-45e2-8b70-7bb3f650d266", new DateTime(1985, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Admin", "admin3@example.com", false, "Admin", "Male", new DateTime(2023, 6, 19, 19, 2, 20, 25, DateTimeKind.Utc).AddTicks(7194), "3", false, null, null, null, null, null, false, "66075ca9-7935-4cae-8e74-4b0fd9341894", false, "admin3@example.com" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "AcountState", "ConcurrencyStamp", "DateOfBirth", "Discriminator", "Email", "EmailConfirmed", "EntryDate", "FirstName", "Gender", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "Owner", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfileImage", "SecurityStamp", "TotalMoneySpent", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { "fbef741d-ad99-46cd-9e35-4f606638b951", 0, 0, "519a5f4b-ea81-4035-a8ee-dac820f64f68", new DateTime(2023, 6, 19, 22, 2, 20, 18, DateTimeKind.Local).AddTicks(2170), "User", null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "John", "Male", "Doe", false, null, null, null, 1, "password123", null, false, "path/to/profile-image.jpg", "db6f190d-be99-4f7a-b1ab-49163706f325", 1000.00m, false, "johndoe" },
+                    { "fbef741d-ad99-46cd-9e35-4f606638b952", 0, 0, "1dd587b5-e41b-42fd-9e45-17346eeb2c5c", new DateTime(2023, 6, 19, 22, 2, 20, 18, DateTimeKind.Local).AddTicks(2333), "User", null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Jane", "Female", "Smith", false, null, null, null, 0, "pass456", null, false, "path/to/profile-image.jpg", "b6995bc4-c96c-447f-9133-b21317b85754", 1500.50m, false, "janesmith" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Admin_DateOfBirth", "Discriminator", "Email", "EmailConfirmed", "Admin_FirstName", "Admin_Gender", "HiringDate", "Admin_LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "fbef741d-ad99-46cd-9e35-4f606638b953", 0, "4d6623aa-a391-4bde-965b-b14d4630db33", new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Admin", "admin1@example.com", false, "Admin", "Male", new DateTime(2023, 6, 19, 19, 2, 20, 25, DateTimeKind.Utc).AddTicks(6946), "1", false, null, null, null, null, null, false, "51a9f0c2-d339-46d8-a93d-d7a9d2f801a2", false, "admin1@example.com" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "AcountState", "ConcurrencyStamp", "DateOfBirth", "Discriminator", "Email", "EmailConfirmed", "EntryDate", "FirstName", "Gender", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "Owner", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfileImage", "SecurityStamp", "TotalMoneySpent", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "fbef741d-ad99-46cd-9e35-4f606638b954", 0, 0, "ce926132-4f4f-4f9b-a0d5-6baa38c4fe21", new DateTime(2023, 6, 19, 22, 2, 20, 18, DateTimeKind.Local).AddTicks(2380), "User", null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mike", "Male", "Johnson", false, null, null, null, 1, "mysecretpass", null, false, "path/to/profile-image.jpg", "a9f8903b-5a87-4076-896b-1db6f4789bd8", 750.25m, false, "mikejohn" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Admin_DateOfBirth", "Discriminator", "Email", "EmailConfirmed", "Admin_FirstName", "Admin_Gender", "HiringDate", "Admin_LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "fbef741d-ad99-46cd-9e35-4f606638b955", 0, "811a6141-e9ef-4dbe-8ebe-5dca7b2cfbb7", new DateTime(1995, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Admin", "admin2@example.com", false, "Admin", "Female", new DateTime(2023, 6, 19, 19, 2, 20, 25, DateTimeKind.Utc).AddTicks(6988), "2", false, null, null, null, null, null, false, "2d5c9834-d19a-4ef7-90ca-39a7dbbcf8f8", false, "admin2@example.com" });
 
             migrationBuilder.InsertData(
                 table: "Property",
                 columns: new[] { "Id", "Address", "AdminId", "Area", "AverageRating", "Capacity", "Category", "DateOfAddingProperty", "Description", "NumberOfBathrooms", "NumberOfFloors", "NumberOfRooms", "OwnerId", "PricePerNight", "Region", "State", "Title", "Type" },
                 values: new object[,]
                 {
-                    { 1, "123 Main Street", "fbef741d-ad99-46cd-9e35-4f606638b953", "Beachside", 4.5m, 8, "Vacation Rental", new DateTime(2023, 6, 19, 19, 34, 59, 724, DateTimeKind.Local).AddTicks(8596), "A stunning villa with breathtaking views", 3, 2, 4, "fbef741d-ad99-46cd-9e35-4f606638b954", 500.00m, "Coastal", "Pending", "Luxurious Villa", "Villa" },
-                    { 2, "123 Main Street", "e6f12e7d-f393-4990-a6f6-ae8ffc1f4f12", "Beachside", 4.5m, 8, "Vacation Rental", new DateTime(2023, 6, 19, 19, 34, 59, 724, DateTimeKind.Local).AddTicks(8764), "A stunning Apartment with breathtaking views", 3, 2, 4, "fbef741d-ad99-46cd-9e35-4f606638b954", 500.00m, "Coastal", "Pending", "Luxurious Apartment", "Apartment" },
-                    { 3, "123 Main Street", "7c35a0d9-5f65-4274-ad98-9741489bd6e8", "DessertSide", 4.5m, 8, "Vacation Rental", new DateTime(2023, 6, 19, 19, 34, 59, 724, DateTimeKind.Local).AddTicks(8776), "A stunning Camp with breathtaking views", 3, 2, 4, "489ce88b-026c-4b20-9c8b-8dd897b3707a", 500.00m, "Coastal", "Pending", "Amazing Camp", "Camp" },
-                    { 4, "123 Main Street", "fbef741d-ad99-46cd-9e35-4f606638b953", "Beachside", 4.5m, 8, "Vacation Rental", new DateTime(2023, 6, 19, 19, 34, 59, 724, DateTimeKind.Local).AddTicks(8786), "A stunning House with breathtaking views", 3, 2, 4, "fbef741d-ad99-46cd-9e35-4f606638b951", 500.00m, "Coastal", "Pending", "Luxurious House", "House" }
+                    { 1, "123 Main Street", "fbef741d-ad99-46cd-9e35-4f606638b953", "Beachside", 4.5m, 8, "Vacation Rental", new DateTime(2023, 6, 19, 22, 2, 20, 25, DateTimeKind.Local).AddTicks(7359), "A stunning villa with breathtaking views", 3, 2, 4, "fbef741d-ad99-46cd-9e35-4f606638b954", 500.00m, "Coastal", "Pending", "Luxurious Villa", "Villa" },
+                    { 2, "123 Main Street", "fbef741d-ad99-46cd-9e35-4f606638b953", "Beachside", 4.5m, 8, "Vacation Rental", new DateTime(2023, 6, 19, 22, 2, 20, 25, DateTimeKind.Local).AddTicks(7402), "A stunning villa with breathtaking views", 3, 2, 4, "fbef741d-ad99-46cd-9e35-4f606638b954", 500.00m, "Coastal", "Pending", "Luxurious Villa", "Villa" },
+                    { 3, "123 Main Street", "fbef741d-ad99-46cd-9e35-4f606638b953", "Beachside", 4.5m, 8, "Vacation Rental", new DateTime(2023, 6, 19, 22, 2, 20, 25, DateTimeKind.Local).AddTicks(7417), "A stunning villa with breathtaking views", 3, 2, 4, "fbef741d-ad99-46cd-9e35-4f606638b954", 500.00m, "Coastal", "Pending", "Luxurious Villa", "Villa" },
+                    { 4, "123 Main Street", "fbef741d-ad99-46cd-9e35-4f606638b953", "Beachside", 4.5m, 8, "Vacation Rental", new DateTime(2023, 6, 19, 22, 2, 20, 25, DateTimeKind.Local).AddTicks(7427), "A stunning villa with breathtaking views", 3, 2, 4, "fbef741d-ad99-46cd-9e35-4f606638b954", 500.00m, "Coastal", "Pending", "Luxurious Villa", "Villa" },
+                    { 5, "123 Main Street", "fbef741d-ad99-46cd-9e35-4f606638b953", "Beachside", 4.5m, 8, "Vacation Rental", new DateTime(2023, 6, 19, 22, 2, 20, 25, DateTimeKind.Local).AddTicks(7438), "A stunning villa with breathtaking views", 3, 2, 4, "fbef741d-ad99-46cd-9e35-4f606638b954", 500.00m, "Coastal", "Pending", "Luxurious Villa", "Villa" }
                 });
 
             migrationBuilder.CreateIndex(

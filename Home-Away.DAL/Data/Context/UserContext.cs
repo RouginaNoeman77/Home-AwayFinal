@@ -15,12 +15,12 @@ public class UserContext : IdentityDbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        //SeedUsers(modelBuilder);
+        SeedUsers(modelBuilder);
 
         base.OnModelCreating(modelBuilder);
 
 
-        //SeedAdmins(modelBuilder);
+        SeedAdmins(modelBuilder);
 
 
         SeedProperty(modelBuilder);
@@ -168,6 +168,93 @@ public class UserContext : IdentityDbContext
                 Description = "A stunning villa with breathtaking views",
                 Address = "123 Main Street",
                 Type = "Villa",
+                Region = "Coastal",
+                Area = "Beachside",
+                Category = "Vacation Rental",
+                PricePerNight = 500.00m,
+                Capacity = 8,
+                NumberOfRooms = 4,
+                NumberOfBathrooms = 3,
+                NumberOfFloors = 2,
+                DateOfAddingProperty = DateTime.Now,
+                State = "Pending",
+                AverageRating = 4.5m,
+                OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954", // Set the OwnerId to the desired user's ID
+                AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953" // Set the AdminId to the desired admin's ID
+
+            },
+            new Property
+            {
+                Id = 2,
+                Title = "Fancy Apartment",
+                Description = "A stunning Apartment with breathtaking views",
+                Address = "123 Main Street",
+                Type = "Apartment",
+                Region = "Coastal",
+                Area = "Garden",
+                Category = "Vacation Rental",
+                PricePerNight = 500.00m,
+                Capacity = 8,
+                NumberOfRooms = 4,
+                NumberOfBathrooms = 3,
+                NumberOfFloors = 2,
+                DateOfAddingProperty = DateTime.Now,
+                State = "Pending",
+                AverageRating = 4.5m,
+                OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954", // Set the OwnerId to the desired user's ID
+                AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953" // Set the AdminId to the desired admin's ID
+
+            },
+            new Property
+            {
+                Id = 3,
+                Title = "Luxurious House",
+                Description = "A stunning house with breathtaking views",
+                Address = "123 Main Street",
+                Type = "House",
+                Region = "Coastal",
+                Area = "Beachside",
+                Category = "Vacation Rental",
+                PricePerNight = 500.00m,
+                Capacity = 8,
+                NumberOfRooms = 4,
+                NumberOfBathrooms = 3,
+                NumberOfFloors = 2,
+                DateOfAddingProperty = DateTime.Now,
+                State = "Pending",
+                AverageRating = 4.5m,
+                OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954", // Set the OwnerId to the desired user's ID
+                AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953" // Set the AdminId to the desired admin's ID
+
+            },
+            new Property
+            {
+                Id = 4,
+                Title = "A comfy camp",
+                Description = "A camp with breathtaking views",
+                Address = "123 Main Street",
+                Type = "Camp",
+                Region = "Coastal",
+                Area = "Beachside",
+                Category = "Vacation Rental",
+                PricePerNight = 500.00m,
+                Capacity = 8,
+                NumberOfRooms = 4,
+                NumberOfBathrooms = 3,
+                NumberOfFloors = 2,
+                DateOfAddingProperty = DateTime.Now,
+                State = "Pending",
+                AverageRating = 4.5m,
+                OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954", // Set the OwnerId to the desired user's ID
+                AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953" // Set the AdminId to the desired admin's ID
+
+            }, new Property
+            {
+                Id = 5,
+                Title = "Luxurious house",
+                Description = "A stunning house with breathtaking views",
+                Address = "123 Main Street",
+                Type = "House",
                 Region = "Coastal",
                 Area = "Beachside",
                 Category = "Vacation Rental",
