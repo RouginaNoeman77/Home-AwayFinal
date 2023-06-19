@@ -8,8 +8,11 @@ using Home_Away.BL.Managers.Property_Manager;
 using Home_Away.BL.Managers.QuestionManagers;
 using Home_Away.BL.Managers.User_Answer_Manager;
 using Home_Away.DAL;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.FileProviders.Physical;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Text;
@@ -140,7 +143,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+//-----------------------
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider($"{Environment.CurrentDirectory}\\Images\\")
+}); 
 
+    
+var staticFilePath = Path.Combine(Environment.CurrentDirectory, "Images");
+var RequestPath = "/Images";
+//-----------------------
 app.UseHttpsRedirection();
 app.UseCors(MyAllowSpecificOrigins);
 app.UseAuthentication();
