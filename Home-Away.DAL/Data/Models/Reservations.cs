@@ -5,9 +5,12 @@ namespace Home_Away.DAL;
 public class Reservations
 {
     public int Id { get; set; }
-    public DateTime RequestDate { get; set; }
-    public DateTime DateFrom { get; set; }
-    public DateTime DateTo { get; set; }
+    [Column(TypeName = "date")] 
+    public DateTime RequestDate { get; set; } = DateTime.Now;
+    [Column(TypeName = "date")] 
+    public DateTime DateFrom { get; set; } = DateTime.Now;
+    [Column(TypeName = "date")] 
+    public DateTime DateTo { get; set; } = DateTime.Now;
     public string StateFromOwner { get; set; } = "Pending";
     public string StateFromAdmin { get; set; } = "Pending";
     public string ReservationState { get; set; } = "Pending";
