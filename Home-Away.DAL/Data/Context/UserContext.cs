@@ -15,12 +15,12 @@ public class UserContext : IdentityDbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        SeedUsers(modelBuilder);
+        //SeedUsers(modelBuilder);
 
         base.OnModelCreating(modelBuilder);
 
 
-        SeedAdmins(modelBuilder);
+        //SeedAdmins(modelBuilder);
 
 
         SeedProperty(modelBuilder);
@@ -51,18 +51,24 @@ public class UserContext : IdentityDbContext
     private void SeedUsers(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<User>().HasData(
+            // Existing entries
             new User
             {
                 Id = "fbef741d-ad99-46cd-9e35-4f606638b951",
                 FirstName = "John",
                 LastName = "Doe",
                 Gender = "Male",
-
+                UserName = "johndoe",
+                PasswordHash = "password123",
                 Owner = 1,
+
+                EntryDate = new DateTime(),
+
                 //EntryDate = DateTime.Now,
+
                 TotalMoneySpent = 1000.00m,
                 ProfileImage = "path/to/profile-image.jpg",
-                AcountState = 1
+
             },
             new User
             {
@@ -70,12 +76,17 @@ public class UserContext : IdentityDbContext
                 FirstName = "Jane",
                 LastName = "Smith",
                 Gender = "Female",
-
+                UserName = "janesmith",
+                PasswordHash = "pass456",
                 Owner = 0,
-                //EntryDate = DateTime.Now,
+
+                EntryDate = new DateTime(),
+
+
+
                 TotalMoneySpent = 1500.50m,
                 ProfileImage = "path/to/profile-image.jpg",
-                AcountState = 1
+
             },
             new User
             {
@@ -83,15 +94,22 @@ public class UserContext : IdentityDbContext
                 FirstName = "Mike",
                 LastName = "Johnson",
                 Gender = "Male",
-
+                UserName = "mikejohn",
+                PasswordHash = "mysecretpass",
                 Owner = 1,
-                //EntryDate = DateTime.Now,
+
+                EntryDate = new DateTime(),
+
+
+
                 TotalMoneySpent = 750.25m,
                 ProfileImage = "path/to/profile-image.jpg",
-                AcountState = 0
-            }
-        );
+
+            });
     }
+ 
+
+
 
 
     private void SeedAdmins(ModelBuilder modelBuilder)
