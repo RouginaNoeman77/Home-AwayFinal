@@ -269,6 +269,50 @@ public class UserContext : IdentityDbContext
                 OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954", // Set the OwnerId to the desired user's ID
                 AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953" // Set the AdminId to the desired admin's ID
 
+            },
+            new Property
+            {
+                Id = 6,
+                Title = "Luxurious House",
+                Description = "A stunning house with breathtaking views",
+                Address = "123 Main Street",
+                Type = "House",
+                Region = "Island",
+                Area = "Seaside",
+                Category = "Vacation Rental",
+                PricePerNight = 500.00m,
+                Capacity = 20,
+                NumberOfRooms = 4,
+                NumberOfBathrooms = 3,
+                NumberOfFloors = 2,
+                DateOfAddingProperty = DateTime.Now,
+                State = "Pending",
+                AverageRating = 4.5m,
+                OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954", // Set the OwnerId to the desired user's ID
+                AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953" // Set the AdminId to the desired admin's ID
+
+            },
+            new Property
+            {
+                Id = 7,
+                Title = "Luxurious House",
+                Description = "A stunning house with breathtaking views",
+                Address = "123 Main Street",
+                Type = "House",
+                Region = "Island",
+                Area = "Seaside",
+                Category = "Vacation Rental",
+                PricePerNight = 500.00m,
+                Capacity = 5,
+                NumberOfRooms = 4,
+                NumberOfBathrooms = 3,
+                NumberOfFloors = 2,
+                DateOfAddingProperty = DateTime.Now,
+                State = "Pending",
+                AverageRating = 4.5m,
+                OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954", // Set the OwnerId to the desired user's ID
+                AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953" // Set the AdminId to the desired admin's ID
+
             }
             );
 

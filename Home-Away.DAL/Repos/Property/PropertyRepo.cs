@@ -75,7 +75,7 @@ namespace Home_Away.DAL
 
             if (capacity != null)
             {
-                query = query.Where(x => x.Capacity == capacity);
+                query = query.Where(x => x.Capacity <= capacity);
             }
 
             if (no_of_rooms != null)

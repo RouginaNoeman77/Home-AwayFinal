@@ -4,6 +4,7 @@ using Home_Away.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Home_Away.DAL.Migrations
 {
     [DbContext(typeof(UserContext))]
-    partial class UserContextModelSnapshot : ModelSnapshot
+    [Migration("20230620105952_updateingareaandregion")]
+    partial class updateingareaandregion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -153,7 +156,7 @@ namespace Home_Away.DAL.Migrations
                             AverageRating = 4.5m,
                             Capacity = 20,
                             Category = "Vacation Rental",
-                            DateOfAddingProperty = new DateTime(2023, 6, 20, 15, 32, 48, 585, DateTimeKind.Local).AddTicks(5113),
+                            DateOfAddingProperty = new DateTime(2023, 6, 20, 13, 59, 52, 187, DateTimeKind.Local).AddTicks(9801),
                             Description = "A stunning villa with breathtaking views",
                             NumberOfBathrooms = 3,
                             NumberOfFloors = 2,
@@ -174,7 +177,7 @@ namespace Home_Away.DAL.Migrations
                             AverageRating = 4.5m,
                             Capacity = 8,
                             Category = "Vacation Rental",
-                            DateOfAddingProperty = new DateTime(2023, 6, 20, 15, 32, 48, 585, DateTimeKind.Local).AddTicks(5132),
+                            DateOfAddingProperty = new DateTime(2023, 6, 20, 13, 59, 52, 187, DateTimeKind.Local).AddTicks(9856),
                             Description = "A stunning Apartment with breathtaking views",
                             NumberOfBathrooms = 3,
                             NumberOfFloors = 2,
@@ -195,7 +198,7 @@ namespace Home_Away.DAL.Migrations
                             AverageRating = 4.5m,
                             Capacity = 10,
                             Category = "Vacation Rental",
-                            DateOfAddingProperty = new DateTime(2023, 6, 20, 15, 32, 48, 585, DateTimeKind.Local).AddTicks(5143),
+                            DateOfAddingProperty = new DateTime(2023, 6, 20, 13, 59, 52, 187, DateTimeKind.Local).AddTicks(9871),
                             Description = "A stunning house with breathtaking views",
                             NumberOfBathrooms = 3,
                             NumberOfFloors = 2,
@@ -216,7 +219,7 @@ namespace Home_Away.DAL.Migrations
                             AverageRating = 4.5m,
                             Capacity = 4,
                             Category = "Vacation Rental",
-                            DateOfAddingProperty = new DateTime(2023, 6, 20, 15, 32, 48, 585, DateTimeKind.Local).AddTicks(5153),
+                            DateOfAddingProperty = new DateTime(2023, 6, 20, 13, 59, 52, 187, DateTimeKind.Local).AddTicks(9883),
                             Description = "A camp with breathtaking views",
                             NumberOfBathrooms = 3,
                             NumberOfFloors = 2,
@@ -237,7 +240,7 @@ namespace Home_Away.DAL.Migrations
                             AverageRating = 4.5m,
                             Capacity = 15,
                             Category = "Vacation Rental",
-                            DateOfAddingProperty = new DateTime(2023, 6, 20, 15, 32, 48, 585, DateTimeKind.Local).AddTicks(5165),
+                            DateOfAddingProperty = new DateTime(2023, 6, 20, 13, 59, 52, 187, DateTimeKind.Local).AddTicks(9895),
                             Description = "A stunning house with breathtaking views",
                             NumberOfBathrooms = 3,
                             NumberOfFloors = 2,
@@ -247,48 +250,6 @@ namespace Home_Away.DAL.Migrations
                             Region = "Secluded",
                             State = "Pending",
                             Title = "Luxurious house",
-                            Type = "House"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Address = "123 Main Street",
-                            AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953",
-                            Area = "Seaside",
-                            AverageRating = 4.5m,
-                            Capacity = 20,
-                            Category = "Vacation Rental",
-                            DateOfAddingProperty = new DateTime(2023, 6, 20, 15, 32, 48, 585, DateTimeKind.Local).AddTicks(5174),
-                            Description = "A stunning house with breathtaking views",
-                            NumberOfBathrooms = 3,
-                            NumberOfFloors = 2,
-                            NumberOfRooms = 4,
-                            OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954",
-                            PricePerNight = 500.00m,
-                            Region = "Island",
-                            State = "Pending",
-                            Title = "Luxurious House",
-                            Type = "House"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Address = "123 Main Street",
-                            AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953",
-                            Area = "Seaside",
-                            AverageRating = 4.5m,
-                            Capacity = 5,
-                            Category = "Vacation Rental",
-                            DateOfAddingProperty = new DateTime(2023, 6, 20, 15, 32, 48, 585, DateTimeKind.Local).AddTicks(5185),
-                            Description = "A stunning house with breathtaking views",
-                            NumberOfBathrooms = 3,
-                            NumberOfFloors = 2,
-                            NumberOfRooms = 4,
-                            OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954",
-                            PricePerNight = 500.00m,
-                            Region = "Island",
-                            State = "Pending",
-                            Title = "Luxurious House",
                             Type = "House"
                         });
                 });
@@ -672,54 +633,54 @@ namespace Home_Away.DAL.Migrations
                         {
                             Id = "fbef741d-ad99-46cd-9e35-4f606638b953",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d5565347-93d6-4a10-9c0e-b3cdf4dce479",
+                            ConcurrencyStamp = "6a92d9f4-18e3-4958-a41e-2fb0ad8ab15b",
                             Email = "admin1@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3dc49e09-6b04-4f58-bbeb-fbf6c24f83a8",
+                            SecurityStamp = "fa94f8d5-5bf1-4687-986e-70688e600ca6",
                             TwoFactorEnabled = false,
                             UserName = "admin1@example.com",
                             DateOfBirth = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Admin",
                             Gender = "Male",
-                            HiringDate = new DateTime(2023, 6, 20, 12, 32, 48, 585, DateTimeKind.Utc).AddTicks(4990),
+                            HiringDate = new DateTime(2023, 6, 20, 10, 59, 52, 187, DateTimeKind.Utc).AddTicks(9621),
                             LastName = "1"
                         },
                         new
                         {
                             Id = "fbef741d-ad99-46cd-9e35-4f606638b955",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9d9f4681-0cc9-45d9-8b1b-a66314400dda",
+                            ConcurrencyStamp = "4f7347c4-a10f-4c45-b652-5eff4d03d059",
                             Email = "admin2@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "331d7ba2-695f-4996-9075-fe910b4e87c9",
+                            SecurityStamp = "05f3cc9d-8cb1-4702-8630-c55905b8fd3f",
                             TwoFactorEnabled = false,
                             UserName = "admin2@example.com",
                             DateOfBirth = new DateTime(1995, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Admin",
                             Gender = "Female",
-                            HiringDate = new DateTime(2023, 6, 20, 12, 32, 48, 585, DateTimeKind.Utc).AddTicks(5014),
+                            HiringDate = new DateTime(2023, 6, 20, 10, 59, 52, 187, DateTimeKind.Utc).AddTicks(9657),
                             LastName = "2"
                         },
                         new
                         {
-                            Id = "f40bca14-8d06-428b-9bb3-04e2e0b780fc",
+                            Id = "20a1f6af-af19-422a-ba8f-f87b092db263",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f9aafffe-9614-47c0-8c4f-963ba31f5509",
+                            ConcurrencyStamp = "154d34cf-84b5-417a-a481-30acd5aed4d3",
                             Email = "admin3@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "29c6c289-86e9-4a22-b3cb-181d03775a85",
+                            SecurityStamp = "85f4a77e-5b1f-4911-8fa6-00a7d5b73547",
                             TwoFactorEnabled = false,
                             UserName = "admin3@example.com",
                             DateOfBirth = new DateTime(1985, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Admin",
                             Gender = "Male",
-                            HiringDate = new DateTime(2023, 6, 20, 12, 32, 48, 585, DateTimeKind.Utc).AddTicks(5035),
+                            HiringDate = new DateTime(2023, 6, 20, 10, 59, 52, 187, DateTimeKind.Utc).AddTicks(9700),
                             LastName = "3"
                         });
                 });
@@ -766,16 +727,16 @@ namespace Home_Away.DAL.Migrations
                         {
                             Id = "fbef741d-ad99-46cd-9e35-4f606638b951",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8ef5efcc-ba96-46e0-b4ee-7abc3930a649",
+                            ConcurrencyStamp = "9521ad0c-b758-4d44-bf21-791724d04954",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PasswordHash = "password123",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9df757ea-b76f-4856-9cd1-0377cc970923",
+                            SecurityStamp = "e32cd356-5504-4084-818a-6717473194d9",
                             TwoFactorEnabled = false,
                             UserName = "johndoe",
                             AcountState = 0,
-                            DateOfBirth = new DateTime(2023, 6, 20, 15, 32, 48, 577, DateTimeKind.Local).AddTicks(7656),
+                            DateOfBirth = new DateTime(2023, 6, 20, 13, 59, 52, 180, DateTimeKind.Local).AddTicks(1273),
                             EntryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "John",
                             Gender = "Male",
@@ -788,16 +749,16 @@ namespace Home_Away.DAL.Migrations
                         {
                             Id = "fbef741d-ad99-46cd-9e35-4f606638b952",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "04e7c953-871e-4aef-bc07-91e719f99295",
+                            ConcurrencyStamp = "ee90b85a-36a0-4f81-972d-f53919da8a6a",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PasswordHash = "pass456",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "39a7a8e6-8578-419f-b8e2-f31f3f6a5d5c",
+                            SecurityStamp = "d4fd9d10-e92e-4c1b-ad48-6909cc4307e2",
                             TwoFactorEnabled = false,
                             UserName = "janesmith",
                             AcountState = 0,
-                            DateOfBirth = new DateTime(2023, 6, 20, 15, 32, 48, 577, DateTimeKind.Local).AddTicks(7820),
+                            DateOfBirth = new DateTime(2023, 6, 20, 13, 59, 52, 180, DateTimeKind.Local).AddTicks(1516),
                             EntryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Jane",
                             Gender = "Female",
@@ -810,16 +771,16 @@ namespace Home_Away.DAL.Migrations
                         {
                             Id = "fbef741d-ad99-46cd-9e35-4f606638b954",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1cb8b3c2-261a-4eb6-9c4a-4df5955fac7c",
+                            ConcurrencyStamp = "e74bcd20-f392-4415-93e1-36af4f3ddc32",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             PasswordHash = "mysecretpass",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "eeed86e7-7f54-41cf-94d8-6f2ebddad0b9",
+                            SecurityStamp = "311093da-964a-414c-9908-d02f9256103e",
                             TwoFactorEnabled = false,
                             UserName = "mikejohn",
                             AcountState = 0,
-                            DateOfBirth = new DateTime(2023, 6, 20, 15, 32, 48, 577, DateTimeKind.Local).AddTicks(7846),
+                            DateOfBirth = new DateTime(2023, 6, 20, 13, 59, 52, 180, DateTimeKind.Local).AddTicks(1615),
                             EntryDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Mike",
                             Gender = "Male",
