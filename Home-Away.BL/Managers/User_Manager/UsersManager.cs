@@ -301,7 +301,7 @@ namespace Home_Away.BL.Managers
                 ProfileImage = registerDto.ProfileImage
             };
 
-            var creationResult = await _userManager.CreateAsync(newUser, registerDto.Password);
+            var creationResult = await _userManager.CreateAsync(newUser, registerDto.password);
             if (!creationResult.Succeeded)
             {
                 return new RegisterResult(false, creationResult.Errors);

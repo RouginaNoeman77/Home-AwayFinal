@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
+using System.Text.Json.Serialization;
 
 namespace Home_Away.DAL;
 
@@ -40,8 +41,7 @@ public class Property
     public ICollection<Reservations> Reservations { get; set; } = new HashSet<Reservations>();
     public ICollection<Reviews> Reviews { get; set; } = new HashSet<Reviews>();
 
-    
-    //public List<Image> Images { get; set; } = new List<Image>();
-
+	[JsonIgnore]
+	public List<Images> Prop_Images { get; set; } = new List<Images>();
 
 }

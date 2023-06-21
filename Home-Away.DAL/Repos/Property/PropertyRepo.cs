@@ -13,7 +13,7 @@ namespace Home_Away.DAL
 
         public IEnumerable<Property> GetAllProperties()
         {
-            return _userContext.Set<Property>().AsNoTracking();
+            return _userContext.Set<Property>().Include(p=>p.Prop_Images).AsNoTracking();
         }
 
         public Property? GetPropertyById(int id)
