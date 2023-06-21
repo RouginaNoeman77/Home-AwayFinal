@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Home_Away.DAL;
 
@@ -9,6 +10,8 @@ public class Images
 
   [ForeignKey("Property")]
   public int PropertyId { get; set; }
-  public Property Property { get; set; }
+
+[JsonIgnore]
+public Property Property { get; set; }
 
 }

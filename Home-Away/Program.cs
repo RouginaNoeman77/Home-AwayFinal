@@ -144,6 +144,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 //-----------------------
+app.UseCors(MyAllowSpecificOrigins);
+//-----------------------
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider($"{Environment.CurrentDirectory}\\Images\\")
@@ -154,7 +156,7 @@ var staticFilePath = Path.Combine(Environment.CurrentDirectory, "Images");
 var RequestPath = "/Images";
 //-----------------------
 app.UseHttpsRedirection();
-app.UseCors(MyAllowSpecificOrigins);
+
 app.UseAuthentication();
 app.UseAuthorization();
 
