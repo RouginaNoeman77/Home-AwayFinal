@@ -6,6 +6,7 @@ using Home_Away.BL.Managers.ChoiceManagers;
 using Home_Away.BL.Managers.Images_Manager;
 using Home_Away.BL.Managers.Property_Manager;
 using Home_Away.BL.Managers.QuestionManagers;
+using Home_Away.BL.Managers.UploadPhoto;
 using Home_Away.BL.Managers.User_Answer_Manager;
 using Home_Away.DAL;
 using Microsoft.AspNetCore.Authentication;
@@ -86,6 +87,7 @@ builder.Services.AddScoped<IReviewsManager, ReviewsManager>();
 builder.Services.AddScoped<IAdminRepo, AdminRepo>();
 builder.Services.AddScoped<IAdminManager, AdminManager>();
 
+builder.Services.AddScoped<IUploadManager,UploadImage>();
 
 #region Identity
 builder.Services.AddIdentity<IdentityUser,IdentityRole>(option=>
@@ -144,17 +146,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 //-----------------------
+app.UseCors(MyAllowSpecificOrigins);
+//-----------------------
 app.UseStaticFiles(new StaticFileOptions
 {
-    FileProvider = new PhysicalFileProvider($"{Environment.CurrentDirectory}\\Images\\")
-}); 
-
-    
-var staticFilePath = Path.Combine(Environment.CurrentDirectory, "Images");
-var RequestPath = "/Images";
+    FileProvider = new PhysicalFileProvider($"{Environment.CurrentDirectory}\\Images\\"),
+    RequestPath = "/Images"
+}) ; 
 //-----------------------
 app.UseHttpsRedirection();
-app.UseCors(MyAllowSpecificOrigins);
+
 app.UseAuthentication();
 app.UseAuthorization();
 

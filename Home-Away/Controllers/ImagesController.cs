@@ -43,13 +43,13 @@ namespace Home_Away.Controllers
 
         [HttpGet]
         [Route("GetImagesByPropertyId/{id}")]
-        public ActionResult<List<ImagesReadDto?>>GetImagesByPropertyId(int property_id)
+        public ActionResult<List<ImagesReadDto?>>GetImagesByPropertyId(int id)
         {
-            if (property_id == null)
+            if (id == null)
             {
                 return BadRequest();
             }
-            var images = _imagesManager.GetImagesByPropertyId(property_id);
+            var images = _imagesManager.GetImagesByPropertyId(id);
 
             if(images is null)
             {
