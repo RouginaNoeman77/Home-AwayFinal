@@ -219,7 +219,8 @@ namespace Home_Away.BL.Managers.Property_Manager
                 NumberOfBathrooms = propertyDto.NumberOfBathrooms,
                 NumberOfFloors = propertyDto.NumberOfFloors,
                 DateOfAddingProperty = propertyDto.DateOfAddingProperty,
-                OwnerId = propertyDto.OwnerId
+                OwnerId = propertyDto.OwnerId,
+                Prop_Images = propertyDto.Prop_Images,
             };
 
             _propertyRepo.AddProperty(property);
