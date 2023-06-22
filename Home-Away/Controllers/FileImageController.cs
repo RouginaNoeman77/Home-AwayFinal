@@ -1,5 +1,6 @@
 ﻿using Home_Away.BL;
-using Microsoft.AspNetCore.Http;
+using Home_Away.BL.DTOS.Images_Dto;
+using Home_Away.BL.Managers.UploadPhoto;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Home_Away.Controllers;
@@ -8,39 +9,41 @@ namespace Home_Away.Controllers;
 [ApiController]
 public class FileImageController : ControllerBase
 {
+	private readonly IUploadManager _uploadManager;
+	private SavingFileOptions options;
+	public FileImageController(IUploadManager uploadManager)
+	{
+		_uploadManager = uploadManager;
+		//SetOptions();
+	}
+
+	private void SetOptions()
+	{
+		options = new SavingFileOptions
+		{
+			BaseUrl = Request.Host.ToString(),
+			Scheme = Request.Scheme,
+			FolderPath = Path.Combine(Environment.CurrentDirectory, "Images"),
+		};
+	}
+
 	[HttpPost]
 	public ActionResult<UploadFileDto> Upload(IFormFile file)
 	{
-		var extension = Path.GetExtension(file.FileName);
-		var allowedExtensions = new string[]
-		{
-			".png",
-			".jpg",
-			".svg",
-			".jpeg",
-		};
-
-		bool isExtensionAllowed = allowedExtensions.Contains(extension,StringComparer.InvariantCultureIgnoreCase);
-
-		if(!isExtensionAllowed) 
-		{
-			return BadRequest(new UploadFileDto(false, "Extension Is Not Valid"));
-		}
-
-		bool isSizeAllowed = file.Length is > 0 and <= 4_000_000;
-		if(!isSizeAllowed) 
-		{
-			return BadRequest(new UploadFileDto(false, "Size Is Not Valid"));
-		}
-
-		var newFileName = $"{Guid.NewGuid()}{extension}";
-		var imagesPath = Path.Combine(Environment.CurrentDirectory,"Images");
-		var fullFilePath = Path.Combine(imagesPath,newFileName);
-
-		using var stream = new FileStream(fullFilePath, FileMode.Create);
-		file.CopyTo(stream);
-
-		var url = $"{Request.Scheme}://{Request.Host}/Images/{newFileName}";
+		SetOptions();
+		var url = _uploadManager.uploadImage(file, options);
 		return new UploadFileDto(true, "Success", url);
+	}
+	[HttpPost]
+	[Route("multi")]
+	public ActionResult<UploadFilesDto> UploadFileArray()
+	{
+		var files = Request.Form.Files;
+		SetOptions();
+		var urls = files.Select(f => _uploadManager.uploadImage(f, options))
+			.Where(u=>u!="")
+			.ToArray();
+		
+		return new UploadFilesDto(true, "Success", urls);
 	}
 }
