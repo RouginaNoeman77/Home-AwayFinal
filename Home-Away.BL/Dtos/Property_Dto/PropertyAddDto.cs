@@ -24,6 +24,7 @@ public class PropertyAddDto
     public string State { get; set; } = "Pending";
     public string OwnerId { get; set; }
     public string? AdminId { get; set; }
-    public List<Images> Prop_Images { get; set; }
+
+    public List<string> Prop_Images { get; set; }
 }
 

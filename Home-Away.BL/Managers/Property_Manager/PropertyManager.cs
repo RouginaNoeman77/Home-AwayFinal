@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
+using Home_Away.BL.Dtos.Images_Dto;
 
 namespace Home_Away.BL.Managers.Property_Manager
 {
@@ -225,7 +226,7 @@ namespace Home_Away.BL.Managers.Property_Manager
                 DateOfAddingProperty = propertyDto.DateOfAddingProperty,
                 OwnerId = propertyDto.OwnerId,
                 AdminId = propertyDto.AdminId,
-                Prop_Images = propertyDto.Prop_Images,
+                Prop_Images = propertyDto.Prop_Images.Select(i => new Images { Url = i }).ToList()
             };
 
             _propertyRepo.AddProperty(property);
