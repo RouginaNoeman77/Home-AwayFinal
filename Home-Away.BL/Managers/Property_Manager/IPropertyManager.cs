@@ -9,6 +9,7 @@ public interface IPropertyManager
 
     public PropertyReadDto GetPropertyById(int id);
 
+
     public List<PropertyReadDto> GetPropertyByOwnerId(string ownerId);
 
     public List<PropertyReadDto> GetPropertyByAdminId(string adminId);

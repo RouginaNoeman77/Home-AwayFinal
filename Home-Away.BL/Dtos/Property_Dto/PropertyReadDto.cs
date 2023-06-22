@@ -27,5 +27,6 @@ public class PropertyReadDto
     public string OwnerId { get; set; }
     public string AdminId { get; set; }
     public List<Images> Prop_Images { get; set; }
+   
 }
 

@@ -20,7 +20,7 @@ namespace Home_Away.DAL
         {
             return _userContext.Set<Property>().Include(p => p.Prop_Images).FirstOrDefault(i => i.Id == id);
 
-		}
+        }
 
         public IEnumerable<Property>? GetPropertyByOwner(string owner_id)
         {
