@@ -23,6 +23,7 @@ public class PropertyAddDto
     public DateTime DateOfAddingProperty { get; set; } = DateTime.Now;
     public string State { get; set; } = "Pending";
     public string OwnerId { get; set; }
+    public string? AdminId { get; set; }
     public List<Images> Prop_Images { get; set; }
 }
 

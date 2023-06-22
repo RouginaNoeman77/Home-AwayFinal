@@ -135,7 +135,8 @@ namespace Home_Away.BL.Managers.Property_Manager
                 DateOfAddingProperty = p.DateOfAddingProperty,
                 AverageRating = p.AverageRating,
                 OwnerId = p.OwnerId,
-                AdminId = p.AdminId
+                AdminId = p.AdminId,
+                Prop_Images = p.Prop_Images,
             }).ToList();
         }
 
@@ -173,7 +174,8 @@ namespace Home_Away.BL.Managers.Property_Manager
                 DateOfAddingProperty = p.DateOfAddingProperty,
                 AverageRating = p.AverageRating,
                 OwnerId = p.OwnerId,
-                AdminId = p.AdminId
+                AdminId = p.AdminId,
+                Prop_Images = p.Prop_Images
             }).ToList();
         }
 
@@ -220,6 +222,7 @@ namespace Home_Away.BL.Managers.Property_Manager
                 NumberOfFloors = propertyDto.NumberOfFloors,
                 DateOfAddingProperty = propertyDto.DateOfAddingProperty,
                 OwnerId = propertyDto.OwnerId,
+                AdminId = propertyDto.AdminId,
                 Prop_Images = propertyDto.Prop_Images,
             };
 
