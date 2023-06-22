@@ -129,6 +129,7 @@ public class ReviewsManager : IReviewsManager
             ReviewText = review.ReviewText,
             ReviewDate = review.ReviewDate,
             State = review.State,
+            UserId = review.UserId
         });
     }
 
@@ -142,6 +143,7 @@ public class ReviewsManager : IReviewsManager
             ReviewText = review.ReviewText,
             ReviewDate = review.ReviewDate,
             State = review.State,
+          
         });
 
     }

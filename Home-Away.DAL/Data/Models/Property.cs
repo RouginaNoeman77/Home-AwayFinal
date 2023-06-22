@@ -39,7 +39,8 @@ public class Property
     public Admin Admin { get; set; }
 
     public ICollection<Reservations> Reservations { get; set; } = new HashSet<Reservations>();
-    public ICollection<Reviews> Reviews { get; set; } = new HashSet<Reviews>();
+    [JsonIgnore]
+    public List<Reviews> Prop_Reviews { get; set; } = new List<Reviews>();
 
 	[JsonIgnore]
 	public List<Images> Prop_Images { get; set; } = new List<Images>();

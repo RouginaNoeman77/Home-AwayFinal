@@ -11,11 +11,13 @@ namespace Home_Away.BL.Managers.Property_Manager
     {
         private readonly IPropertyRepo _propertyRepo;
         private readonly IImagesRepo _imagesRepo;
-
-        public PropertyManager(IPropertyRepo propertyRepo, IImagesRepo imagesRepo)
+        private readonly IReviewsRepo _reviewsRepo;
+        public PropertyManager(IPropertyRepo propertyRepo, IImagesRepo imagesRepo, IReviewsRepo reviewsRepo)
         {
             _propertyRepo = propertyRepo;
             _imagesRepo = imagesRepo;
+            _reviewsRepo = reviewsRepo;
+
         }
 
         public List<PropertyReadDto> GetAllProperties()
@@ -72,7 +74,8 @@ namespace Home_Away.BL.Managers.Property_Manager
                 DateOfAddingProperty = property.DateOfAddingProperty,
                 AverageRating = property.AverageRating,
                 OwnerId = property.OwnerId,
-                AdminId = property.AdminId
+                AdminId = property.AdminId,
+                Prop_Images = property.Prop_Images,
             };
         }
 
