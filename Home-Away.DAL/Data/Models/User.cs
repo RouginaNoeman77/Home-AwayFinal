@@ -8,9 +8,11 @@ public class User : IdentityUser
     public string FirstName { get; set; } = string.Empty;
     public string LastName { get; set; } = string.Empty;
     public string Gender { get; set; } = string.Empty;
-    public DateTime DateOfBirth { get; set; }
+    [Column(TypeName = "date")]
+    public DateTime DateOfBirth { get; set; }=DateTime.Now;
     public int Owner { get; set; } = 0;
-    public DateTime EntryDate { get; set; }
+    [Column(TypeName = "date")]
+    public DateTime EntryDate { get; set; }= DateTime.Now;
 
     [Column(TypeName = "decimal(10,2)")]
     public decimal TotalMoneySpent { get; set; }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using Home_Away.DAL;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Home_Away.BL.Dtos.Property_Dto;
@@ -19,10 +20,12 @@ public class PropertyReadDto
     public int NumberOfRooms { get; set; }
     public int NumberOfBathrooms { get; set; }
     public int NumberOfFloors { get; set; }
-    public DateTime DateOfAddingProperty { get; set; }
+    [Column(TypeName = "date")] 
+    public DateTime DateOfAddingProperty { get; set; } 
     [Column(TypeName = "decimal(10,2)")]
     public decimal AverageRating { get; set; }
     public string OwnerId { get; set; }
     public string AdminId { get; set; }
+    public List<Images> Prop_Images { get; set; }
 }
 

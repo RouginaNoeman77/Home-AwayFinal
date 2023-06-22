@@ -13,7 +13,7 @@ namespace Home_Away.DAL
 
         public IEnumerable<Property> GetAllProperties()
         {
-            return _userContext.Set<Property>().AsNoTracking();
+            return _userContext.Set<Property>().Include(p=>p.Prop_Images).AsNoTracking();
         }
 
         public Property? GetPropertyById(int id)
@@ -75,7 +75,7 @@ namespace Home_Away.DAL
 
             if (capacity != null)
             {
-                query = query.Where(x => x.Capacity == capacity);
+                query = query.Where(x => x.Capacity <= capacity);
             }
 
             if (no_of_rooms != null)
@@ -140,7 +140,5 @@ namespace Home_Away.DAL
                 property.State = "Refused";
             }
         }
-
-
     }
 }

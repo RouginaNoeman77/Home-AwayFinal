@@ -51,18 +51,24 @@ public class UserContext : IdentityDbContext
     private void SeedUsers(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<User>().HasData(
+            // Existing entries
             new User
             {
                 Id = "fbef741d-ad99-46cd-9e35-4f606638b951",
                 FirstName = "John",
                 LastName = "Doe",
                 Gender = "Male",
-
+                UserName = "johndoe",
+                PasswordHash = "password123",
                 Owner = 1,
-                EntryDate = DateTime.Now,
+
+                EntryDate = new DateTime(),
+
+                //EntryDate = DateTime.Now,
+
                 TotalMoneySpent = 1000.00m,
                 ProfileImage = "path/to/profile-image.jpg",
-                AcountState = 1
+
             },
             new User
             {
@@ -70,12 +76,17 @@ public class UserContext : IdentityDbContext
                 FirstName = "Jane",
                 LastName = "Smith",
                 Gender = "Female",
-
+                UserName = "janesmith",
+                PasswordHash = "pass456",
                 Owner = 0,
-                EntryDate = DateTime.Now,
+
+                EntryDate = new DateTime(),
+
+
+
                 TotalMoneySpent = 1500.50m,
                 ProfileImage = "path/to/profile-image.jpg",
-                AcountState = 1
+
             },
             new User
             {
@@ -83,15 +94,22 @@ public class UserContext : IdentityDbContext
                 FirstName = "Mike",
                 LastName = "Johnson",
                 Gender = "Male",
-
+                UserName = "mikejohn",
+                PasswordHash = "mysecretpass",
                 Owner = 1,
-                EntryDate = DateTime.Now,
+
+                EntryDate = new DateTime(),
+
+
+
                 TotalMoneySpent = 750.25m,
                 ProfileImage = "path/to/profile-image.jpg",
-                AcountState = 0
-            }
-        );
+
+            });
     }
+ 
+
+
 
 
     private void SeedAdmins(ModelBuilder modelBuilder)
@@ -154,7 +172,138 @@ public class UserContext : IdentityDbContext
                 Area = "Beachside",
                 Category = "Vacation Rental",
                 PricePerNight = 500.00m,
+                Capacity = 20,
+                NumberOfRooms = 4,
+                NumberOfBathrooms = 3,
+                NumberOfFloors = 2,
+                DateOfAddingProperty = DateTime.Now,
+                State = "Pending",
+                AverageRating = 4.5m,
+                OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954", // Set the OwnerId to the desired user's ID
+                AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953" // Set the AdminId to the desired admin's ID
+
+            },
+            new Property
+            {
+                Id = 2,
+                Title = "Fancy Apartment",
+                Description = "A stunning Apartment with breathtaking views",
+                Address = "123 Main Street",
+                Type = "Apartment",
+                Region = "Tropical",
+                Area = "Beachfront",
+                Category = "Vacation Rental",
+                PricePerNight = 500.00m,
                 Capacity = 8,
+                NumberOfRooms = 4,
+                NumberOfBathrooms = 3,
+                NumberOfFloors = 2,
+                DateOfAddingProperty = DateTime.Now,
+                State = "Pending",
+                AverageRating = 4.5m,
+                OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954", // Set the OwnerId to the desired user's ID
+                AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953" // Set the AdminId to the desired admin's ID
+
+            },
+            new Property
+            {
+                Id = 3,
+                Title = "Luxurious House",
+                Description = "A stunning house with breathtaking views",
+                Address = "123 Main Street",
+                Type = "House",
+                Region = "Island",
+                Area = "Seaside",
+                Category = "Vacation Rental",
+                PricePerNight = 500.00m,
+                Capacity = 10,
+                NumberOfRooms = 4,
+                NumberOfBathrooms = 3,
+                NumberOfFloors = 2,
+                DateOfAddingProperty = DateTime.Now,
+                State = "Pending",
+                AverageRating = 4.5m,
+                OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954", // Set the OwnerId to the desired user's ID
+                AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953" // Set the AdminId to the desired admin's ID
+
+            },
+            new Property
+            {
+                Id = 4,
+                Title = "A comfy camp",
+                Description = "A camp with breathtaking views",
+                Address = "123 Main Street",
+                Type = "Camp",
+                Region = "Mediterranean",
+                Area = "Coastline",
+                Category = "Vacation Rental",
+                PricePerNight = 500.00m,
+                Capacity = 4,
+                NumberOfRooms = 4,
+                NumberOfBathrooms = 3,
+                NumberOfFloors = 2,
+                DateOfAddingProperty = DateTime.Now,
+                State = "Pending",
+                AverageRating = 4.5m,
+                OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954", // Set the OwnerId to the desired user's ID
+                AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953" // Set the AdminId to the desired admin's ID
+
+            }, new Property
+            {
+                Id = 5,
+                Title = "Luxurious house",
+                Description = "A stunning house with breathtaking views",
+                Address = "123 Main Street",
+                Type = "House",
+                Region = "Secluded",
+                Area = "Remote Beach",
+                Category = "Vacation Rental",
+                PricePerNight = 500.00m,
+                Capacity = 15,
+                NumberOfRooms = 4,
+                NumberOfBathrooms = 3,
+                NumberOfFloors = 2,
+                DateOfAddingProperty = DateTime.Now,
+                State = "Pending",
+                AverageRating = 4.5m,
+                OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954", // Set the OwnerId to the desired user's ID
+                AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953" // Set the AdminId to the desired admin's ID
+
+            },
+            new Property
+            {
+                Id = 6,
+                Title = "Luxurious House",
+                Description = "A stunning house with breathtaking views",
+                Address = "123 Main Street",
+                Type = "House",
+                Region = "Island",
+                Area = "Seaside",
+                Category = "Vacation Rental",
+                PricePerNight = 500.00m,
+                Capacity = 20,
+                NumberOfRooms = 4,
+                NumberOfBathrooms = 3,
+                NumberOfFloors = 2,
+                DateOfAddingProperty = DateTime.Now,
+                State = "Pending",
+                AverageRating = 4.5m,
+                OwnerId = "fbef741d-ad99-46cd-9e35-4f606638b954", // Set the OwnerId to the desired user's ID
+                AdminId = "fbef741d-ad99-46cd-9e35-4f606638b953" // Set the AdminId to the desired admin's ID
+
+            },
+            new Property
+            {
+                Id = 7,
+                Title = "Luxurious House",
+                Description = "A stunning house with breathtaking views",
+                Address = "123 Main Street",
+                Type = "House",
+                Region = "Island",
+                Area = "Seaside",
+                Category = "Vacation Rental",
+                PricePerNight = 500.00m,
+                Capacity = 5,
                 NumberOfRooms = 4,
                 NumberOfBathrooms = 3,
                 NumberOfFloors = 2,

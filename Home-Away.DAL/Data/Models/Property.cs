@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
+using System.Text.Json.Serialization;
 
 namespace Home_Away.DAL;
 
@@ -21,7 +22,8 @@ public class Property
     public int NumberOfRooms { get; set; }
     public int NumberOfBathrooms { get; set; }
     public int NumberOfFloors { get; set; }
-    public DateTime DateOfAddingProperty { get; set; }
+    [Column(TypeName = "date")]
+    public DateTime DateOfAddingProperty { get; set; } = DateTime.Now;
     public string State { get; set; } = "Pending";
     [Column(TypeName = "decimal(10,2)")]
     public decimal AverageRating { get; set; }
@@ -39,8 +41,7 @@ public class Property
     public ICollection<Reservations> Reservations { get; set; } = new HashSet<Reservations>();
     public ICollection<Reviews> Reviews { get; set; } = new HashSet<Reviews>();
 
-    
-    //public List<Image> Images { get; set; } = new List<Image>();
-
+	[JsonIgnore]
+	public List<Images> Prop_Images { get; set; } = new List<Images>();
 
 }

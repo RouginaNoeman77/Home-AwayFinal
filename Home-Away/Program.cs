@@ -8,14 +8,18 @@ using Home_Away.BL.Managers.Property_Manager;
 using Home_Away.BL.Managers.QuestionManagers;
 using Home_Away.BL.Managers.User_Answer_Manager;
 using Home_Away.DAL;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.FileProviders.Physical;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -29,13 +33,23 @@ builder.Services.AddSwaggerGen(options =>
     options.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
 
 });
-    
-    
+
+
+
 //---------------
 builder.Services.AddDbContext<UserContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("HomeAway")));
 
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.AllowAnyOrigin()
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                      });
+});
 //----------------
 builder.Services.AddScoped<IImagesRepo, ImagesRepo>();
 builder.Services.AddScoped<IImagesManager , ImagesManager>();
@@ -129,7 +143,18 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+//-----------------------
+app.UseCors(MyAllowSpecificOrigins);
+//-----------------------
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider($"{Environment.CurrentDirectory}\\Images\\")
+}); 
 
+    
+var staticFilePath = Path.Combine(Environment.CurrentDirectory, "Images");
+var RequestPath = "/Images";
+//-----------------------
 app.UseHttpsRedirection();
 
 app.UseAuthentication();

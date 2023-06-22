@@ -21,4 +21,8 @@
     <ProjectReference Include="..\Home-Away.BL\Home-Away.BL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+
 </Project>

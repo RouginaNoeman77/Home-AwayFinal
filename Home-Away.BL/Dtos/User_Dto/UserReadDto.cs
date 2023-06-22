@@ -12,10 +12,13 @@ public class UserReadDto
     public string FirstName { get; set; } = string.Empty;
     public string LastName { get; set; } = string.Empty;
     public string Gender { get; set; } = string.Empty;
-    public DateTime DateOfBirth { get; set; }
+    [Column(TypeName = "date")]
+    public DateTime DateOfBirth { get; set; } 
     public int Owner { get; set; } = 0;
+    [Column(TypeName = "date")] 
     public DateTime EntryDate { get; set; }
-    public DateTime HiringDate { get; set; }
+    [Column(TypeName = "date")] 
+    public DateTime HiringDate { get; set; } 
     [Column(TypeName = "decimal(10,2)")]
     public decimal TotalMoneySpent { get; set; }
     public string ProfileImage { get; set; } = string.Empty;
