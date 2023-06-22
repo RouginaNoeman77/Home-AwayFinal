@@ -72,7 +72,8 @@ namespace Home_Away.BL.Managers.Property_Manager
                 DateOfAddingProperty = property.DateOfAddingProperty,
                 AverageRating = property.AverageRating,
                 OwnerId = property.OwnerId,
-                AdminId = property.AdminId
+                AdminId = property.AdminId,
+                Prop_Images = property.Prop_Images
             };
         }
 

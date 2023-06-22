@@ -18,8 +18,9 @@ namespace Home_Away.DAL
 
         public Property? GetPropertyById(int id)
         {
-            return _userContext.Set<Property>().Find(id);
-        }
+            return _userContext.Set<Property>().Include(p => p.Prop_Images).FirstOrDefault(i => i.Id == id);
+
+		}
 
         public IEnumerable<Property>? GetPropertyByOwner(string owner_id)
         {
