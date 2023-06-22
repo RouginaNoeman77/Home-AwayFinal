@@ -43,6 +43,6 @@ public class Property
     public List<Reviews> Prop_Reviews { get; set; } = new List<Reviews>();
 
 	[JsonIgnore]
-	public List<Images> Prop_Images { get; set; } = new List<Images>();
+	public List<Images>? Prop_Images { get; set; } = new List<Images>();
 
 }
