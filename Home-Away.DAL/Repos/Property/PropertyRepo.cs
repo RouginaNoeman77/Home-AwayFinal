@@ -46,7 +46,7 @@ namespace Home_Away.DAL
 
         public IEnumerable<Property>? GetPropertyByState(string state)
         {
-            return _userContext.Set<Property>().Where(s => s.State == state);
+            return _userContext.Set<Property>().Include(p => p.Prop_Images).Where(s => s.State == state).AsNoTracking(); ;
         }
 
         public IEnumerable<Property>? FilterProperty(string? Type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating)

@@ -290,8 +290,9 @@ namespace Home_Away.BL.Managers
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenString = tokenHandler.WriteToken(jwt);
+            var role= claimsList.First(c => c.Type == ClaimTypes.Role).Value;
 
-            return new TokenDto(TokenResult.Success, tokenString, expiry);
+            return new TokenDto(TokenResult.Success, tokenString, expiry, role);
         }
 
         public async Task<TokenDto> Login(LoginDto login)

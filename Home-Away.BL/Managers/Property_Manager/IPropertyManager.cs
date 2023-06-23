@@ -22,7 +22,7 @@ public interface IPropertyManager
 
     public int AddProperty(PropertyAddDto propertyDto);
 
-    public bool UpdateProperty(PropertyUpdateDto propertyDto);
+    public bool UpdateProperty(PropertyUpdateDto propertyDto, string? userid);
 
     bool DeleteProperty(int id);
 
