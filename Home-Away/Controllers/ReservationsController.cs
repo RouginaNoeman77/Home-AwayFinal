@@ -74,14 +74,12 @@ namespace Home_Away.Controllers
         {
             return _reservationsManager.GetAllReservationsByUserId(id).ToList();
         }
-
         [HttpGet]
         [Route("admin/{id}")]
         public ActionResult<List<ReservationReadDto>> GetAllReservationsByAdminId(string id)
         {
             return _reservationsManager.GetAllReservationsByAdminId(id).ToList();
         }
-
         [HttpGet]
         [Route("property/{id}")]
         public ActionResult<List<ReservationReadDto>> GetAllReservationsByPropertyId(int id)
