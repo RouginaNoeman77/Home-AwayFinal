@@ -179,6 +179,7 @@ namespace Home_Away.BL.Managers.Property_Manager
                 OwnerId = p.OwnerId,
                 AdminId = p.AdminId,
                 Prop_Images = p.Prop_Images
+
             }).ToList();
         }
 
@@ -226,7 +227,7 @@ namespace Home_Away.BL.Managers.Property_Manager
                 DateOfAddingProperty = propertyDto.DateOfAddingProperty,
                 OwnerId = propertyDto.OwnerId,
                 AdminId = propertyDto.AdminId,
-                Prop_Images = propertyDto.Prop_Images.Select(i => new Images { Url = i }).ToList()
+                Prop_Images = propertyDto.Prop_Images.Select(i => new Images {Url=i}).ToList()
             };
 
             _propertyRepo.AddProperty(property);
@@ -234,7 +235,7 @@ namespace Home_Away.BL.Managers.Property_Manager
             return property.Id;
         }
 
-        public bool UpdateProperty(PropertyUpdateDto propertyDto)
+        public bool UpdateProperty(PropertyUpdateDto propertyDto, string? userid)
         {
             var propertyFromDb = _propertyRepo.GetPropertyById(propertyDto.Id);
 
@@ -242,6 +243,7 @@ namespace Home_Away.BL.Managers.Property_Manager
             {
                 return false;
             }
+            if(userid != propertyFromDb.OwnerId) { return false; }
 
             propertyFromDb.Title = propertyDto.Title;
             propertyFromDb.Description = propertyDto.Description;

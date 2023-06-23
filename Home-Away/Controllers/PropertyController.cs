@@ -1,7 +1,10 @@
 ﻿using Home_Away.BL.Dtos.Property_Dto;
 using Home_Away.BL.Managers.Property_Manager;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Home_Away.Controllers
 {
@@ -95,19 +98,21 @@ namespace Home_Away.Controllers
         }
 
         [HttpGet]
-        [Route("Acceptance/{id}")]
+        [Route("Acceptance/{propId}")]
         public ActionResult AdminAcceptance(int propId)
         {
             _PropertyManager.AdminAcceptance(propId);
-            return Ok(new GenerateMessage("Property Accepted"));
-        }
+			//return Ok(new GenerateMessage("Property Accepted"));
+			return Ok();
+		}
 
-        [HttpGet]
-        [Route("Refusal/{id}")]
+		[HttpGet]
+		[Route("Refusal/{propId}")]
         public ActionResult AdminRefusal(int propId)
         {
             _PropertyManager.AdminRefusal(propId);
-            return Ok(new GenerateMessage("Property Refused"));
+            //return Ok(new GenerateMessage("Property Refused"));
+            return Ok();
         }
 
         [HttpGet]
@@ -142,9 +147,12 @@ namespace Home_Away.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         public ActionResult UpdateProperty(PropertyUpdateDto property)
         {
-            var IsFound = _PropertyManager.UpdateProperty(property);
+            var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            var IsFound = _PropertyManager.UpdateProperty(property,userid);
 
             if (!IsFound)
             {
