@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Home_Away.DAL;
 
@@ -19,6 +20,7 @@ public class Reservations
 
     [ForeignKey("Propery")]
     public int PropertyId { get; set; }
+    [JsonIgnore]
     public Property Property { get; set; }
 
     [ForeignKey("Admin")]
