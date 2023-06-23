@@ -4,8 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
+
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Property = Home_Away.DAL.Property;
+
 
 namespace Home_Away.BL.Managers.Property_Manager
 {
@@ -228,7 +230,9 @@ namespace Home_Away.BL.Managers.Property_Manager
                 DateOfAddingProperty = propertyDto.DateOfAddingProperty,
                 OwnerId = propertyDto.OwnerId,
                 AdminId = propertyDto.AdminId,
+
                 //Prop_Images = propertyDto.Prop_Images,
+
             };
 
             _propertyRepo.AddProperty(property);

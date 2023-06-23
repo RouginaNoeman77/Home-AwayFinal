@@ -33,6 +33,9 @@ namespace Home_Away.BL.Managers
                 UserId = r.Id,
                 FirstName = r.FirstName,
                 LastName = r.LastName,
+                UserName= r.UserName,
+                UserEmail=r.Email,
+                PhoneNumber=r.PhoneNumber,
                 Gender = r.Gender,
                 DateOfBirth = r.DateOfBirth,
                 Owner = r.Owner,
@@ -50,6 +53,9 @@ namespace Home_Away.BL.Managers
             return new UserReadDto
             {
                 UserId = userFromDB.Id,
+                UserName=userFromDB.UserName,
+                UserEmail=userFromDB.Email,
+                PhoneNumber=userFromDB.PhoneNumber,
                 FirstName = userFromDB.FirstName,
                 LastName = userFromDB.LastName,
                 Gender = userFromDB.Gender,
@@ -68,8 +74,11 @@ namespace Home_Away.BL.Managers
             return usersFromDB.Select(r => new UserReadDto
             {
                 UserId = r.Id,
+                UserEmail=r.Email,
+                UserName=r.UserName,
                 FirstName = r.FirstName,
                 LastName = r.LastName,
+                PhoneNumber=r.PhoneNumber,
                 Gender = r.Gender,
                 DateOfBirth = r.DateOfBirth,
                 Owner = r.Owner,
@@ -86,8 +95,11 @@ namespace Home_Away.BL.Managers
             return usersFromDB.Select(r => new UserReadDto
             {
                 UserId = r.Id,
+                UserName=r.UserName,
+                UserEmail=r.Email,
                 FirstName = r.FirstName,
                 LastName = r.LastName,
+                PhoneNumber=r.PhoneNumber,
                 Gender = r.Gender,
                 DateOfBirth = r.DateOfBirth,
                 Owner = r.Owner,
@@ -104,8 +116,11 @@ namespace Home_Away.BL.Managers
             return usersFromDB.Select(r => new UserReadDto
             {
                 UserId = r.Id,
+                UserEmail=r.Email,
+                UserName=r.UserName,
                 FirstName = r.FirstName,
                 LastName = r.LastName,
+                PhoneNumber=r.PhoneNumber,
                 Gender = r.Gender,
                 DateOfBirth = r.DateOfBirth,
                 Owner = r.Owner,
@@ -122,8 +137,11 @@ namespace Home_Away.BL.Managers
             return new UserReadDto
             {
                 UserId = userFromDB.Id,
+                UserName=userFromDB.UserName,
+                UserEmail=userFromDB.Email,
                 FirstName = userFromDB.FirstName,
                 LastName = userFromDB.LastName,
+                PhoneNumber = userFromDB.PhoneNumber,
                 Gender = userFromDB.Gender,
                 DateOfBirth = userFromDB.DateOfBirth,
                 Owner = userFromDB.Owner,
@@ -141,8 +159,11 @@ namespace Home_Away.BL.Managers
             return new UserReadDto
             {
                 UserId = userFromDB.Id,
+                UserName=userFromDB.UserName,
+                UserEmail=userFromDB.Email,
                 FirstName = userFromDB.FirstName,
                 LastName = userFromDB.LastName,
+                PhoneNumber = userFromDB.PhoneNumber,
                 Gender = userFromDB.Gender,
                 DateOfBirth = userFromDB.DateOfBirth,
                 Owner = userFromDB.Owner,
@@ -160,8 +181,11 @@ namespace Home_Away.BL.Managers
             return new UserReadDto
             {
                 UserId = userFromDB.Id,
+                UserName = userFromDB.UserName,
+                UserEmail = userFromDB.Email,
                 FirstName = userFromDB.FirstName,
                 LastName = userFromDB.LastName,
+                PhoneNumber = userFromDB.PhoneNumber,
                 Gender = userFromDB.Gender,
                 DateOfBirth = userFromDB.DateOfBirth,
                 Owner = userFromDB.Owner,
@@ -179,8 +203,11 @@ namespace Home_Away.BL.Managers
             return new UserReadDto
             {
                 UserId = userFromDB.Id,
+                UserName = userFromDB.UserName,
+                UserEmail = userFromDB.Email,
                 FirstName = userFromDB.FirstName,
                 LastName = userFromDB.LastName,
+                PhoneNumber = userFromDB.PhoneNumber,
                 Gender = userFromDB.Gender,
                 DateOfBirth = userFromDB.DateOfBirth,
                 Owner = userFromDB.Owner,
@@ -200,13 +227,8 @@ namespace Home_Away.BL.Managers
                 Email= entity.Email,
                 FirstName = entity.FirstName,
                 LastName = entity.LastName,
+                PhoneNumber=entity.PhoneNumber,
                 Gender = entity.Gender,
-               // DateOfBirth = entity.DateOfBirth,
-              //  Owner = entity.Owner,
-               // EntryDate = entity.EntryDate,
-                //TotalMoneySpent = entity.TotalMoneySpent,
-                //ProfileImage = entity.ProfileImage,
-               // AcountState = entity.AcountState
                 DateOfBirth = entity.DateOfBirth,
                 ProfileImage = entity.ProfileImage
                 
@@ -222,9 +244,11 @@ namespace Home_Away.BL.Managers
         {
             User? user = _userRepo.GetUserById(entity.UserId);
             if (user == null) { return false; }
-
+            user.UserName = entity.UserName;
+            user.Email=entity.Email;
             user.FirstName = entity.FirstName;
             user.LastName = entity.LastName;
+            user.PhoneNumber = entity.PhoneNumber;
             user.Gender = entity.Gender;
             user.DateOfBirth = entity.DateOfBirth;
             user.TotalMoneySpent = entity.TotalMoneySpent;
@@ -296,6 +320,7 @@ namespace Home_Away.BL.Managers
                 Email = registerDto.Email,
                 FirstName = registerDto.FirstName,
                 LastName = registerDto.LastName,
+                PhoneNumber=registerDto.PhoneNumber,
                 Gender = registerDto.Gender,
                 DateOfBirth = registerDto.DateOfBirth,
                 ProfileImage = registerDto.ProfileImage
