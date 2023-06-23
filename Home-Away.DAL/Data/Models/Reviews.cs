@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Home_Away.DAL;
 
@@ -27,6 +28,7 @@ public class Reviews
 
     [ForeignKey("User")]
     public string? UserId { get; set; } //for Rent
+    [JsonIgnore]
     public User User { get; set; }
 
 

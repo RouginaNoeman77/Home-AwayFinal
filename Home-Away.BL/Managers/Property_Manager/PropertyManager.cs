@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Property = Home_Away.DAL.Property;
 
 namespace Home_Away.BL.Managers.Property_Manager
 {
@@ -43,7 +45,7 @@ namespace Home_Away.BL.Managers.Property_Manager
                 AverageRating = p.AverageRating,
                 OwnerId = p.OwnerId,
                 AdminId = p.AdminId,
-                Prop_Images = p.Prop_Images
+                Prop_Images = p.Prop_Images,
             }).ToList();
         }
 
@@ -76,6 +78,7 @@ namespace Home_Away.BL.Managers.Property_Manager
                 OwnerId = property.OwnerId,
                 AdminId = property.AdminId,
                 Prop_Images = property.Prop_Images,
+                Reviews = property.Prop_Reviews,
             };
         }
 
@@ -225,11 +228,19 @@ namespace Home_Away.BL.Managers.Property_Manager
                 DateOfAddingProperty = propertyDto.DateOfAddingProperty,
                 OwnerId = propertyDto.OwnerId,
                 AdminId = propertyDto.AdminId,
-                Prop_Images = propertyDto.Prop_Images,
+                //Prop_Images = propertyDto.Prop_Images,
             };
 
             _propertyRepo.AddProperty(property);
             _propertyRepo.SaveChanges();
+            //int propId = property.Id;
+            //List<Images> propImages = propertyDto.Prop_Images;
+            //foreach (var image in propImages)
+            //{
+            //    image.PropertyId = propId;
+            //}
+            //property.Prop_Images = propImages;
+            //_propertyRepo.SaveChanges();
             return property.Id;
         }
 

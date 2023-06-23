@@ -13,12 +13,18 @@ namespace Home_Away.DAL
 
         public IEnumerable<Property> GetAllProperties()
         {
-            return _userContext.Set<Property>().Include(p=>p.Prop_Images).AsNoTracking();
+            return _userContext.Set<Property>()
+                .Include(p=>p.Prop_Images)
+                .AsNoTracking();
         }
 
         public Property? GetPropertyById(int id)
         {
-            return _userContext.Set<Property>().Include(p => p.Prop_Images).FirstOrDefault(i => i.Id == id);
+
+            return _userContext.Set<Property>()
+                .Include(p => p.Prop_Images)
+                .Include(p => p.Prop_Reviews)
+                .FirstOrDefault(i => i.Id == id);
 
         }
 
@@ -105,6 +111,7 @@ namespace Home_Away.DAL
         public void AddProperty(Property property)
         {
             _userContext.Add(property);
+            _userContext.SaveChanges();
         }
 
         public void DeleteProperty(Property property)

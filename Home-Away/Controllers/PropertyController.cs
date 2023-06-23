@@ -1,4 +1,6 @@
-﻿using Home_Away.BL.Dtos.Property_Dto;
+﻿using Home_Away.BL.Dtos.Images_Dto;
+using Home_Away.BL.Dtos.Property_Dto;
+using Home_Away.BL.Managers.Images_Manager;
 using Home_Away.BL.Managers.Property_Manager;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

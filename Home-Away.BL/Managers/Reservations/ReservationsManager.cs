@@ -52,6 +52,10 @@ public class ReservationsManager : IReservationsManager
             DateFrom = reservation.DateFrom,
             DateTo = reservation.DateTo,
             PropertyId = reservation.PropertyId,
+            RequestDate = reservation.RequestDate,
+            ReservationState = reservation.ReservationState,
+            AdminId = reservation.AdminId,
+            UserId = reservation.UserId,
         };
         _reservationsRepo.AddReservation(r);
         _reservationsRepo.SaveChanges();
