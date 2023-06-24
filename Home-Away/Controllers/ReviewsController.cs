@@ -71,10 +71,12 @@ namespace Home_Away.Controllers
 
 
         [HttpPost]
-        public ActionResult Add(ReviewsAddDto review)
+        public ActionResult Add (ReviewsAddDto review)
         {
             var newid = _ReviewsManager.AddReview(review);
-            return CreatedAtAction(nameof(GetById), new { id = newid });
+            return CreatedAtAction(nameof(GetById), 
+                                    new { id = newid },
+                                    new GeneralResponse("Review has been added successfully"));
         }
         [HttpPut]
         public ActionResult Update(ReviewUpdateDto review)
