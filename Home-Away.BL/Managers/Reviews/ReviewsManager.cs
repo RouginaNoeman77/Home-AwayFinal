@@ -54,6 +54,9 @@ public class ReviewsManager : IReviewsManager
             ReviewText = reviewfromrequest.ReviewText,
             ReviewDate = reviewfromrequest.ReviewDate,
             State = reviewfromrequest.State,
+            AdminId = reviewfromrequest.AdminId,
+            UserId = reviewfromrequest.UserId,
+            PropertyId = reviewfromrequest.PropertyId,
         };
         _ReviewsRepo.AddReview(review);
         _ReviewsRepo.SaveChanges();
@@ -129,6 +132,7 @@ public class ReviewsManager : IReviewsManager
             ReviewText = review.ReviewText,
             ReviewDate = review.ReviewDate,
             State = review.State,
+            UserId = review.UserId
         });
     }
 
@@ -142,6 +146,7 @@ public class ReviewsManager : IReviewsManager
             ReviewText = review.ReviewText,
             ReviewDate = review.ReviewDate,
             State = review.State,
+          
         });
 
     }

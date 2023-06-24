@@ -125,6 +125,7 @@ public class UserContext : IdentityDbContext
                 Gender = "Male",
                 HiringDate = DateTime.UtcNow,
                 DateOfBirth = new DateTime(1990, 1, 1)
+                
 
             },
 

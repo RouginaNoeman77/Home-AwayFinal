@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Home_Away.DAL;
 
@@ -20,7 +21,7 @@ public class User : IdentityUser
     public int AcountState { get; set; } = 0;
 
     //Navigation Property
-
+    [JsonIgnore]
     public ICollection<Reviews> Reviews { get; set; } = new HashSet<Reviews>();
 
     [InverseProperty("Owner")]

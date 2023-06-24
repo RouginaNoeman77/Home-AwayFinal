@@ -36,7 +36,8 @@ public class ImagesManager : IImagesManager
         return new ImagesReadDto
         {
             Id = Image.Id,
-            Url = Image.Url
+            Url = Image.Url,
+            Prop_id = Image.PropertyId
         };
 
     }
@@ -72,6 +73,7 @@ public class ImagesManager : IImagesManager
             return false;
         }
         ImageFromDb.Url = imagesDto.Url;
+        ImageFromDb.PropertyId = imagesDto.Prop_id;
         _imagesRepo.UpdateImage(ImageFromDb);
         _imagesRepo.SaveChanges();
         return true;

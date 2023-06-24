@@ -30,7 +30,7 @@ namespace Home_Away.Controllers
         }
 
         [HttpGet]
-        [Route("/property/{id}")]
+        [Route("property/{id}")]
         public ActionResult<List<ReviewsReadDto>> GetByPropertyId(int id)
         {
             return _ReviewsManager.GetByPropertyId(id).ToList();
@@ -38,7 +38,7 @@ namespace Home_Away.Controllers
         }
 
         [HttpGet]
-        [Route("/user/{id}")]
+        [Route("user/{id}")]
         public ActionResult<List<ReviewsReadDto>> GetByUserId(string id)
         {
             return _ReviewsManager.GetByUserId(id).ToList();
@@ -46,14 +46,14 @@ namespace Home_Away.Controllers
         }
 
         [HttpGet]
-        [Route("/Admin/{id}")]
+        [Route("Admin/{id}")]
         public ActionResult<List<ReviewsReadDto>> GetByAdminId(string id)
         {
             return _ReviewsManager.GetByAdminId(id).ToList();
 
         }
         [HttpGet]
-        [Route("/date/{date}")]
+        [Route("date/{date}")]
         public ActionResult<List<ReviewsReadDto>> GetByDate(DateTime date)
         {
             return _ReviewsManager.GetByDate(date).ToList();
@@ -61,7 +61,7 @@ namespace Home_Away.Controllers
         }
 
         [HttpGet]
-        [Route("/status/{status}")]
+        [Route("status/{status}")]
         public ActionResult<List<ReviewsReadDto>> GetByStatus(string status)
         {
             return _ReviewsManager.GetByStatus(status).ToList();
@@ -71,10 +71,12 @@ namespace Home_Away.Controllers
 
 
         [HttpPost]
-        public ActionResult Add(ReviewsAddDto review)
+        public ActionResult Add (ReviewsAddDto review)
         {
             var newid = _ReviewsManager.AddReview(review);
-            return CreatedAtAction(nameof(GetById), new { id = newid });
+            return CreatedAtAction(nameof(GetById), 
+                                    new { id = newid },
+                                    new GeneralResponse("Review has been added successfully"));
         }
         [HttpPut]
         public ActionResult Update(ReviewUpdateDto review)
@@ -84,7 +86,7 @@ namespace Home_Away.Controllers
             return NotFound();
         }
         [HttpDelete]
-        [Route("/delete/{id}")]
+        [Route("delete/{id}")]
         public ActionResult Delete(int id)
         {
             var isfound = _ReviewsManager.DeleteReview(id);

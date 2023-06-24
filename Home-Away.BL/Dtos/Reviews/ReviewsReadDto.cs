@@ -17,6 +17,6 @@ public class ReviewsReadDto
 
     public  string State { get; set; } = "Pending";
 
-  
+    public string UserId { get; set; }= string.Empty;
 
 }

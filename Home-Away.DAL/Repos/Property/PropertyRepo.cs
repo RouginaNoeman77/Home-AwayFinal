@@ -13,14 +13,20 @@ namespace Home_Away.DAL
 
         public IEnumerable<Property> GetAllProperties()
         {
-            return _userContext.Set<Property>().Include(p=>p.Prop_Images).AsNoTracking();
+            return _userContext.Set<Property>()
+                .Include(p=>p.Prop_Images)
+                .AsNoTracking();
         }
 
         public Property? GetPropertyById(int id)
         {
-            return _userContext.Set<Property>().Include(p => p.Prop_Images).FirstOrDefault(i => i.Id == id);
 
-		}
+            return _userContext.Set<Property>()
+                .Include(p => p.Prop_Images)
+                .Include(p => p.Prop_Reviews)
+                .FirstOrDefault(i => i.Id == id);
+
+        }
 
         public IEnumerable<Property>? GetPropertyByOwner(string owner_id)
         {
@@ -40,7 +46,7 @@ namespace Home_Away.DAL
 
         public IEnumerable<Property>? GetPropertyByState(string state)
         {
-            return _userContext.Set<Property>().Where(s => s.State == state);
+            return _userContext.Set<Property>().Include(p => p.Prop_Images).Where(s => s.State == state).AsNoTracking(); ;
         }
 
         public IEnumerable<Property>? FilterProperty(string? Type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating)
@@ -105,6 +111,7 @@ namespace Home_Away.DAL
         public void AddProperty(Property property)
         {
             _userContext.Add(property);
+            _userContext.SaveChanges();
         }
 
         public void DeleteProperty(Property property)

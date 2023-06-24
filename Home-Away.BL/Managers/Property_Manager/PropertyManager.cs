@@ -6,17 +6,23 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Property = Home_Away.DAL.Property;
+
+
 namespace Home_Away.BL.Managers.Property_Manager
 {
     public class PropertyManager : IPropertyManager
     {
         private readonly IPropertyRepo _propertyRepo;
         private readonly IImagesRepo _imagesRepo;
-
-        public PropertyManager(IPropertyRepo propertyRepo, IImagesRepo imagesRepo)
+        private readonly IReviewsRepo _reviewsRepo;
+        public PropertyManager(IPropertyRepo propertyRepo, IImagesRepo imagesRepo, IReviewsRepo reviewsRepo)
         {
             _propertyRepo = propertyRepo;
             _imagesRepo = imagesRepo;
+            _reviewsRepo = reviewsRepo;
+
         }
 
         public List<PropertyReadDto> GetAllProperties()
@@ -42,7 +48,7 @@ namespace Home_Away.BL.Managers.Property_Manager
                 AverageRating = p.AverageRating,
                 OwnerId = p.OwnerId,
                 AdminId = p.AdminId,
-                Prop_Images = p.Prop_Images
+                Prop_Images = p.Prop_Images,
             }).ToList();
         }
 
@@ -74,7 +80,8 @@ namespace Home_Away.BL.Managers.Property_Manager
                 AverageRating = property.AverageRating,
                 OwnerId = property.OwnerId,
                 AdminId = property.AdminId,
-                Prop_Images = property.Prop_Images
+                Prop_Images = property.Prop_Images,
+                Reviews = property.Prop_Reviews,
             };
         }
 
@@ -136,7 +143,8 @@ namespace Home_Away.BL.Managers.Property_Manager
                 DateOfAddingProperty = p.DateOfAddingProperty,
                 AverageRating = p.AverageRating,
                 OwnerId = p.OwnerId,
-                AdminId = p.AdminId
+                AdminId = p.AdminId,
+                Prop_Images = p.Prop_Images,
             }).ToList();
         }
 
@@ -174,7 +182,9 @@ namespace Home_Away.BL.Managers.Property_Manager
                 DateOfAddingProperty = p.DateOfAddingProperty,
                 AverageRating = p.AverageRating,
                 OwnerId = p.OwnerId,
-                AdminId = p.AdminId
+                AdminId = p.AdminId,
+                Prop_Images = p.Prop_Images
+
             }).ToList();
         }
 
@@ -224,15 +234,26 @@ namespace Home_Away.BL.Managers.Property_Manager
                 NumberOfFloors = propertyDto.NumberOfFloors,
                 DateOfAddingProperty = propertyDto.DateOfAddingProperty,
                 OwnerId = propertyDto.OwnerId,
-                Prop_Images = propertyDto.Prop_Images,
+                AdminId = propertyDto.AdminId,
+
+                Prop_Images = propertyDto.Prop_Images.Select(i => new Images {Url=i}).ToList()
+
             };
 
             _propertyRepo.AddProperty(property);
             _propertyRepo.SaveChanges();
+            //int propId = property.Id;
+            //List<Images> propImages = propertyDto.Prop_Images;
+            //foreach (var image in propImages)
+            //{
+            //    image.PropertyId = propId;
+            //}
+            //property.Prop_Images = propImages;
+            //_propertyRepo.SaveChanges();
             return property.Id;
         }
 
-        public bool UpdateProperty(PropertyUpdateDto propertyDto)
+        public bool UpdateProperty(PropertyUpdateDto propertyDto, string? userid)
         {
             var propertyFromDb = _propertyRepo.GetPropertyById(propertyDto.Id);
 
@@ -240,6 +261,7 @@ namespace Home_Away.BL.Managers.Property_Manager
             {
                 return false;
             }
+            if(userid != propertyFromDb.OwnerId) { return false; }
 
             propertyFromDb.Title = propertyDto.Title;
             propertyFromDb.Description = propertyDto.Description;
