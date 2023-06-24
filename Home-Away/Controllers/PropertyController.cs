@@ -119,7 +119,7 @@ namespace Home_Away.Controllers
 
         [HttpGet]
         [Route("FilterProperty")] 
-        public ActionResult<List<PropertyFilterDto>> GetPropertyFilter(string? Type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating)
+        public ActionResult<List<PropertyReadDto>> GetPropertyFilter(string? Type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating)
         {
             var Properties = _PropertyManager.FilterProperty(Type, region, area, category, price_per_night, capacity, no_of_rooms, no_of_bathrooms, no_of_floors, avg_rating).ToList();
 
