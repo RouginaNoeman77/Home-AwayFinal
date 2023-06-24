@@ -94,16 +94,16 @@ namespace Home_Away.Controllers
             return properties;
         }
 
-        [HttpGet]
-        [Route("Acceptance/{id}")]
+        [HttpPut]
+        [Route("Acceptance/{propId}")]
         public ActionResult AdminAcceptance(int propId)
         {
             _PropertyManager.AdminAcceptance(propId);
             return Ok(new GenerateMessage("Property Accepted"));
         }
 
-        [HttpGet]
-        [Route("Refusal/{id}")]
+        [HttpPut]
+        [Route("Refusal/{propId}")]
         public ActionResult AdminRefusal(int propId)
         {
             _PropertyManager.AdminRefusal(propId);
@@ -112,7 +112,7 @@ namespace Home_Away.Controllers
 
         [HttpGet]
         [Route("FilterProperty")] 
-        public ActionResult<List<PropertyFilterDto>> GetPropertyFilter(string? Type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating)
+        public ActionResult<List<PropertyReadDto>> GetPropertyFilter(string? Type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating)
         {
             var Properties = _PropertyManager.FilterProperty(Type, region, area, category, price_per_night, capacity, no_of_rooms, no_of_bathrooms, no_of_floors, avg_rating).ToList();
 

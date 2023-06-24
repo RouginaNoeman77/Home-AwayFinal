@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Home_Away.BL.Managers.Property_Manager
 {
@@ -177,7 +178,7 @@ namespace Home_Away.BL.Managers.Property_Manager
             }).ToList();
         }
 
-        public List<PropertyFilterDto> FilterProperty( string? type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating)
+        public List<PropertyReadDto> FilterProperty( string? type, string? region, string? area, string? category, decimal? price_per_night, int? capacity, int? no_of_rooms, int? no_of_bathrooms, int? no_of_floors, decimal? avg_rating)
         {
             var properties = _propertyRepo.FilterProperty(type, region, area, category, price_per_night, capacity, no_of_rooms, no_of_bathrooms, no_of_floors, avg_rating);
 
@@ -186,9 +187,9 @@ namespace Home_Away.BL.Managers.Property_Manager
                 return null;
             }
 
-            return properties.Select(p => new PropertyFilterDto
+            return properties.Select(p => new PropertyReadDto
             {
-               
+                Id = p.Id,
                 Type = p.Type,
                 Region = p.Region,
                 Area = p.Area,
@@ -198,7 +199,10 @@ namespace Home_Away.BL.Managers.Property_Manager
                 NumberOfRooms = p.NumberOfRooms,
                 NumberOfBathrooms = p.NumberOfBathrooms,
                 NumberOfFloors = p.NumberOfFloors,
-                AverageRating = p.AverageRating
+                AverageRating = p.AverageRating,
+                OwnerId = p.OwnerId,
+                AdminId=p.AdminId,
+                Prop_Images = p.Prop_Images,
             }).ToList();
         }
 
