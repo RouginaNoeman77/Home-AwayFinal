@@ -215,10 +215,9 @@ namespace Home_Away.BL.Managers.Property_Manager
                 AdminId=p.AdminId,
 
                 Prop_Images = p.Prop_Images,
-                Description=p.Description,
-                Title=p.Title
-
-            }).ToList();
+                Description = p.Description,
+                Title = p.Title,
+			}).ToList();
         }
 
         public int AddProperty(PropertyAddDto propertyDto)
