@@ -210,9 +210,14 @@ namespace Home_Away.BL.Managers.Property_Manager
                 NumberOfBathrooms = p.NumberOfBathrooms,
                 NumberOfFloors = p.NumberOfFloors,
                 AverageRating = p.AverageRating,
-                OwnerId = p.OwnerId,
+
+                OwnerId=p.OwnerId,
                 AdminId=p.AdminId,
+
                 Prop_Images = p.Prop_Images,
+                Description=p.Description,
+                Title=p.Title
+
             }).ToList();
         }
 
