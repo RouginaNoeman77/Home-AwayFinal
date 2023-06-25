@@ -104,8 +104,10 @@ namespace Home_Away.DAL
             {
                 query = query.Where(x => x.AverageRating == avg_rating);
             }
+
         
             return query.Include(i=>i.Prop_Images).ToList();
+
         }
 
         public void AddProperty(Property property)
