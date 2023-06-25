@@ -118,22 +118,23 @@ namespace Home_Away.Controllers
         }
         [HttpPut]   //7asaha enaha put 3alashan ana ba-update el status 
         [Route("owner/accept/{id}")]
-        public ActionResult OwnerAcceptance (int reservationid , int transactionid)
+        public ActionResult OwnerAcceptance (int id)
         {
-            ReservationReadDto? reservation = _reservationsManager.GetByID(reservationid);
+            ReservationReadDto? reservation = _reservationsManager.GetByID(id);
             if (reservation == null)
             {
                 return NotFound();
             }
-            var OwnerId = _reservationsManager.GetPropertyOwner(reservationid);
-            var UserId =User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)!.Value;   //User ID
-            //User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if(OwnerId == UserId && transactionid != 0)
-            {
-                _reservationsManager.OwnerAcceptance(reservation.Id);
-                return NoContent();
-            }
-            return BadRequest();   
+			//var OwnerId = _reservationsManager.GetPropertyOwner(reservationid);
+			//var UserId =User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)!.Value;   //User ID
+			//User.FindFirstValue(ClaimTypes.NameIdentifier);
+			_reservationsManager.OwnerAcceptance(reservation.Id);
+			return NoContent();
+			//iftransactionid != 0)
+   //         {
+                
+   //         }
+   //         return BadRequest();   
         }
 
         [HttpPut]   //7asaha enaha put 3alashan ana ba-update el status 
@@ -175,7 +176,7 @@ namespace Home_Away.Controllers
             return NoContent();
         }
         [HttpPut]   //7asaha enaha put 3alashan ana ba-update el status 
-        [Route("admin/refuse/{id}")]
+        [Route("reservationState/{id}")]
         public ActionResult ReservationState(int id)
         {
             ReservationReadDto? reservation = _reservationsManager.GetByID(id);
