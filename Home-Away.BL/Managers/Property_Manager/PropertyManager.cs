@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Property = Home_Away.DAL.Property;
@@ -198,7 +199,7 @@ namespace Home_Away.BL.Managers.Property_Manager
 
             return properties.Select(p => new PropertyReadDto
             {
-               
+                Id = p.Id,
                 Type = p.Type,
                 Region = p.Region,
                 Area = p.Area,
@@ -209,11 +210,13 @@ namespace Home_Away.BL.Managers.Property_Manager
                 NumberOfBathrooms = p.NumberOfBathrooms,
                 NumberOfFloors = p.NumberOfFloors,
                 AverageRating = p.AverageRating,
+
                 OwnerId=p.OwnerId,
                 AdminId=p.AdminId,
                 Prop_Images=p.Prop_Images,
                 Description=p.Description,
                 Title=p.Title,
+
 
             }).ToList();
         }
