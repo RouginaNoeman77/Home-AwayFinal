@@ -28,7 +28,9 @@ public class PropertyReadDto
     public string AdminId { get; set; }
     public List<Images> Prop_Images { get; set; }
     public List<Reviews> Reviews { get; set; }
-    //public string userFirstName { get; set; }
-   
+	//public string userFirstName { get; set; }
+
+	public string State { get; set; } = "";
+
 }
 

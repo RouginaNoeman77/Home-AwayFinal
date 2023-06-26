@@ -112,7 +112,8 @@ namespace Home_Away.BL.Managers.Property_Manager
                 DateOfAddingProperty = p.DateOfAddingProperty,
                 AverageRating = p.AverageRating,
                 OwnerId = p.OwnerId,
-                AdminId = p.AdminId
+                AdminId = p.AdminId,
+                State = p.State,
             }).ToList();
         }
 
